@@ -9,6 +9,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { ProgressProvider } from "./contexts/ProgressContext";
 import CelebrationToast from "./components/CelebrationToast";
+import PwaInstallPrompt from "./components/PwaInstallPrompt";
 import Home from "./pages/Home";
 import Arabic from "./pages/Arabic";
 import English from "./pages/English";
@@ -38,7 +39,7 @@ function App() {
     <ErrorBoundary>
       <ProgressProvider>
         <ThemeProvider defaultTheme="light">
-          <TooltipProvider><Toaster /><CelebrationToast /><Router /></TooltipProvider>
+          <TooltipProvider><Toaster /><CelebrationToast /><Router /><PwaInstallPrompt /></TooltipProvider>
         </ThemeProvider>
       </ProgressProvider>
     </ErrorBoundary>
