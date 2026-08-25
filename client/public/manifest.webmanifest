@@ -11,7 +11,7 @@
   "background_color": "#fffaf0",
   "theme_color": "#117f86",
   "icons": [
-    { "src": "/manus-storage/academy-compass-logo_56b65985.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
-    { "src": "/manus-storage/academy-compass-logo_56b65985.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+    { "src": "/manus-storage/academy-pwa-icon-192_5458213b.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/manus-storage/academy-pwa-icon-512_397645f5.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
   ]
 }
