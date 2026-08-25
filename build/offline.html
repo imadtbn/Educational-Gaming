@@ -2,15 +2,53 @@
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#117f86" />
-    <title>أكاديمية المرح — دون اتصال</title>
+    <title>محطة نجوم المسار — أكاديمية المرح</title>
     <style>
-      body { min-height: 100vh; margin: 0; display: grid; place-items: center; background: #fffaf0; color: #173f42; font-family: Tahoma, Arial, sans-serif; }
-      main { width: min(84vw, 440px); padding: 36px 28px; text-align: center; background: linear-gradient(135deg, #edf7f0, #fff0d4); border: 2px dashed #d2ab54; border-radius: 34px 7px 34px 7px; box-shadow: 9px 10px 0 rgba(17,127,134,.08); }
-      .mark { display: grid; width: 64px; height: 64px; place-items: center; margin: 0 auto 16px; color: #fff; background: #117f86; border-radius: 50%; font-size: 29px; }
-      h1 { margin: 0; font-size: 26px; } p { color: #59716a; line-height: 1.9; } button { padding: 10px 16px; color: #fff; background: #117f86; border: 0; border-radius: 999px; font-weight: 700; }
+      :root { --teal:#117f86; --ink:#173f42; --cream:#fffaf0; --gold:#e3ab2f; --coral:#da765d; --paper:#fffdf7; }
+      * { box-sizing:border-box; }
+      body { min-height:100vh; margin:0; display:grid; place-items:center; overflow-x:hidden; color:var(--ink); background:radial-gradient(circle at 8% 8%, #dff1eb 0 11%, transparent 11.2%), radial-gradient(circle at 91% 89%, #ffe6ae 0 10%, transparent 10.2%), var(--cream); font-family:Tahoma, Arial, sans-serif; }
+      main { width:min(92vw, 520px); margin:28px auto; padding:clamp(20px, 5vw, 32px); position:relative; overflow:hidden; background:linear-gradient(135deg, #fffdf7 0%, #fff5df 52%, #e9f7f1 100%); border:2px dashed #d2ab54; border-radius:38px 7px 38px 7px; box-shadow:11px 13px 0 rgba(17,127,134,.1); text-align:center; }
+      .paper-stars { position:absolute; inset:0; pointer-events:none; opacity:.78; } .paper-stars i { position:absolute; color:var(--gold); font-style:normal; font-size:22px; } .paper-stars i:nth-child(1){top:22px;right:33px}.paper-stars i:nth-child(2){top:113px;left:29px;color:var(--coral)}.paper-stars i:nth-child(3){bottom:82px;right:28px;color:var(--teal)}
+      .offline-chip { display:inline-flex; align-items:center; gap:7px; margin-bottom:10px; padding:5px 10px; color:#806026; background:#fff0c8; border:1px solid #eccd7b; border-radius:999px; font-size:11px; font-weight:700; } .offline-chip b { color:var(--coral); font-size:15px; }
+      h1 { margin:0; font-size:clamp(27px, 8vw, 42px); line-height:1.08; letter-spacing:-.7px; } h1 em { color:var(--teal); font-style:normal; } .intro { max-width:390px; margin:9px auto 17px; color:#5b756d; font-size:14px; line-height:1.8; }
+      .progress-ticket { display:flex; align-items:center; justify-content:center; gap:9px; width:max-content; max-width:100%; margin:0 auto 16px; padding:7px 13px; color:#705829; background:var(--paper); border:1px dashed #dfc46c; border-radius:13px 3px 13px 3px; transform:rotate(-1deg); font-size:13px; font-weight:700; } .progress-ticket strong { color:var(--teal); font-size:17px; }
+      .map { position:relative; min-height:330px; padding:27px 19px 20px; background:linear-gradient(150deg,#e4f3eb,#f7edd3); border:1px solid #b8d7c9; border-radius:31px 5px 31px 5px; box-shadow:inset 0 0 0 6px rgba(255,253,247,.55); }
+      .map::before { content:""; position:absolute; inset:19px; border:2px dashed rgba(210,171,84,.82); border-radius:45% 56% 43% 61%; transform:rotate(-2deg); } .trail { position:absolute; top:61px; right:23%; width:52%; height:202px; border-right:4px dotted #d0a958; border-bottom:4px dotted #d0a958; border-radius:0 0 62% 0; transform:rotate(23deg); opacity:.9; }
+      .start-flag, .finish-flag { position:absolute; z-index:1; display:grid; width:42px; height:42px; place-items:center; border-radius:50%; font-weight:800; } .start-flag { right:25px; bottom:23px; color:#fff; background:var(--teal); } .finish-flag { top:23px; left:27px; color:#fff; background:var(--coral); }
+      .star-grid { position:relative; z-index:2; display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:repeat(3,74px); align-items:center; min-height:258px; } .star { justify-self:center; display:grid; width:52px; height:52px; place-items:center; color:#9d7220; background:#fff8df; border:1px solid #ebc96d; border-radius:50% 42% 50% 42%; box-shadow:0 5px 0 rgba(167,120,33,.16); font-size:28px; line-height:1; cursor:pointer; transition:transform .18s ease, opacity .18s ease, background .18s ease; } .star:hover { transform:translateY(-5px) rotate(8deg) scale(1.05); background:#fff0b7; } .star:active { transform:scale(.93); } .star.is-collected { opacity:.16; color:#fff; background:var(--teal); transform:rotate(23deg) scale(.75); pointer-events:none; }
+      .star:nth-child(1){grid-column:1;grid-row:1}.star:nth-child(2){grid-column:3;grid-row:1}.star:nth-child(3){grid-column:2;grid-row:2}.star:nth-child(4){grid-column:1;grid-row:3}.star:nth-child(5){grid-column:3;grid-row:3}
+      .map-tip { position:relative; z-index:2; margin:0; color:#58746b; font-size:12px; font-weight:700; }
+      .reward { display:none; position:absolute; z-index:5; inset:31px 22px 24px; place-items:center; padding:20px; color:#4d3c54; background:rgba(255,253,247,.96); border:2px dashed #c79ed0; border-radius:25px 5px 25px 5px; text-align:center; } .reward.is-visible { display:grid; animation:pop .32s cubic-bezier(.23,1,.32,1); } .reward .badge { display:grid; width:72px; height:72px; place-items:center; color:#fff; background:var(--teal); border:6px solid #fff0b9; border-radius:50%; box-shadow:0 5px 0 rgba(0,0,0,.08); font-size:35px; } .reward h2 { margin:10px 0 4px; color:#6b4a76; font-size:27px; } .reward p { margin:0 0 13px; color:#61766e; font-size:13px; line-height:1.7; } .reward button, .retry { display:inline-flex; align-items:center; justify-content:center; gap:7px; padding:10px 14px; color:#fff; background:var(--teal); border:0; border-radius:999px; box-shadow:0 4px 0 rgba(3,87,91,.18); font:700 13px Tahoma, Arial, sans-serif; cursor:pointer; } .reward button:active, .retry:active { transform:scale(.97); }
+      .actions { display:flex; flex-wrap:wrap; justify-content:center; gap:8px; margin-top:16px; } .retry { color:var(--teal); background:#e6f4ee; border:1px solid #b5dacb; box-shadow:none; } .note { margin:13px 0 0; color:#758078; font-size:11px; line-height:1.6; } @keyframes pop { from { transform:scale(.93); opacity:0; } to { transform:scale(1); opacity:1; } } @media (prefers-reduced-motion:reduce){ * { transition:none!important; animation:none!important; } } @media (max-width:390px){ .map{min-height:306px}.star-grid{grid-template-rows:68px;min-height:235px}.star{width:48px;height:48px}.intro{font-size:13px} }
     </style>
   </head>
-  <body><main><div class="mark">✦</div><h1>نحتاج إلى اتصال صغير</h1><p>تأكد من الإنترنت، ثم عد إلى رحلتك التعليمية لنكمل الاستكشاف واللعب.</p><button onclick="location.reload()">حاول مجددًا</button></main></body>
+  <body>
+    <main>
+      <div class="paper-stars" aria-hidden="true"><i>✦</i><i>✧</i><i>✦</i></div>
+      <div class="offline-chip"><b>●</b> أنت الآن في محطة دون اتصال</div>
+      <h1>لا تقلق…<br /><em>اللعب مستمر.</em></h1>
+      <p class="intro">بينما ننتظر عودة الإنترنت، اجمع نجوم المسار الخمس واكمل رحلتك الصغيرة.</p>
+      <div class="progress-ticket" aria-live="polite">نجوم المسار <strong id="score">0 / 5</strong></div>
+      <section class="map" aria-label="لعبة جمع نجوم المسار">
+        <div class="trail" aria-hidden="true"></div><span class="start-flag" aria-hidden="true">●</span><span class="finish-flag" aria-hidden="true">⚑</span>
+        <div class="star-grid">
+          <button class="star" type="button" aria-label="اجمع النجمة الأولى">✦</button><button class="star" type="button" aria-label="اجمع النجمة الثانية">✦</button><button class="star" type="button" aria-label="اجمع النجمة الثالثة">✦</button><button class="star" type="button" aria-label="اجمع النجمة الرابعة">✦</button><button class="star" type="button" aria-label="اجمع النجمة الخامسة">✦</button>
+        </div>
+        <p class="map-tip" id="game-message">اضغط كل نجمة لتضعها في حقيبة الرحلة.</p>
+        <div class="reward" id="reward" role="status" aria-live="polite"><div class="badge">✦</div><div><h2>أكملت المسار!</h2><p>جمعت خمس نجوم وحصلت على ملصق مسافر صغير.</p><button type="button" id="play-again">لعبة جديدة</button></div></div>
+      </section>
+      <div class="actions"><button class="retry" type="button" onclick="location.reload()">حاول الاتصال مجددًا</button></div>
+      <p class="note">هذه المحطة تعمل من دون إنترنت. ستعود أنشطة الأكاديمية عند توفر الاتصال.</p>
+    </main>
+    <script>
+      (() => {
+        const stars = [...document.querySelectorAll('.star')]; const score = document.getElementById('score'); const message = document.getElementById('game-message'); const reward = document.getElementById('reward'); let count = 0;
+        function reset() { count = 0; score.textContent = '0 / 5'; message.textContent = 'اضغط كل نجمة لتضعها في حقيبة الرحلة.'; reward.classList.remove('is-visible'); stars.forEach((star) => { star.classList.remove('is-collected'); star.disabled = false; }); }
+        stars.forEach((star) => star.addEventListener('click', () => { if (star.disabled) return; star.disabled = true; star.classList.add('is-collected'); count += 1; score.textContent = `${count} / 5`; message.textContent = count === 5 ? 'رحلة رائعة!' : `أحسنت! بقيت ${5 - count} نجوم.`; if (count === 5) reward.classList.add('is-visible'); }));
+        document.getElementById('play-again').addEventListener('click', reset);
+      })();
+    </script>
+  </body>
 </html>

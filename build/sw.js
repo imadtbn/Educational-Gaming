@@ -1,4 +1,4 @@
-const CACHE_NAME = "academy-marh-v1";
+const CACHE_NAME = "academy-marh-v2";
 const APP_SHELL = ["/", "/offline.html", "/manifest.webmanifest"];
 
 self.addEventListener("install", (event) => {
