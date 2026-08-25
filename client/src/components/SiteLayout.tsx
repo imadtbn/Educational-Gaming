@@ -4,6 +4,7 @@
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import { useState } from "react";
+import { useProgress } from "@/contexts/ProgressContext";
 
 const logoUrl = "/manus-storage/academy-compass-logo_56b65985.png";
 
@@ -13,11 +14,13 @@ const navigation = [
   { href: "/english", label: "English" },
   { href: "/animals", label: "عالم الحيوانات" },
   { href: "/numbers", label: "الأرقام والحساب" },
+  { href: "/games", label: "اختبارات وألعاب" },
 ];
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
   const [open, setOpen] = useState(false);
+  const { progress } = useProgress();
 
   return (
     <div className="site-shell" dir="rtl">
@@ -41,6 +44,11 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
               </Link>
             ))}
           </nav>
+
+          <div className="header-progress" aria-label={`تقدم الرحلة: ${progress.stars} نجوم و${progress.badges.length} شارات`}>
+            <span className="progress-star">★</span>
+            <div><strong>{progress.stars}</strong><small>نجوم الرحلة</small></div>
+          </div>
 
           <div className="header-status" aria-label="رسالة تشجيع">
             <span className="status-star">✦</span>

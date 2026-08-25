@@ -7,11 +7,14 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { ProgressProvider } from "./contexts/ProgressContext";
+import CelebrationToast from "./components/CelebrationToast";
 import Home from "./pages/Home";
 import Arabic from "./pages/Arabic";
 import English from "./pages/English";
 import Animals from "./pages/Animals";
 import Numbers from "./pages/Numbers";
+import Games from "./pages/Games";
 
 function Router() {
   return (
@@ -21,6 +24,7 @@ function Router() {
       <Route path="/english" component={English} />
       <Route path="/animals" component={Animals} />
       <Route path="/numbers" component={Numbers} />
+      <Route path="/games" component={Games} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>
@@ -30,9 +34,11 @@ function Router() {
 function App() {
   return (
     <ErrorBoundary>
-      <ThemeProvider defaultTheme="light">
-        <TooltipProvider><Toaster /><Router /></TooltipProvider>
-      </ThemeProvider>
+      <ProgressProvider>
+        <ThemeProvider defaultTheme="light">
+          <TooltipProvider><Toaster /><CelebrationToast /><Router /></TooltipProvider>
+        </ThemeProvider>
+      </ProgressProvider>
     </ErrorBoundary>
   );
 }

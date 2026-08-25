@@ -1,7 +1,7 @@
 /**
  * Style: رحلة الحروف والأرقام — صفحة مسار متعرّج تشبه خريطة كتاب أطفال مصوّر.
  */
-import { ArrowLeft, Calculator, Languages, PawPrint, Volume2 } from "lucide-react";
+import { ArrowLeft, Calculator, Gamepad2, Languages, PawPrint, Volume2 } from "lucide-react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import SiteLayout from "@/components/SiteLayout";
@@ -138,6 +138,12 @@ export default function Home() {
           <Link href="/numbers" className="journey-cta inline-cta">إلى محطة الحساب <ArrowLeft size={18} /></Link>
         </div>
         <img src="/manus-storage/academy-math-garden_f058a485.png" alt="حديقة أرقام وأدوات عد مصورة" className="math-art" />
+      </section>
+
+      <section className="play-camp-promo">
+        <div className="promo-badge"><Gamepad2 size={23} /></div>
+        <div><p className="eyebrow"><span>✦</span> جديد في الرحلة</p><h2>مخيم التحديات ينتظرك.</h2><p>اختبارات قصيرة وألعاب حسابية تجمع النجوم وتفتح شارات إنجاز ملوّنة.</p></div>
+        <Link href="/games" className="journey-cta inline-cta">ادخل مخيم اللعب <ArrowLeft size={18} /></Link>
       </section>
     </SiteLayout>
   );

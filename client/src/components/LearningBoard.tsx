@@ -4,6 +4,8 @@
 import { ArrowRight, RotateCcw, Volume2 } from "lucide-react";
 import { useState } from "react";
 import { Link } from "wouter";
+import { useProgress } from "@/contexts/ProgressContext";
+import { playTone } from "@/lib/feedback";
 
 export type LearningItem = {
   character: string;
@@ -36,11 +38,31 @@ export default function LearningBoard({
   accent?: "teal" | "coral" | "purple";
 }) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [discovered, setDiscovered] = useState<number[]>([]);
+  const [sparkKey, setSparkKey] = useState(0);
+  const { completeActivity } = useProgress();
   const active = items[activeIndex];
 
   const chooseItem = (index: number) => {
     setActiveIndex(index);
     speak(items[index].sound, language);
+    playTone("tap");
+    setSparkKey((value) => value + 1);
+    setDiscovered((current) => {
+      if (current.includes(index)) return current;
+      const next = [...current, index];
+      if (next.length >= 3) {
+        completeActivity({
+          activityId: `lesson-${accent}-${title}`,
+          stars: 1,
+          badge: accent === "teal" ? "first-steps" : undefined,
+          title: "مستكشف الحروف",
+          message: "اكتشفت ثلاث بطاقات جديدة وحصلت على نجمة الطريق.",
+        });
+        playTone("success");
+      }
+      return next;
+    });
   };
 
   return (
@@ -59,25 +81,26 @@ export default function LearningBoard({
           <div className="character-stage" aria-live="polite">
             <span className="stage-orbit orbit-one" aria-hidden="true" />
             <span className="stage-orbit orbit-two" aria-hidden="true" />
+            <span className="stage-spark" key={sparkKey} aria-hidden="true">✦</span>
             <span className="lesson-character">{active.character}</span>
           </div>
           <p className="lesson-label">{active.label}</p>
           <p className="lesson-word">{active.word}</p>
-          <button className="speak-button" onClick={() => speak(active.sound, language)} type="button">
+          <button className="speak-button" onClick={() => { speak(active.sound, language); playTone("tap"); setSparkKey((value) => value + 1); }} type="button">
             <Volume2 size={19} /> استمع إلى النطق
           </button>
           <p className="lesson-hint">{active.hint}</p>
         </div>
 
         <div className="choice-panel">
-          <p className="choices-title">اختر بطاقة لتبدأ</p>
+          <div className="choices-title-row"><p className="choices-title">اختر بطاقة لتبدأ</p><span className="discovery-count">{Math.min(discovered.length, 3)} / 3 اكتشافات</span></div>
           <div className="character-choices" role="list">
             {items.map((item, index) => (
               <button
                 type="button"
                 role="listitem"
                 key={`${item.character}-${item.label}`}
-                className={activeIndex === index ? "choice-card is-selected" : "choice-card"}
+                className={`${activeIndex === index ? "choice-card is-selected" : "choice-card"}${discovered.includes(index) ? " is-discovered" : ""}`}
                 onClick={() => chooseItem(index)}
                 aria-label={`اختيار ${item.label}`}
               >
@@ -86,7 +109,7 @@ export default function LearningBoard({
               </button>
             ))}
           </div>
-          <button className="reset-button" type="button" onClick={() => setActiveIndex(0)}>
+          <button className="reset-button" type="button" onClick={() => { setActiveIndex(0); setSparkKey((value) => value + 1); playTone("tap"); }}>
             <RotateCcw size={15} /> ابدأ من جديد
           </button>
         </div>
