@@ -15,6 +15,7 @@ import English from "./pages/English";
 import Animals from "./pages/Animals";
 import Numbers from "./pages/Numbers";
 import Games from "./pages/Games";
+import Writing from "./pages/Writing";
 
 function Router() {
   return (
@@ -24,6 +25,7 @@ function Router() {
       <Route path="/english" component={English} />
       <Route path="/animals" component={Animals} />
       <Route path="/numbers" component={Numbers} />
+      <Route path="/writing" component={Writing} />
       <Route path="/games" component={Games} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />

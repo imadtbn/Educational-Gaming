@@ -1,7 +1,7 @@
 /**
  * Style: رحلة الحروف والأرقام — حديقة عدّ مرنة تكافئ المحاولة بحركة ونص داعم.
  */
-import { Check, RefreshCw, Sparkles } from "lucide-react";
+import { Check, RefreshCw, Sparkles, Volume2 } from "lucide-react";
 import { useState } from "react";
 import { Link } from "wouter";
 import AdSlot from "@/components/AdSlot";
@@ -9,12 +9,13 @@ import SiteLayout from "@/components/SiteLayout";
 import { useProgress } from "@/contexts/ProgressContext";
 import { playTone } from "@/lib/feedback";
 
-const arabicDigits = ["١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩", "١٠"];
+const latinDigits = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+const digitWords = ["واحد", "اثنان", "ثلاثة", "أربعة", "خمسة", "ستة", "سبعة", "ثمانية", "تسعة", "عشرة"];
 const questions = [
-  { first: 2, second: 1, answer: 3, text: "2 + 1 = ؟" },
-  { first: 3, second: 2, answer: 5, text: "3 + 2 = ؟" },
-  { first: 4, second: 1, answer: 5, text: "4 + 1 = ؟" },
-  { first: 5, second: 3, answer: 8, text: "5 + 3 = ؟" },
+  { first: 2, second: 1, answer: 3, text: "2 + 1 = ?" },
+  { first: 3, second: 2, answer: 5, text: "3 + 2 = ?" },
+  { first: 4, second: 1, answer: 5, text: "4 + 1 = ?" },
+  { first: 5, second: 3, answer: 8, text: "5 + 3 = ?" },
 ];
 
 export default function Numbers() {
@@ -56,7 +57,7 @@ export default function Numbers() {
     playTone("tap");
     if (!("speechSynthesis" in window)) return;
     window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(String(value));
+    const utterance = new SpeechSynthesisUtterance(digitWords[value - 1]);
     utterance.lang = "ar-SA";
     utterance.rate = 0.75;
     window.speechSynthesis.speak(utterance);
@@ -70,18 +71,18 @@ export default function Numbers() {
             <Link href="/" className="back-link">← كل المسارات</Link>
             <p className="eyebrow"><span>✦</span> حديقة الأرقام</p>
             <h1>الأرقام تحب<br /><em>من يعدّها.</em></h1>
-            <p>اضغط على الرقم لتتعرّف إليه، ثم انتقل إلى تحدي الحساب الصغير.</p><span className="number-progress-chip">{solvedQuestions.length} / 3 مسائل مكتملة</span>
+            <p>اضغط على الرقم اللاتيني لتسمع نطقه، ثم انتقل إلى تحدي الحساب الصغير.</p><span className="number-progress-chip">{solvedQuestions.length} / 3 مسائل مكتملة</span>
             <div className="inner-route number-route" aria-label="مسار حديقة الأرقام"><span>بوابة الأرقام</span><i /><b>✦</b><i /><span>تحدي الحساب</span></div>
           </div>
           <img src="/manus-storage/academy-math-garden_f058a485.png" alt="حديقة تعليم الأرقام والحساب" />
         </section>
 
-        <section className="number-chips" aria-label="بطاقات الأرقام العربية">
-          {arabicDigits.map((digit, index) => <button type="button" key={digit} aria-label={`الرقم ${index + 1}`} className={selectedDigit === index + 1 ? "is-picked" : ""} onClick={() => speakDigit(index + 1)}>{digit}<small>{index + 1}</small></button>)}
+        <section className="number-chips" aria-label="بطاقات الأرقام اللاتينية">
+          {latinDigits.map((digit, index) => <button type="button" key={digit} aria-label={`الرقم ${digit}، انقر لسماع النطق`} className={selectedDigit === index + 1 ? "is-picked" : ""} onClick={() => speakDigit(index + 1)}><strong>{digit}</strong><small>{digitWords[index]}</small><Volume2 size={13} /></button>)}
         </section>
 
         <section className="math-quiz">
-          <div className="quiz-label"><Sparkles size={18} /> تحدّي الحساب الصغير</div>
+          <div className="quiz-label"><Sparkles size={18} /> تحدّي الحساب الصغير <span>محطة 02 · اجمع النجمة</span></div>
           <div className="quiz-main">
             <div className="question-display">
               <p>عدّ النقاط أولًا</p>
@@ -89,7 +90,7 @@ export default function Numbers() {
               <h2>{question.text}</h2>
             </div>
             <div className="answer-zone">
-              <p className={correct ? "quiz-message is-correct" : "quiz-message"}>{correct && <Check size={18} />}{message}</p>
+              <p className={correct ? "quiz-message is-correct" : "quiz-message"}>{correct && <Check size={18} />}{message}</p>{correct && <div className="answer-burst" aria-hidden="true"><i>✦</i><i>★</i><i>✧</i></div>}
               <div className="answer-options">
                 {options.map((option) => <button type="button" key={option} onClick={() => answer(option)}>{option}</button>)}
               </div>

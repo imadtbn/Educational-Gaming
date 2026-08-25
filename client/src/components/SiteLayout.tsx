@@ -14,6 +14,7 @@ const navigation = [
   { href: "/english", label: "English" },
   { href: "/animals", label: "عالم الحيوانات" },
   { href: "/numbers", label: "الأرقام والحساب" },
+  { href: "/writing", label: "اكتب وتعلّم" },
   { href: "/games", label: "اختبارات وألعاب" },
 ];
 

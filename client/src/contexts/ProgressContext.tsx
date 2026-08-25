@@ -3,13 +3,14 @@
  */
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 
-export type BadgeId = "first-steps" | "animal-scout" | "animal-wordsmith" | "animal-english-ace" | "number-ninja" | "math-explorer";
+export type BadgeId = "first-steps" | "animal-scout" | "animal-wordsmith" | "animal-english-ace" | "number-ninja" | "math-explorer" | "writing-trail";
 
 export const BADGES: Record<BadgeId, { title: string; icon: string; color: string }> = {
   "first-steps": { title: "بداية مضيئة", icon: "✦", color: "gold" },
   "animal-scout": { title: "مستكشف الحيوانات", icon: "◉", color: "coral" },
   "animal-wordsmith": { title: "صديق الحروف", icon: "أ", color: "purple" },
   "animal-english-ace": { title: "English Animal Ace", icon: "A", color: "teal" },
+  "writing-trail": { title: "أثر قلم رائع", icon: "✎", color: "gold" },
   "number-ninja": { title: "صديق الأرقام", icon: "١", color: "teal" },
   "math-explorer": { title: "بطل الحساب", icon: "＋", color: "purple" },
 };
