@@ -1,0 +1,13 @@
+/manus-storage/academy-animals-explorer_6ca043a3.png
+/manus-storage/academy-compass-logo_56b65985.png
+/manus-storage/academy-everyday-tools-cards_d62e6ef5.png
+/manus-storage/academy-farm-animal-match_06c0b96f.png
+/manus-storage/academy-fruit-cards_a3d92f75.png
+/manus-storage/academy-hero-learning-journey_7024bc2d.png
+/manus-storage/academy-math-garden_f058a485.png
+/manus-storage/academy-pwa-icon-192_5458213b.png
+/manus-storage/academy-pwa-icon-512_397645f5.png
+/manus-storage/academy-sea-animal-match_340514da.png
+/manus-storage/academy-story-lion-rainbow_ba6c7993.png
+/manus-storage/academy-story-farm-friend_910d81e5.png
+/manus-storage/academy-story-sea-drop_7691ff37.png
