@@ -3,7 +3,7 @@
  */
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 
-export type BadgeId = "first-steps" | "animal-scout" | "animal-wordsmith" | "animal-english-ace" | "number-ninja" | "math-explorer" | "writing-trail" | "card-collector";
+export type BadgeId = "first-steps" | "animal-scout" | "animal-wordsmith" | "animal-english-ace" | "number-ninja" | "math-explorer" | "math-reviser" | "writing-trail" | "card-collector";
 export type SavedArtwork = { id: string; symbol: string; label: string; createdAt: number; image: string };
 
 export const BADGES: Record<BadgeId, { title: string; icon: string; color: string }> = {
@@ -15,6 +15,7 @@ export const BADGES: Record<BadgeId, { title: string; icon: string; color: strin
   "card-collector": { title: "جامع البطاقات", icon: "▣", color: "coral" },
   "number-ninja": { title: "صديق الأرقام", icon: "١", color: "teal" },
   "math-explorer": { title: "بطل الحساب", icon: "＋", color: "purple" },
+  "math-reviser": { title: "مراجع الحساب", icon: "★", color: "gold" },
 };
 
 type ProgressState = { stars: number; completedActivities: string[]; badges: BadgeId[]; artworks: SavedArtwork[] };
