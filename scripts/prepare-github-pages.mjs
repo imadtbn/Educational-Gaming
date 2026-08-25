@@ -45,5 +45,14 @@ async function rewrite(directory) {
 }
 
 await rewrite(outputRoot);
+const indexHtml = await readFile(`${outputRoot}/index.html`, "utf8");
+const stationRoutes = ["arabic", "english", "animals", "numbers", "writing", "games"];
+
+for (const route of stationRoutes) {
+  await mkdir(`${outputRoot}/${route}`, { recursive: true });
+  await writeFile(`${outputRoot}/${route}/index.html`, indexHtml);
+}
+
+await writeFile(`${outputRoot}/404.html`, indexHtml);
 await writeFile(`${outputRoot}/.nojekyll`, "");
-console.log(`github-pages-static-ready: ${paths.length} local assets`);
+console.log(`github-pages-static-ready: ${paths.length} local assets, ${stationRoutes.length} route fallbacks`);
