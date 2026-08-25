@@ -1,0 +1,157 @@
+/*
+ * Style: رحلة الحروف والأرقام — كتاب أطفال مصوّر/خريطة استكشاف، كريمي ورقي وتركواز الدليل.
+ * Rules: خط عضوي، مسارات متعرّجة، زوايا غير موحّدة، حركة قصيرة وهادئة، لا واجهات مركزية نمطية.
+ */
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "Cairo", sans-serif;
+  --font-display: "Baloo Bhaijaan 2", sans-serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+:root { --radius: 1rem; --background: #fffaf0; --foreground: #193d42; --card: #fffdf8; --card-foreground: #193d42; --popover: #fffdf8; --popover-foreground: #193d42; --primary: #117f86; --primary-foreground: #ffffff; --secondary: #f7eee0; --secondary-foreground: #193d42; --muted: #f5ebdd; --muted-foreground: #688080; --accent: #fff0cb; --accent-foreground: #193d42; --border: #e8ddca; --input: #e8ddca; --ring: #117f86; }
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; background: #fffaf0; }
+body { margin: 0; background: #fffaf0; color: #193d42; font-family: "Cairo", sans-serif; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button:focus-visible, a:focus-visible { outline: 3px solid #ef805d; outline-offset: 4px; }
+button:not(:disabled), a[href] { cursor: pointer; }
+button { font-family: inherit; }
+
+.site-shell { min-height: 100vh; overflow: hidden; background: #fffaf0; }
+.site-header { position: relative; z-index: 30; background: rgba(255, 250, 240, .94); border-bottom: 1px solid rgba(25, 61, 66, .08); backdrop-filter: blur(14px); }
+.header-inner { min-height: 76px; max-width: 1240px; padding: 0 32px; margin: 0 auto; display: flex; align-items: center; gap: 26px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #193d42; min-width: max-content; }
+.brand-mark { width: 48px; height: 48px; object-fit: contain; }
+.brand-name, .footer-title { font-family: "Baloo Bhaijaan 2", sans-serif; font-size: 20px; line-height: 1; font-weight: 700; }
+.brand-name strong { color: #117f86; }
+.desktop-nav { display: flex; align-items: center; justify-content: center; gap: 5px; margin-inline: auto; }
+.nav-link { padding: 9px 11px; border-radius: 10px; color: #536e6f; font-size: 13px; font-weight: 700; text-decoration: none; transition: color .18s ease, background .18s ease; }
+.nav-link:hover, .nav-link.is-active { color: #117f86; background: #e9f4ef; }
+.header-status { display: flex; align-items: center; gap: 7px; color: #8a5b26; font-size: 11px; font-weight: 700; background: #fff0cf; border-radius: 999px; padding: 8px 12px; white-space: nowrap; }
+.status-star { color: #e3a61f; font-size: 16px; }
+.menu-trigger, .mobile-nav { display: none; }
+
+.hero-section { background: linear-gradient(112deg, #ecf7f2 0%, #fff7e8 58%, #fff0d3 100%); position: relative; }
+.hero-section:before { content: ""; width: 280px; height: 280px; border: 26px solid rgba(17, 127, 134, .075); position: absolute; border-radius: 50%; left: -100px; top: -100px; }
+.hero-content { min-height: 568px; max-width: 1240px; padding: 68px 32px 52px; margin: 0 auto; display: grid; grid-template-columns: .95fr 1.05fr; align-items: center; gap: 28px; direction: rtl; }
+.hero-copy { position: relative; z-index: 2; padding-inline-start: 28px; }
+.eyebrow { display: flex; align-items: center; gap: 8px; color: #117f86; font-size: 13px; line-height: 1.3; letter-spacing: .01em; font-weight: 800; margin: 0 0 14px; }
+.eyebrow span { color: #e9ad25; font-size: 17px; }
+.hero-copy h1, .animal-hero h1, .numbers-copy h1 { font-family: "Baloo Bhaijaan 2", sans-serif; font-size: clamp(40px, 5vw, 67px); font-weight: 800; line-height: 1.04; letter-spacing: -.03em; margin: 0; color: #193d42; }
+h1 em, h2 em { font-style: normal; color: #117f86; position: relative; white-space: nowrap; }
+h1 em:after { content: ""; position: absolute; bottom: 1px; right: 0; left: 0; height: 8px; z-index: -1; background: #f7cd69; border-radius: 50% 40% 60% 30%; transform: rotate(-2deg); }
+.hero-text { max-width: 500px; font-size: 16px; font-weight: 600; line-height: 2; color: #486367; margin: 22px 0 25px; }
+.hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 21px; }
+.journey-cta { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 50px; padding: 12px 20px; color: white; background: #117f86; border: 0; border-radius: 18px 18px 18px 6px; font-weight: 800; font-size: 14px; box-shadow: 0 10px 0 #08666c, 0 13px 23px rgba(17, 127, 134, .2); text-decoration: none; transition: transform .16s cubic-bezier(.23,1,.32,1), box-shadow .16s cubic-bezier(.23,1,.32,1); }
+.journey-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 0 #08666c, 0 17px 26px rgba(17, 127, 134, .23); }
+.journey-cta:active { transform: translateY(4px) scale(.98); box-shadow: 0 5px 0 #08666c; }
+.quiet-link, .text-cta { display: inline-flex; align-items: center; gap: 7px; color: #476366; text-decoration: none; font-size: 13px; font-weight: 800; border-bottom: 2px solid #d4e6dc; padding-bottom: 3px; }
+.quiet-link span { color: #117f86; font-size: 20px; line-height: 0; }
+.hero-signals { display: flex; align-items: center; gap: 9px; color: #688080; margin-top: 36px; font-size: 11px; font-weight: 700; }
+.hero-signals i { width: 4px; height: 4px; background: #ec7656; border-radius: 50%; }
+.hero-art-wrap { position: relative; min-height: 400px; display: flex; align-items: center; justify-content: center; }
+.hero-art { width: min(100%, 650px); filter: drop-shadow(0 25px 22px rgba(93, 119, 95, .14)); position: relative; z-index: 1; }
+.hero-sticker { position: absolute; z-index: 2; width: 57px; height: 57px; display: grid; place-items: center; font-family: "Baloo Bhaijaan 2", sans-serif; font-size: 33px; font-weight: 800; color: #193d42; box-shadow: 0 10px 20px rgba(34,63,57,.12); }
+.sticker-one { right: 7%; top: 13%; background: #f9cd60; border-radius: 16px 10px 17px 10px; transform: rotate(8deg); }
+.sticker-two { left: 5%; bottom: 13%; background: #e98164; color: white; border-radius: 50% 45% 47% 15%; transform: rotate(-8deg); }
+.hero-star { position: absolute; top: 10%; left: 21%; z-index: 2; font-size: 45px; color: #117f86; transform: rotate(12deg); }
+.hero-curve { position: relative; height: 58px; margin-top: -45px; background: #fffaf0; clip-path: ellipse(65% 60% at 50% 100%); z-index: 2; }
+
+.paths-section { max-width: 1240px; padding: 48px 32px 94px; margin: 0 auto; }
+.paths-intro { display: flex; justify-content: space-between; align-items: end; gap: 32px; }
+.section-heading { max-width: 590px; }
+.section-heading h2, .feature-copy h2, .math-callout h2 { font-family: "Baloo Bhaijaan 2", sans-serif; font-size: clamp(31px, 3.8vw, 45px); line-height: 1.12; letter-spacing: -.025em; margin: 0; color: #193d42; }
+.section-description { color: #607a7b; max-width: 520px; margin: 15px 0 0; line-height: 1.9; font-size: 14px; font-weight: 600; }
+.today-compass { display: flex; align-items: center; gap: 10px; min-width: 196px; padding: 13px 15px; background: #fff6e3; border: 1px solid #f1dfb7; border-radius: 18px 18px 5px 18px; }
+.compass-needle { font-size: 26px; color: #117f86; }
+.today-compass strong, .today-compass small { display: block; }
+.today-compass strong { font-size: 12px; color: #193d42; }
+.today-compass small { color: #8c754d; font-size: 10px; margin-top: 2px; }
+.learning-path { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; position: relative; margin-top: 44px; }
+.path-stop { position: relative; min-height: 292px; padding: 25px 23px 21px; overflow: visible; background: #fffdf8; border: 1px solid #eee1cf; border-radius: 26px 26px 9px 26px; box-shadow: 0 14px 25px rgba(64,68,51,.05); transition: transform .2s cubic-bezier(.23,1,.32,1), box-shadow .2s ease; }
+.path-stop:hover { transform: translateY(-7px) rotate(-.5deg); box-shadow: 0 20px 30px rgba(64,68,51,.1); }
+.stop-number { position: absolute; top: 17px; left: 19px; color: #b5c0ad; font-family: "Baloo Bhaijaan 2"; font-size: 15px; }
+.stop-icon { width: 52px; height: 52px; display: grid; place-items: center; border-radius: 17px 17px 17px 4px; margin-bottom: 16px; }
+.stop-tag { margin: 0 0 6px; font-size: 11px; color: #758787; font-weight: 800; letter-spacing: .02em; }
+.path-stop h3 { font-family: "Baloo Bhaijaan 2"; color: #193d42; font-size: 24px; margin: 0 0 8px; line-height: 1.15; }
+.path-stop > p:not(.stop-tag) { color: #657b7c; font-size: 12px; font-weight: 600; line-height: 1.8; margin: 0; }
+.stop-link { position: absolute; bottom: 20px; display: inline-flex; align-items: center; gap: 7px; color: #193d42; text-decoration: none; font-size: 12px; font-weight: 800; }
+.stop-link svg, .text-cta svg { transition: transform .18s ease; }
+.stop-link:hover svg, .text-cta:hover svg { transform: translateX(-4px); }
+.stop-teal .stop-icon { background: #dcefe9; color: #117f86; }.stop-coral .stop-icon { background: #ffe0d4; color: #d95f43; }.stop-purple .stop-icon { background: #eadff1; color: #8352a2; }.stop-yellow .stop-icon { background: #fff1c8; color: #a36c14; }
+.path-connector { position: absolute; top: 50%; left: -23px; width: 27px; height: 2px; border-top: 2px dashed #d4c9b6; }
+
+.feature-split { max-width: 1175px; padding: 46px; margin: 0 auto 75px; display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 58px; background: #e8f2ed; border-radius: 50px 15px 50px 15px; position: relative; overflow: hidden; }
+.feature-split:before { content: ""; position: absolute; width: 240px; height: 240px; right: -115px; top: -100px; border-radius: 50%; background: rgba(244, 202, 92, .28); }
+.feature-image { position: relative; z-index: 1; }
+.feature-image img { display: block; width: 100%; border-radius: 30px 8px 30px 8px; box-shadow: 0 18px 30px rgba(32,74,69,.12); }
+.image-note { position: absolute; left: 16px; bottom: -18px; background: #fffaf0; color: #117f86; padding: 8px 13px; border-radius: 999px; font-size: 11px; font-weight: 800; box-shadow: 0 8px 18px rgba(39,74,63,.1); }
+.feature-copy { position: relative; z-index: 1; }
+.feature-copy h2 { margin-bottom: 17px; }
+.feature-copy > p:not(.eyebrow) { color: #597476; font-size: 14px; font-weight: 600; line-height: 2; margin-bottom: 22px; }
+.text-cta { color: #117f86; }
+.ad-row-wrap { max-width: 760px; margin: 0 auto 78px; padding: 0 22px; }
+.ad-slot { position: relative; min-height: 92px; padding: 18px 30px; display: flex; flex-wrap: wrap; align-content: center; align-items: center; justify-content: center; gap: 8px 11px; text-align: center; color: #8a7d66; background: repeating-linear-gradient(45deg, #f8f1e5, #f8f1e5 7px, #f5ecde 7px, #f5ecde 8px); border: 1px dashed #d8c9af; border-radius: 15px 15px 4px 15px; font-size: 12px; font-weight: 800; }
+.ad-slot svg { color: #c9a86e; }.ad-slot small { flex-basis: 100%; font-size: 10px; font-weight: 600; color: #aa9b83; }.ad-dots { position: absolute; top: 7px; left: 12px; color: #d1b995; letter-spacing: 2px; }
+.math-callout { max-width: 1175px; padding: 38px 56px 36px; margin: 0 auto 90px; display: grid; grid-template-columns: 1fr .9fr; align-items: center; overflow: hidden; background: #fff0cf; border-radius: 13px 50px 13px 50px; }
+.math-copy { padding-right: 18px; }.math-badge { display: inline-block; color: #9b6511; background: rgba(255,255,255,.52); border-radius: 999px; padding: 6px 10px; font-weight: 800; font-size: 11px; margin-bottom: 12px; }.math-callout h2 { color: #4d4b32; margin-bottom: 10px; }.math-callout p { color: #766c4d; font-size: 14px; font-weight: 600; margin: 0 0 22px; }.inline-cta { font-size: 13px; min-height: 44px; padding: 9px 16px; }.math-art { width: 100%; max-width: 430px; justify-self: center; }
+
+.lesson-page, .animal-page, .numbers-page { max-width: 1175px; margin: 0 auto; padding: 42px 32px 82px; }
+.learning-board { padding: 22px; position: relative; overflow: hidden; border-radius: 38px 10px 38px 10px; }
+.learning-board:before { content: ""; position: absolute; left: -120px; bottom: -170px; width: 390px; height: 390px; border: 35px solid rgba(255,255,255,.26); border-radius: 50%; }.board-teal { background: #d9eee8; }.board-coral { background: #fee1d5; }.board-purple { background: #eadff1; }
+.board-topline { position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: center; padding: 0 4px 17px; }.back-link { display: inline-flex; align-items: center; gap: 6px; color: #557173; font-weight: 800; font-size: 12px; text-decoration: none; }.back-link:hover { color: #117f86; }.board-progress { color: #557173; background: rgba(255,255,255,.52); padding: 7px 10px; border-radius: 999px; font-size: 11px; font-weight: 800; }
+.board-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.05fr .95fr; gap: 19px; }.lesson-focus { text-align: center; padding: 25px 25px 30px; background: rgba(255,253,248,.86); border: 1px solid rgba(255,255,255,.72); border-radius: 29px 8px 29px 8px; }.lesson-overline { margin: 0 0 3px; color: #718785; font-size: 12px; font-weight: 800; }.lesson-focus h1 { font-family: "Baloo Bhaijaan 2"; font-size: 34px; line-height: 1.1; margin: 0; color: #193d42; }.character-stage { width: 174px; height: 174px; display: grid; place-items: center; position: relative; margin: 13px auto 7px; background: #fff1cf; border-radius: 50% 44% 50% 38%; }.lesson-character { position: relative; z-index: 2; font-family: "Baloo Bhaijaan 2"; font-size: 103px; color: #117f86; line-height: 1; text-shadow: 4px 6px 0 rgba(255,255,255,.75); }.board-coral .lesson-character { color: #d95f43; }.stage-orbit { position: absolute; border: 2px dashed rgba(17,127,134,.27); border-radius: 50%; }.orbit-one { width: 142px; height: 142px; }.orbit-two { width: 188px; height: 111px; transform: rotate(-25deg); }.lesson-label { margin: 2px 0 0; color: #193d42; font-family: "Baloo Bhaijaan 2"; font-size: 20px; font-weight: 700; }.lesson-word { margin: 0; color: #e16b4c; font-size: 16px; font-weight: 800; }.speak-button { display: inline-flex; align-items: center; gap: 7px; margin-top: 14px; padding: 9px 13px; background: #117f86; color: white; border: 0; border-radius: 13px 13px 13px 4px; box-shadow: 0 4px 0 #08666c; font-weight: 800; font-size: 12px; transition: transform .16s ease; }.speak-button:active { transform: translateY(3px) scale(.98); box-shadow: 0 1px 0 #08666c; }.board-coral .speak-button { background: #d95f43; box-shadow: 0 4px 0 #ad422c; }.lesson-hint { color: #678080; font-size: 11px; font-weight: 600; line-height: 1.8; margin: 14px auto 0; max-width: 290px; }
+.choice-panel { padding: 25px; background: rgba(30,95,92,.09); border-radius: 8px 29px 8px 29px; }.choices-title { color: #38585a; margin: 0 0 15px; font-size: 13px; font-weight: 800; }.character-choices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; }.choice-card { min-height: 94px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; color: #557172; background: rgba(255,255,255,.65); border: 2px solid transparent; border-radius: 17px 17px 6px 17px; font-family: "Baloo Bhaijaan 2"; transition: transform .16s ease, border .16s ease, background .16s ease; }.choice-card:hover { transform: translateY(-3px); background: white; }.choice-card.is-selected { border-color: #117f86; background: #fffdf8; color: #117f86; transform: translateY(-3px); }.board-coral .choice-card.is-selected { border-color: #d95f43; color: #d95f43; }.choice-card span { font-size: 35px; line-height: 1; font-weight: 800; }.choice-card small { font-family: "Cairo"; font-size: 10px; font-weight: 700; }.reset-button { display: flex; align-items: center; gap: 6px; margin: 14px auto 0; background: none; border: 0; color: #5e7778; font-size: 11px; font-weight: 800; }.page-bottom-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 20px; align-items: stretch; margin-top: 20px; }.tip-card { display: flex; align-items: center; gap: 12px; padding: 20px; color: #336667; background: #e9f5ef; border-radius: 18px 5px 18px 18px; }.tip-card span { color: #e1a51f; font-size: 23px; }.tip-card p { margin: 0; font-size: 12px; font-weight: 600; line-height: 1.8; }.coral-tip { background: #fff0e8; color: #97533f; }
+
+.animal-page { padding-top: 42px; }.animal-hero, .numbers-intro { display: grid; grid-template-columns: .95fr 1.05fr; align-items: center; gap: 35px; padding: 30px 40px 30px 31px; border-radius: 13px 42px 13px 42px; background: #e8f2ed; overflow: hidden; position: relative; }.animal-hero:after { content: ""; position: absolute; width: 190px; height: 190px; border-radius: 50%; background: #f5cd70; top: -90px; left: -55px; opacity: .45; }.animal-hero > * { position: relative; z-index: 1; }.animal-hero h1, .numbers-copy h1 { font-size: clamp(38px,4vw,56px); margin-top: 4px; }.animal-hero > div > p:not(.eyebrow), .numbers-copy > p:not(.eyebrow) { max-width: 460px; color: #5d7879; line-height: 1.9; font-size: 14px; font-weight: 600; }.animal-hero img { width: 100%; max-height: 295px; object-fit: contain; }.animal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; padding: 31px 0; }.animal-card { min-height: 133px; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 13px; text-align: right; padding: 18px; background: #fffdf8; border: 1px solid #eee1cf; border-radius: 21px 21px 7px 21px; box-shadow: 0 9px 17px rgba(50,79,74,.05); transition: transform .18s ease, box-shadow .18s ease; }.animal-card:hover, .animal-card.is-active { transform: translateY(-4px) rotate(-.4deg); box-shadow: 0 15px 22px rgba(50,79,74,.1); }.animal-emoji { font-size: 46px; filter: drop-shadow(0 5px 4px rgba(25,61,66,.1)); }.animal-labels { display: flex; flex-direction: column; }.animal-labels strong { font-family: "Baloo Bhaijaan 2"; color: #193d42; font-size: 24px; line-height: 1.1; }.animal-labels small { color: #6d8283; font-size: 11px; direction: ltr; text-align: right; margin-top: 4px; }.animal-sound { width: 29px; height: 29px; display: grid; place-items: center; border-radius: 10px; }.animal-gold .animal-sound { background: #fff0cc; color:#a16a11; }.animal-teal .animal-sound { background: #d9eee8; color:#117f86; }.animal-coral .animal-sound { background: #ffe0d4; color:#d95f43; }.animal-purple .animal-sound { background:#eadff1; color:#8352a2; }.animal-green .animal-sound { background:#e6f1dc; color:#538342; }.animal-blue .animal-sound { background:#dcebf2; color:#377a9e; }.animal-page-ad { max-width: 760px; margin: 0 auto; }
+
+.numbers-intro { background: #fff0ce; padding-left: 20px; }.numbers-intro:after { content: ""; position: absolute; width: 240px; height: 240px; border: 27px solid rgba(255,255,255,.35); border-radius: 50%; top: -123px; right: -80px; }.numbers-intro > * { position: relative; z-index: 1; }.numbers-intro img { width: 100%; max-height: 300px; object-fit: contain; }.number-chips { display: flex; gap: 9px; overflow-x: auto; padding: 28px 1px 29px; }.number-chips button { min-width: 79px; min-height: 83px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #117f86; background: #fffdf8; border: 1px solid #e9dfca; border-radius: 16px 16px 5px 16px; font-family: "Baloo Bhaijaan 2"; font-size: 33px; font-weight: 800; box-shadow: 0 8px 12px rgba(63,76,58,.04); transition: transform .16s ease, background .16s ease; }.number-chips button:hover { transform: translateY(-5px) rotate(2deg); background: #e7f3ed; }.number-chips small { font-family: "Cairo"; color: #819291; font-size: 10px; line-height: 1; }.math-quiz { padding: 28px; background: #e9f2ee; border-radius: 38px 8px 38px 8px; }.quiz-label { display: flex; align-items: center; gap: 7px; color: #117f86; font-size: 12px; font-weight: 800; }.quiz-main { display: grid; grid-template-columns: 1fr 1fr; gap: 23px; margin-top: 20px; }.question-display, .answer-zone { padding: 24px; background: #fffdf8; border-radius: 22px 22px 6px 22px; text-align: center; }.question-display p { margin: 0; color: #6b8181; font-size: 11px; font-weight: 700; }.count-row { display: flex; align-items: center; justify-content: center; gap: 13px; margin: 13px 0 3px; color: #e07750; font-size: 19px; letter-spacing: 3px; }.count-row b { color: #117f86; font-size: 24px; }.question-display h2 { font-family: "Baloo Bhaijaan 2"; margin: 0; color: #193d42; font-size: 29px; }.quiz-message { min-height: 28px; display: flex; align-items: center; justify-content: center; gap: 5px; color: #718181; font-size: 11px; font-weight: 700; margin: 0 0 9px; }.quiz-message.is-correct { color: #1a826f; }.answer-options { display: flex; justify-content: center; gap: 10px; }.answer-options button { width: 54px; height: 49px; color: #117f86; background: #e8f4ee; border: 2px solid transparent; border-radius: 14px 14px 5px 14px; font-family: "Baloo Bhaijaan 2"; font-size: 23px; font-weight: 800; transition: transform .15s ease, border .15s ease; }.answer-options button:hover { transform: translateY(-3px); border-color: #117f86; }.next-question { display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; color: #617979; background: transparent; border: 0; font-size: 11px; font-weight: 800; }.number-page-ad { max-width: 760px; margin: 20px auto 0; }
+
+.site-footer { min-height: 132px; padding: 28px max(32px, calc((100% - 1175px)/2)); display: flex; align-items: center; justify-content: space-between; gap: 30px; background: #193d42; color: #c5d4cf; }.footer-brand { display: flex; align-items: center; gap: 10px; }.footer-mark { width: 44px; height: 44px; object-fit: contain; background: #fffaf0; border-radius: 13px; }.footer-title { margin: 0 0 4px; color: #fffaf0; font-size: 18px; }.footer-brand p:not(.footer-title), .footer-note { margin: 0; font-size: 10px; font-weight: 600; }.footer-note { color: #a8c4bd; }
+
+@media (prefers-reduced-motion: no-preference) { .hero-art { animation: hero-float 5s ease-in-out infinite alternate; }.hero-star { animation: twinkle 2.4s ease-in-out infinite alternate; } @keyframes hero-float { to { transform: translateY(-8px) rotate(.4deg); } } @keyframes twinkle { to { transform: rotate(21deg) scale(1.12); opacity: .72; } } }
+/* خريطة الاستكشاف: طبقة مميّزة تربط كل محطة بالرحلة الواحدة. */
+.brand-name { display: flex; flex-direction: column; align-items: flex-start; min-width: 90px; padding-bottom: 2px; line-height: .76; }
+.brand-name small { color: #668081; font-family: "Cairo"; font-size: 8px; font-weight: 800; letter-spacing: .08em; margin-right: 2px; }
+.brand-name strong { position: relative; color: #117f86; font-size: 23px; letter-spacing: -.04em; }
+.brand-name strong:after { content: ""; position: absolute; width: 19px; height: 4px; right: 1px; bottom: -5px; background: #f5c95e; border-radius: 50%; transform: rotate(-4deg); }
+.learning-path { isolation: isolate; margin-top: 25px; padding: 55px 17px 64px; background: linear-gradient(180deg, rgba(248,241,226,.75), rgba(255,250,240,0)); border-radius: 45% 55% 12% 18%; }
+.journey-trail { position: absolute; z-index: -1; inset: 25px 18px auto; width: calc(100% - 36px); height: 262px; overflow: visible; }.journey-trail path { fill: none; stroke: #d2ab51; stroke-width: 3; stroke-linecap: round; stroke-dasharray: 3 11; opacity: .9; }
+.trail-note { position: absolute; z-index: 2; display: inline-flex; align-items: center; gap: 4px; padding: 6px 9px; background: #fff6df; color: #916b26; border: 1px solid #ecd8a8; border-radius: 999px; box-shadow: 0 4px 10px rgba(108,81,33,.06); font-size: 9px; font-weight: 800; }.trail-note b { color: #117f86; font-size: 13px; }.trail-start { right: 6px; top: 17px; }.trail-end { left: 8px; bottom: 19px; }
+.path-stop { z-index: 1; }.path-stop:nth-of-type(2) { margin-top: 22px; }.path-stop:nth-of-type(3) { margin-top: -8px; }.path-stop:nth-of-type(4) { margin-top: 26px; }.path-stop:nth-of-type(5) { margin-top: 3px; }
+.ad-slot { color: #87765b; background: linear-gradient(125deg, rgba(255,253,245,.98), rgba(250,241,218,.93)), repeating-linear-gradient(45deg, #f8f1e5, #f8f1e5 7px, #f5ecde 7px, #f5ecde 8px); border-radius: 20px 20px 5px 20px; transform: rotate(-.3deg); }
+.ad-slot:before { content: "استراحة صغيرة"; position: absolute; top: -12px; right: 21px; padding: 3px 10px; color: #94733a; background: #fff0c7; border-radius: 999px; font-size: 9px; font-weight: 800; transform: rotate(2deg); }
+.learning-board { background-image: radial-gradient(rgba(25,61,66,.04) .8px, transparent .8px); background-size: 11px 11px; }.board-teal { background-color: #d9eee8; }.board-coral { background-color: #fee1d5; }.board-purple { background-color: #eadff1; }
+.board-map-ribbon { position: relative; z-index: 1; display: flex; align-items: center; gap: 7px; width: max-content; margin: 0 auto 13px; color: #6c8281; font-size: 9px; font-weight: 800; }.board-map-ribbon i { width: 38px; border-top: 2px dashed rgba(17,127,134,.42); }.board-map-ribbon b { color: #d99c19; font-size: 15px; }
+.lesson-focus { box-shadow: inset 0 0 0 7px rgba(247,238,220,.45); }.choice-panel { box-shadow: inset 0 0 0 1px rgba(255,255,255,.22); }.choice-card { clip-path: polygon(0 0,100% 0,100% 84%,84% 100%,0 100%); }
+.animal-portrait { width: 55px; height: 59px; display: block; flex: 0 0 auto; background-image: url("/manus-storage/academy-animals-explorer_6ca043a3.png"); background-repeat: no-repeat; background-size: 285%; border: 3px solid #fffaf0; border-radius: 50% 45% 50% 35%; box-shadow: 0 6px 9px rgba(25,61,66,.11); }.portrait-lion { background-position: 2% 80%; }.portrait-elephant { background-position: 47% 18%; }.portrait-rabbit { background-position: 55% 79%; }.portrait-parrot { background-position: 99% 11%; }
+@media (max-width: 990px) { .journey-trail { display: none; }.path-stop:nth-of-type(n) { margin-top: 0; } }
+@media (max-width: 600px) { .animal-portrait { grid-row: 1 / 3; width: 48px; height: 51px; }.board-map-ribbon { margin-bottom: 8px; }.trail-note { display: none; } }
+@media (max-width: 990px) { .header-inner { padding: 0 22px; }.desktop-nav, .header-status { display: none; }.menu-trigger { width: 39px; height: 39px; display: grid; place-items: center; margin-right: auto; color: #117f86; background: #e8f3ed; border: 0; border-radius: 11px; }.mobile-nav { display: grid; grid-template-columns: repeat(2, 1fr); gap: 7px; padding: 11px 22px 18px; background: #fffaf0; border-top: 1px solid #eee1cf; }.mobile-nav-link { padding: 10px; color: #557173; background: #f6eee2; border-radius: 9px; text-decoration: none; font-weight: 800; font-size: 12px; text-align: center; }.mobile-nav-link.is-active { background: #dcefe9; color: #117f86; }.hero-content { grid-template-columns: 1fr; padding: 50px 32px 40px; }.hero-copy { padding: 0; }.hero-art-wrap { min-height: 280px; max-width: 620px; margin: 0 auto; }.hero-copy h1 { font-size: clamp(43px, 7vw, 59px); }.learning-path { grid-template-columns: repeat(2, 1fr); }.path-connector { display: none; }.feature-split { margin-inline: 28px; grid-template-columns: 1fr; gap: 35px; }.feature-copy { padding: 0 12px; }.math-callout { margin-inline: 28px; padding: 33px; gap: 15px; }.animal-grid { grid-template-columns: repeat(2, 1fr); }.animal-hero, .numbers-intro { grid-template-columns: 1fr; padding: 29px; }.animal-hero img, .numbers-intro img { max-height: 245px; }.numbers-intro img { grid-row: 1; }.page-bottom-grid { grid-template-columns: 1fr; }.site-footer { padding: 28px; } }
+@media (max-width: 600px) { .header-inner { min-height: 67px; padding: 0 16px; }.brand-mark { width: 39px; height: 39px; }.brand-name { font-size: 17px; }.hero-content { min-height: auto; padding: 40px 20px 23px; }.hero-copy h1, .animal-hero h1, .numbers-copy h1 { font-size: 42px; }.hero-text { font-size: 13px; line-height: 1.95; }.hero-signals { gap: 6px; font-size: 9px; margin-top: 30px; }.hero-art-wrap { min-height: 230px; }.hero-sticker { width: 45px; height: 45px; font-size: 27px; }.hero-star { font-size: 33px; }.hero-curve { height: 35px; margin-top: -27px; }.paths-section { padding: 30px 20px 57px; }.paths-intro { display: block; }.today-compass { margin-top: 20px; width: max-content; }.section-heading h2, .feature-copy h2, .math-callout h2 { font-size: 33px; }.learning-path { grid-template-columns: 1fr; margin-top: 28px; }.path-stop { min-height: 252px; }.feature-split, .math-callout { margin-inline: 14px; padding: 26px; }.feature-split { border-radius: 32px 8px 32px 8px; }.feature-image img { border-radius: 22px 5px 22px 5px; }.math-callout { grid-template-columns: 1fr; }.math-copy { padding: 0; }.math-art { max-width: 280px; }.ad-row-wrap { margin-bottom: 50px; }.lesson-page, .animal-page, .numbers-page { padding: 21px 14px 52px; }.learning-board { padding: 13px; border-radius: 28px 6px 28px 6px; }.board-grid { grid-template-columns: 1fr; }.choice-panel { padding: 18px; }.character-stage { width: 145px; height: 145px; }.lesson-character { font-size: 87px; }.character-choices { gap: 7px; }.choice-card { min-height: 76px; }.choice-card span { font-size: 30px; }.animal-hero, .numbers-intro { padding: 22px; gap: 12px; }.animal-grid { gap: 10px; padding: 20px 0; }.animal-card { min-height: 110px; grid-template-columns: 1fr auto; padding: 12px; gap: 7px; }.animal-emoji { grid-row: 1 / 3; font-size: 40px; }.animal-labels strong { font-size: 21px; }.animal-sound { grid-column: 2; grid-row: 1 / 3; }.number-chips button { min-width: 65px; min-height: 73px; }.math-quiz { padding: 18px 14px; }.quiz-main { grid-template-columns: 1fr; gap: 12px; }.question-display, .answer-zone { padding: 18px 12px; }.site-footer { display: block; padding: 25px 20px; }.footer-note { margin-top: 15px; }.footer-brand p:not(.footer-title) { max-width: 260px; } }
