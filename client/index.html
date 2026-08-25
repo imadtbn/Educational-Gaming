@@ -27,6 +27,14 @@
     <div id="root"></div>
     <noscript><main lang="ar" dir="rtl"><h1>أكاديمية المرح</h1><p>يرجى تفعيل JavaScript لتشغيل الأنشطة التعليمية التفاعلية.</p></main></noscript>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          const base = location.pathname.startsWith("/Educational-Gaming/") ? "/Educational-Gaming/" : "/";
+          navigator.serviceWorker.register(`${base}sw.js`).catch(() => undefined);
+        });
+      }
+    </script>
     <script defer src="%VITE_ANALYTICS_ENDPOINT%/umami" data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"></script>
   </body>
 </html>

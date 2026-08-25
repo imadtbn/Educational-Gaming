@@ -12,7 +12,7 @@ export default function PwaInstallPrompt() {
 
   useEffect(() => {
     if (!("serviceWorker" in navigator) || !import.meta.env.PROD) return;
-    navigator.serviceWorker.register("/sw.js").catch(() => undefined);
+    navigator.serviceWorker.register(`${import.meta.env.BASE_URL}sw.js`).catch(() => undefined);
     const capturePrompt = (event: Event) => { event.preventDefault(); setDeferredPrompt(event as InstallPromptEvent); };
     const installed = () => setDeferredPrompt(null);
     window.addEventListener("beforeinstallprompt", capturePrompt);
