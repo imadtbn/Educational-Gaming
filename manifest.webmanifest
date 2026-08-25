@@ -1,0 +1,17 @@
+{
+  "id": "./",
+  "name": "أكاديمية المرح التعليمية",
+  "short_name": "أكاديمية المرح",
+  "description": "رحلات تعليمية تفاعلية للأطفال لتعلم الحروف والأرقام والحساب.",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fffaf0",
+  "theme_color": "#117f86",
+  "icons": [
+    { "src": "/Educational-Gaming/media/academy-pwa-icon-192_5458213b.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/Educational-Gaming/media/academy-pwa-icon-512_397645f5.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

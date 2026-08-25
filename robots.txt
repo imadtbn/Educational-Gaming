@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://educational-gaming.manus.space/sitemap.xml
