@@ -1,7 +1,7 @@
 /**
  * Style: رحلة الحروف والأرقام — مخيم تحديات على خريطة ورقية، بجولات قصيرة وملصقات إنجاز ملوّنة.
  */
-import { ArrowLeft, Check, Flag, Gamepad2, PawPrint, RotateCcw, Sparkles, Star } from "lucide-react";
+import { ArrowLeft, Check, Flag, Gamepad2, PawPrint, RotateCcw, Sparkles, Star, Volume2 } from "lucide-react";
 import { useState } from "react";
 import { Link } from "wouter";
 import AdSlot from "@/components/AdSlot";
@@ -22,11 +22,27 @@ const starRounds = [
 ];
 
 const animalMatchRounds = [
-  { art: "match-lion", name: "أسد", letter: "أ", names: ["أسد", "فيل", "أرنب"], letters: ["أ", "ف", "ب"] },
-  { art: "match-elephant", name: "فيل", letter: "ف", names: ["ببغاء", "فيل", "أسد"], letters: ["ب", "ف", "أ"] },
-  { art: "match-rabbit", name: "أرنب", letter: "أ", names: ["أرنب", "فيل", "ببغاء"], letters: ["ف", "ب", "أ"] },
-  { art: "match-parrot", name: "ببغاء", letter: "ب", names: ["أسد", "ببغاء", "أرنب"], letters: ["أ", "ف", "ب"] },
+  { art: "match-lion", ar: { name: "أسد", letter: "أ", names: ["أسد", "فيل", "أرنب"], letters: ["أ", "ف", "ب"] }, en: { name: "Lion", letter: "L", names: ["Lion", "Elephant", "Rabbit"], letters: ["L", "E", "R"] } },
+  { art: "match-elephant", ar: { name: "فيل", letter: "ف", names: ["ببغاء", "فيل", "أسد"], letters: ["ب", "ف", "أ"] }, en: { name: "Elephant", letter: "E", names: ["Parrot", "Elephant", "Lion"], letters: ["P", "E", "L"] } },
+  { art: "match-rabbit", ar: { name: "أرنب", letter: "أ", names: ["أرنب", "فيل", "ببغاء"], letters: ["ف", "ب", "أ"] }, en: { name: "Rabbit", letter: "R", names: ["Rabbit", "Elephant", "Parrot"], letters: ["L", "P", "R"] } },
+  { art: "match-parrot", ar: { name: "ببغاء", letter: "ب", names: ["أسد", "ببغاء", "أرنب"], letters: ["أ", "ف", "ب"] }, en: { name: "Parrot", letter: "P", names: ["Lion", "Parrot", "Rabbit"], letters: ["L", "R", "P"] } },
 ];
+
+type MatchLanguage = "ar" | "en";
+
+const matchCopy = {
+  ar: { initial: "انظر إلى الحيوان، ثم اختر اسمه الصحيح.", matched: "مطابقة رائعة! الآن اختر الحرف الذي يبدأ به الاسم.", retryName: "حاول ثانية؛ انظر إلى الحيوان وتذكر اسمه.", retryLetter: "حرف قريب، لكن استمع إلى بداية الاسم مرة أخرى.", next: "حيوان جديد في انتظارك. اختر اسمه الصحيح.", questionName: "ما اسم هذا الحيوان؟", questionLetter: "أحسنت. أي حرف يبدأ به الاسم؟", routeImage: "صورة", routeLetter: "حرف", finishedTitle: "يا صديق الحيوانات!", finishedText: "أكملت كل بطاقات المطابقة وتعرفت إلى الحروف الأولى للأسماء.", reset: "العب من جديد", badgeTitle: "صديق الحروف", badgeMessage: "طابقت الحيوانات بأسمائها وحروفها الأولى، وحصلت على ثلاث نجوم." },
+  en: { initial: "Look at the animal, then choose its name.", matched: "Great match! Now choose the first letter.", retryName: "Try again. Look at the animal and say its name.", retryLetter: "Almost. Listen to the first sound again.", next: "A new animal is waiting. Choose its name.", questionName: "What is this animal called?", questionLetter: "Great! Which letter does the name start with?", routeImage: "Picture", routeLetter: "Letter", finishedTitle: "Wonderful animal friend!", finishedText: "You matched every animal with its English name and first letter.", reset: "Play again", badgeTitle: "English Animal Ace", badgeMessage: "You matched animals with English names and first letters, earning three stars." },
+} as const;
+
+function speakMatch(text: string, language: MatchLanguage) {
+  if (!("speechSynthesis" in window)) return;
+  window.speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = language === "en" ? "en-US" : "ar-SA";
+  utterance.rate = 0.72;
+  window.speechSynthesis.speak(utterance);
+}
 
 function QuizTrail() {
   const { completeActivity } = useProgress();
@@ -121,58 +137,76 @@ function StarCatch() {
 function AnimalMatch() {
   const { completeActivity } = useProgress();
   const [index, setIndex] = useState(0);
+  const [language, setLanguage] = useState<MatchLanguage>("ar");
   const [nameMatched, setNameMatched] = useState(false);
-  const [message, setMessage] = useState("انظر إلى الحيوان، ثم اختر اسمه الصحيح.");
+  const [message, setMessage] = useState<string>(matchCopy.ar.initial);
   const [finished, setFinished] = useState(false);
   const round = animalMatchRounds[index];
+  const content = round[language];
+  const copy = matchCopy[language];
+
+  const changeLanguage = (nextLanguage: MatchLanguage) => {
+    setLanguage(nextLanguage);
+    setIndex(0);
+    setNameMatched(false);
+    setFinished(false);
+    setMessage(matchCopy[nextLanguage].initial);
+    playTone("tap");
+  };
+
+  const pronounce = (text: string) => { speakMatch(text, language); playTone("tap"); };
 
   const chooseName = (value: string) => {
-    if (value === round.name) {
+    pronounce(value);
+    if (value === content.name) {
       setNameMatched(true);
-      setMessage("مطابقة رائعة! الآن اختر الحرف الذي يبدأ به الاسم.");
+      setMessage(copy.matched);
       playTone("success");
     } else {
-      setMessage("حاول ثانية؛ انظر إلى الحيوان وتذكر اسمه.");
+      setMessage(copy.retryName);
       playTone("retry");
     }
   };
 
   const chooseLetter = (value: string) => {
-    if (value !== round.letter) {
-      setMessage("حرف قريب، لكن استمع إلى بداية الاسم مرة أخرى.");
+    pronounce(value);
+    if (value !== content.letter) {
+      setMessage(copy.retryLetter);
       playTone("retry");
       return;
     }
     playTone("success");
     if (index === animalMatchRounds.length - 1) {
       setFinished(true);
-      completeActivity({ activityId: "animal-name-match", stars: 3, badge: "animal-wordsmith", title: "صديق الحروف", message: "طابقت الحيوانات بأسمائها وحروفها الأولى، وحصلت على ثلاث نجوم." });
+      completeActivity({ activityId: `animal-name-match-${language}`, stars: 3, badge: language === "en" ? "animal-english-ace" : "animal-wordsmith", title: copy.badgeTitle, message: copy.badgeMessage });
       return;
     }
     setIndex((value) => value + 1);
     setNameMatched(false);
-    setMessage("حيوان جديد في انتظارك. اختر اسمه الصحيح.");
+    setMessage(copy.next);
   };
 
-  const reset = () => { setIndex(0); setNameMatched(false); setFinished(false); setMessage("انظر إلى الحيوان، ثم اختر اسمه الصحيح."); };
+  const reset = () => { setIndex(0); setNameMatched(false); setFinished(false); setMessage(copy.initial); };
 
   return (
     <article className="game-panel animal-match-panel">
-      <div className="game-heading"><span className="game-icon purple"><PawPrint size={20} /></span><div><p>لعبة لغة وصورة</p><h2>بطاقات الحيوان</h2></div><span className="round-chip">{finished ? "مكتمل" : `${index + 1} / ${animalMatchRounds.length}`}</span></div>
+      <div className="game-heading"><span className="game-icon purple"><PawPrint size={20} /></span><div><p>لعبة لغة وصورة</p><h2>بطاقات الحيوان</h2></div><span className="round-chip">{language === "en" ? "EN" : "عربي"} · {finished ? "✓" : `${index + 1} / ${animalMatchRounds.length}`}</span></div>
+      <div className="language-switch" role="tablist" aria-label="اختيار لغة لعبة المطابقة"><button type="button" role="tab" aria-selected={language === "ar"} className={language === "ar" ? "is-active" : ""} onClick={() => changeLanguage("ar")}>العربية</button><button type="button" role="tab" aria-selected={language === "en"} className={language === "en" ? "is-active" : ""} onClick={() => changeLanguage("en")}>English</button></div>
       {finished ? (
-        <div className="game-finish animal-finish"><div className="finish-star purple-star"><PawPrint size={31} /></div><h3>يا صديق الحيوانات!</h3><p>أكملت كل بطاقات المطابقة وتعرفت إلى الحروف الأولى للأسماء.</p><button type="button" className="soft-action" onClick={reset}><RotateCcw size={16} /> العب من جديد</button></div>
+        <div className={`game-finish animal-finish ${language === "en" ? "english-finish" : ""}`}><div className="finish-star purple-star"><PawPrint size={31} /></div><h3>{copy.finishedTitle}</h3><p>{copy.finishedText}</p><button type="button" className="soft-action" onClick={reset}><RotateCcw size={16} /> {copy.reset}</button></div>
       ) : (
         <div className="match-playfield">
-          <div className={`match-animal-art ${round.art}`} aria-label={`رسم ${round.name}`}><span className="match-star">✦</span><div className="match-number">{index + 1}</div></div>
-          <div className="match-choices">
-            <p className="match-instruction">{nameMatched ? "أحسنت. أي حرف يبدأ به الاسم؟" : "ما اسم هذا الحيوان؟"}</p>
+          <div className={`match-animal-art ${round.art}`} aria-label={`رسم ${content.name}`}><button type="button" className="match-speak-card" onClick={() => pronounce(content.name)} aria-label={`استمع إلى نطق ${content.name}`}><Volume2 size={19} /></button><span className="match-star">✦</span><div className="match-number">{index + 1}</div></div>
+          <div className="match-choices" dir={language === "en" ? "ltr" : "rtl"}>
+            <p className="match-instruction">{nameMatched ? copy.questionLetter : copy.questionName}</p>
             <p className={nameMatched ? "game-message is-solved" : "game-message"}>{nameMatched && <Check size={16} />}{message}</p>
             {!nameMatched ? (
-              <div className="match-name-options">{round.names.map((name) => <button key={name} type="button" onClick={() => chooseName(name)}>{name}</button>)}</div>
+              <div className={`match-name-options ${language === "en" ? "english-options" : ""}`}>{content.names.map((name) => <button key={name} type="button" onClick={() => chooseName(name)}>{name}<Volume2 size={13} /></button>)}</div>
             ) : (
-              <div className="match-letter-options">{round.letters.map((letter) => <button key={letter} type="button" onClick={() => chooseLetter(letter)}>{letter}</button>)}</div>
+              <div className="match-letter-options">{content.letters.map((letter) => <button key={letter} type="button" onClick={() => chooseLetter(letter)}>{letter}<Volume2 size={11} /></button>)}</div>
             )}
-            <div className="match-route" aria-hidden="true"><span>صورة</span><i /><b>{nameMatched ? "✦" : "○"}</b><i /><span>حرف</span></div>
+            <p className="match-voice-hint"><Volume2 size={14} /> {language === "en" ? "Tap a name or letter to hear it." : "اضغط الاسم أو الحرف للاستماع إلى نطقه."}</p>
+            <div className="match-route" aria-hidden="true"><span>{copy.routeImage}</span><i /><b>{nameMatched ? "✦" : "○"}</b><i /><span>{copy.routeLetter}</span></div>
           </div>
         </div>
       )}
