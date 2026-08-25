@@ -1,5 +1,5 @@
 /**
- * Style: رحلة الحروف والأرقام — حديقة عدّ مرنة تكافئ المحاولة بحركة ونص داعم.
+ * Style: رحلة الحروف والأرقام — حديقة أرقام بأبواب صعوبة متدرجة، وأرقام لاتينية واضحة ونطق مشجع.
  */
 import { Check, RefreshCw, Sparkles, Volume2 } from "lucide-react";
 import { useState } from "react";
@@ -9,97 +9,23 @@ import SiteLayout from "@/components/SiteLayout";
 import { useProgress } from "@/contexts/ProgressContext";
 import { playTone } from "@/lib/feedback";
 
-const latinDigits = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
-const digitWords = ["واحد", "اثنان", "ثلاثة", "أربعة", "خمسة", "ستة", "سبعة", "ثمانية", "تسعة", "عشرة"];
-const questions = [
-  { first: 2, second: 1, answer: 3, text: "2 + 1 = ?" },
-  { first: 3, second: 2, answer: 5, text: "3 + 2 = ?" },
-  { first: 4, second: 1, answer: 5, text: "4 + 1 = ?" },
-  { first: 5, second: 3, answer: 8, text: "5 + 3 = ?" },
+type LevelId = "seed" | "explorer" | "champion";
+type MathQuestion = { first: number; second: number; operation: "+" | "−"; answer: number };
+type Level = { id: LevelId; title: string; age: string; note: string; limit: number; questions: MathQuestion[]; color: string };
+const numberWords = ["", "واحد", "اثنان", "ثلاثة", "أربعة", "خمسة", "ستة", "سبعة", "ثمانية", "تسعة", "عشرة", "أحد عشر", "اثنا عشر", "ثلاثة عشر", "أربعة عشر", "خمسة عشر", "ستة عشر", "سبعة عشر", "ثمانية عشر", "تسعة عشر", "عشرون"];
+const levels: Level[] = [
+  { id: "seed", title: "بذرة", age: "4–6 سنوات", note: "جمع بسيط حتى 5", limit: 10, color: "seed", questions: [{ first: 2, second: 1, operation: "+", answer: 3 }, { first: 1, second: 3, operation: "+", answer: 4 }, { first: 2, second: 2, operation: "+", answer: 4 }, { first: 4, second: 1, operation: "+", answer: 5 }] },
+  { id: "explorer", title: "مستكشف", age: "7–9 سنوات", note: "جمع وطرح حتى 20", limit: 20, color: "explorer", questions: [{ first: 8, second: 5, operation: "+", answer: 13 }, { first: 15, second: 6, operation: "−", answer: 9 }, { first: 7, second: 9, operation: "+", answer: 16 }, { first: 18, second: 8, operation: "−", answer: 10 }] },
+  { id: "champion", title: "بطل", age: "10–14 سنة", note: "تحديات ذهنية حتى 20", limit: 20, color: "champion", questions: [{ first: 14, second: 6, operation: "+", answer: 20 }, { first: 20, second: 7, operation: "−", answer: 13 }, { first: 12, second: 8, operation: "+", answer: 20 }, { first: 19, second: 9, operation: "−", answer: 10 }] },
 ];
 
+function speakNumber(value: number) { if (!("speechSynthesis" in window)) return; window.speechSynthesis.cancel(); const utterance = new SpeechSynthesisUtterance(numberWords[value] || String(value)); utterance.lang = "ar-SA"; utterance.rate = .72; window.speechSynthesis.speak(utterance); }
 export default function Numbers() {
-  const [questionIndex, setQuestionIndex] = useState(0);
-  const [message, setMessage] = useState("اختر الإجابة التي تراها صحيحة.");
-  const [correct, setCorrect] = useState(false);
-  const [solvedQuestions, setSolvedQuestions] = useState<number[]>([]);
-  const [selectedDigit, setSelectedDigit] = useState<number | null>(null);
-  const { completeActivity } = useProgress();
-  const question = questions[questionIndex];
-  const options = [question.answer - 1, question.answer, question.answer + 1];
-
-  const answer = (value: number) => {
-    if (value === question.answer) {
-      setCorrect(true);
-      setMessage("أحسنت! إجابة رائعة ✦");
-      playTone("success");
-      setSolvedQuestions((current) => {
-        if (current.includes(questionIndex)) return current;
-        const next = [...current, questionIndex];
-        if (next.length >= 3) completeActivity({ activityId: "number-garden", stars: 2, badge: "number-ninja", title: "صديق الأرقام", message: "حللت ثلاث مسائل في حديقة الأرقام وحصلت على نجمتين." });
-        return next;
-      });
-    } else {
-      setCorrect(false);
-      setMessage("محاولة جميلة، عدّ الأشكال مرة أخرى.");
-      playTone("retry");
-    }
-  };
-
-  const next = () => {
-    setQuestionIndex((index) => (index + 1) % questions.length);
-    setCorrect(false);
-    setMessage("اختر الإجابة التي تراها صحيحة.");
-  };
-
-  const speakDigit = (value: number) => {
-    setSelectedDigit(value);
-    playTone("tap");
-    if (!("speechSynthesis" in window)) return;
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(digitWords[value - 1]);
-    utterance.lang = "ar-SA";
-    utterance.rate = 0.75;
-    window.speechSynthesis.speak(utterance);
-  };
-
-  return (
-    <SiteLayout>
-      <div className="numbers-page">
-        <section className="numbers-intro">
-          <div className="numbers-copy">
-            <Link href="/" className="back-link">← كل المسارات</Link>
-            <p className="eyebrow"><span>✦</span> حديقة الأرقام</p>
-            <h1>الأرقام تحب<br /><em>من يعدّها.</em></h1>
-            <p>اضغط على الرقم اللاتيني لتسمع نطقه، ثم انتقل إلى تحدي الحساب الصغير.</p><span className="number-progress-chip">{solvedQuestions.length} / 3 مسائل مكتملة</span>
-            <div className="inner-route number-route" aria-label="مسار حديقة الأرقام"><span>بوابة الأرقام</span><i /><b>✦</b><i /><span>تحدي الحساب</span></div>
-          </div>
-          <img src="/manus-storage/academy-math-garden_f058a485.png" alt="حديقة تعليم الأرقام والحساب" />
-        </section>
-
-        <section className="number-chips" aria-label="بطاقات الأرقام اللاتينية">
-          {latinDigits.map((digit, index) => <button type="button" key={digit} aria-label={`الرقم ${digit}، انقر لسماع النطق`} className={selectedDigit === index + 1 ? "is-picked" : ""} onClick={() => speakDigit(index + 1)}><strong>{digit}</strong><small>{digitWords[index]}</small><Volume2 size={13} /></button>)}
-        </section>
-
-        <section className="math-quiz">
-          <div className="quiz-label"><Sparkles size={18} /> تحدّي الحساب الصغير <span>محطة 02 · اجمع النجمة</span></div>
-          <div className="quiz-main">
-            <div className="question-display">
-              <p>عدّ النقاط أولًا</p>
-              <div className="count-row"><span>{"●".repeat(question.first)}</span><b>+</b><span>{"●".repeat(question.second)}</span></div>
-              <h2>{question.text}</h2>
-            </div>
-            <div className="answer-zone">
-              <p className={correct ? "quiz-message is-correct" : "quiz-message"}>{correct && <Check size={18} />}{message}</p>{correct && <div className="answer-burst" aria-hidden="true"><i>✦</i><i>★</i><i>✧</i></div>}
-              <div className="answer-options">
-                {options.map((option) => <button type="button" key={option} onClick={() => answer(option)}>{option}</button>)}
-              </div>
-              <button className="next-question" type="button" onClick={next}><RefreshCw size={16} /> سؤال آخر</button>
-            </div>
-          </div>
-        </section>
-        <div className="number-page-ad"><AdSlot label="مساحة إعلانية — أسفل تحدي الحساب" /></div>
-      </div>
-    </SiteLayout>
-  );
+  const [levelId, setLevelId] = useState<LevelId>("seed"); const [questionIndex, setQuestionIndex] = useState(0); const [message, setMessage] = useState("اختر الإجابة ثم اجمع نجمة لهذه المحطة."); const [correct, setCorrect] = useState(false); const [solved, setSolved] = useState<number[]>([]); const [selectedDigit, setSelectedDigit] = useState<number | null>(null); const { completeActivity } = useProgress();
+  const level = levels.find((item) => item.id === levelId)!; const question = level.questions[questionIndex]; const options = [question.answer - 1, question.answer, question.answer + 1].filter((value) => value >= 0);
+  const chooseLevel = (id: LevelId) => { setLevelId(id); setQuestionIndex(0); setSolved([]); setCorrect(false); setMessage("بوابة جديدة جاهزة. اختر الإجابة ثم اجمع نجمة."); playTone("tap"); };
+  const answer = (value: number) => { if (value === question.answer) { setCorrect(true); setMessage("أحسنت! نجمة هذه المحطة أصبحت لك."); playTone("success"); setSolved((current) => { if (current.includes(questionIndex)) return current; const next = [...current, questionIndex]; if (next.length >= 3) completeActivity({ activityId: `number-garden-${levelId}`, stars: 2, badge: levelId === "seed" ? "number-ninja" : undefined, title: `${level.title} الحساب`, message: `أكملت ثلاث مسائل في مستوى ${level.title} وحصلت على نجمتين.` }); return next; }); } else { setCorrect(false); setMessage("محاولة ذكية. عدّ أو فكّر خطوة خطوة ثم جرّب ثانية."); playTone("retry"); } };
+  const next = () => { setQuestionIndex((index) => (index + 1) % level.questions.length); setCorrect(false); setMessage("اختر الإجابة ثم اجمع نجمة لهذه المحطة."); };
+  const hearDigit = (digit: number) => { setSelectedDigit(digit); speakNumber(digit); playTone("tap"); };
+  return <SiteLayout><div className="numbers-page"><section className="numbers-intro"><div className="numbers-copy"><Link href="/" className="back-link">← كل المسارات</Link><p className="eyebrow"><span>✦</span> حديقة الأرقام</p><h1>كل رقم يفتح<br /><em>بوابة جديدة.</em></h1><p>اختر مستواك، استمع إلى الرقم اللاتيني، ثم اجمع نجومك في تحدي الحساب.</p><span className="number-progress-chip">{solved.length} / 3 مسائل مكتملة</span><div className="inner-route number-route"><span>بوابة الأرقام</span><i /><b>✦</b><i /><span>تحدي الحساب</span></div></div><img src="/manus-storage/academy-math-garden_f058a485.png" alt="حديقة تعليم الأرقام والحساب" /></section><section className="difficulty-station" aria-label="اختيار مستوى الحساب"><div className="difficulty-heading"><p>اختر باب التحدي</p><h2>ما مستوى رحلتك اليوم؟</h2></div><div className="difficulty-tabs">{levels.map((item) => <button type="button" key={item.id} className={`${item.color} ${levelId === item.id ? "is-active" : ""}`} onClick={() => chooseLevel(item.id)}><strong>{item.title}</strong><span>{item.age}</span><small>{item.note}</small></button>)}</div></section><section className="number-chips" aria-label="بطاقات الأرقام اللاتينية">{Array.from({ length: level.limit }, (_, index) => index + 1).map((digit) => <button type="button" key={digit} aria-label={`الرقم ${digit}، انقر لسماع النطق`} className={selectedDigit === digit ? "is-picked" : ""} onClick={() => hearDigit(digit)}><strong>{digit}</strong><small>{numberWords[digit]}</small><Volume2 size={13} /></button>)}</section><section className="math-quiz"><div className="quiz-label"><Sparkles size={18} /> تحدي {level.title} <span>محطة {levelId === "seed" ? "01" : levelId === "explorer" ? "02" : "03"} · اجمع النجمة</span></div><div className="quiz-main"><div className="question-display"><p>{question.operation === "+" ? "اجمع الخطوتين بهدوء" : "اطرح الخطوة الثانية بهدوء"}</p><div className="count-row"><span>{"●".repeat(Math.min(question.first, 10))}</span><b>{question.operation}</b><span>{"●".repeat(Math.min(question.second, 10))}</span></div><h2>{question.first} {question.operation} {question.second} = ?</h2></div><div className="answer-zone"><p className={correct ? "quiz-message is-correct" : "quiz-message"}>{correct && <Check size={18} />}{message}</p>{correct && <div className="answer-burst" aria-hidden="true"><i>✦</i><i>★</i><i>✧</i></div>}<div className="answer-options">{options.map((option) => <button type="button" key={option} onClick={() => answer(option)}>{option}</button>)}</div><button className="next-question" type="button" onClick={next}><RefreshCw size={16} /> سؤال آخر</button></div></div></section><div className="number-page-ad"><AdSlot label="مساحة إعلانية — أسفل تحدي الحساب" /></div></div></SiteLayout>;
 }
