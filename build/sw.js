@@ -1,5 +1,5 @@
-const CACHE_NAME = "academy-marh-v2";
-const APP_SHELL = ["./", "./offline.html", "./manifest.webmanifest"];
+const CACHE_NAME = "academy-marh-v3";
+const APP_SHELL = ["./", "./offline.html", "./manifest.webmanifest", "./site-tags.js"];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(APP_SHELL)).then(() => self.skipWaiting()));
