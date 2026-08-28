@@ -1,6 +1,7 @@
 /*
  * محمّل موحّد لخدمات القياس والإعلانات.
- * وضع GA4 هو GTM، لذلك لا يُحمَّل gtag.js مباشرةً كي لا تتكرر page_view.
+ * تستخدم GA4 التحميل المباشر حالياً لأن حاوية GTM لا تحتوي إعداد Google tag لهذا المعرّف.
+ * لا تُضف Google tag نفسه إلى الحاوية قبل تحويل ga4Mode إلى "gtm" حتى لا تتكرر page_view.
  * ضع هنا المعرّف المفقود قبل التفعيل الفعلي:
  * - Microsoft Clarity: xxxxxxxx
  *
@@ -13,7 +14,7 @@
   const config = Object.freeze({
     googleTagManagerId: "GTM-T6WMH24Z",
     googleAnalyticsId: "G-B1G7WFGDBR",
-    ga4Mode: "gtm", // يبقى GA4 داخل حاوية GTM؛ غيّره إلى direct فقط عند إزالة GA4 من GTM.
+    ga4Mode: "direct", // استخدم gtm فقط بعد إضافة Google tag نفسه إلى الحاوية.
     adsenseClient: "ca-pub-5656416032906373",
     clarityProjectId: "xxxxxxxx", // ضع هنا معرّف مشروع Microsoft Clarity.
   });
@@ -39,12 +40,12 @@
     window.dataLayer = window.dataLayer || [];
     if (window.__academyGtmStarted) return;
     window.__academyGtmStarted = true;
-    window.dataLayer.push({ "gtm.start": Date.now(), event: "gtm.js", academyGa4Id: config.googleAnalyticsId });
+    window.dataLayer.push({ "gtm.start": Date.now(), event: "gtm.js" });
     addExternalScript("academy-gtm", `https://www.googletagmanager.com/gtm.js?id=${encodeURIComponent(config.googleTagManagerId)}`).catch(() => undefined);
   };
 
   const initialiseGa4 = () => {
-    if (config.ga4Mode !== "direct" || configured(config.googleTagManagerId) || !configured(config.googleAnalyticsId)) return;
+    if (config.ga4Mode !== "direct" || !configured(config.googleAnalyticsId)) return;
     window.dataLayer = window.dataLayer || [];
     window.gtag = window.gtag || function gtag() { window.dataLayer.push(arguments); };
     window.gtag("js", new Date());
@@ -53,7 +54,7 @@
   };
 
   const initialiseClarity = () => {
-    if (!configured(config.clarityProjectId) || window.clarity) return;
+    if (configured(config.googleTagManagerId) || !configured(config.clarityProjectId) || window.clarity) return;
     window.clarity = window.clarity || function clarity() { (window.clarity.q = window.clarity.q || []).push(arguments); };
     addExternalScript("academy-clarity", `https://www.clarity.ms/tag/${encodeURIComponent(config.clarityProjectId)}`).catch(() => undefined);
   };
@@ -79,14 +80,19 @@
     }).catch(() => undefined);
   };
 
-  const run = () => {
+  const initialiseTracking = () => {
     initialiseGtm();
     initialiseGa4();
     initialiseClarity();
+  };
+
+  const initialiseAfterDomReady = () => {
     initialiseAds();
   };
 
-  document.addEventListener("DOMContentLoaded", run, { once: true });
-  window.addEventListener("load", run, { once: true });
+  initialiseTracking();
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initialiseAfterDomReady, { once: true });
+  else initialiseAfterDomReady();
+  window.addEventListener("load", initialiseAfterDomReady, { once: true });
   new MutationObserver(() => initialiseAds()).observe(document.documentElement, { childList: true, subtree: true });
 })();
