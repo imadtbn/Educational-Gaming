@@ -1,8 +1,7 @@
 /*
  * محمّل موحّد لخدمات القياس والإعلانات.
- * ضع هنا المعرفات المفقودة قبل التفعيل الفعلي:
- * - Google Tag Manager: GTM-XXXXXXX
- * - Google Analytics 4: G-XXXXXXXXXX
+ * وضع GA4 هو GTM، لذلك لا يُحمَّل gtag.js مباشرةً كي لا تتكرر page_view.
+ * ضع هنا المعرّف المفقود قبل التفعيل الفعلي:
  * - Microsoft Clarity: xxxxxxxx
  *
  * عند إدخال GTM مضبوط لـ GA4 وClarity، يصبح هو المسار الوحيد لهما؛
@@ -12,8 +11,9 @@
   "use strict";
 
   const config = Object.freeze({
-    googleTagManagerId: "GTM-XXXXXXX", // ضع هنا معرّف حاوية Google Tag Manager.
-    googleAnalyticsId: "G-XXXXXXXXXX", // ضع هنا معرّف GA4 عند عدم إدارته عبر GTM.
+    googleTagManagerId: "GTM-T6WMH24Z",
+    googleAnalyticsId: "G-B1G7WFGDBR",
+    ga4Mode: "gtm", // يبقى GA4 داخل حاوية GTM؛ غيّره إلى direct فقط عند إزالة GA4 من GTM.
     adsenseClient: "ca-pub-5656416032906373",
     clarityProjectId: "xxxxxxxx", // ضع هنا معرّف مشروع Microsoft Clarity.
   });
@@ -37,12 +37,14 @@
   const initialiseGtm = () => {
     if (!configured(config.googleTagManagerId)) return;
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ "gtm.start": Date.now(), event: "gtm.js" });
+    if (window.__academyGtmStarted) return;
+    window.__academyGtmStarted = true;
+    window.dataLayer.push({ "gtm.start": Date.now(), event: "gtm.js", academyGa4Id: config.googleAnalyticsId });
     addExternalScript("academy-gtm", `https://www.googletagmanager.com/gtm.js?id=${encodeURIComponent(config.googleTagManagerId)}`).catch(() => undefined);
   };
 
   const initialiseGa4 = () => {
-    if (configured(config.googleTagManagerId) || !configured(config.googleAnalyticsId)) return;
+    if (config.ga4Mode !== "direct" || configured(config.googleTagManagerId) || !configured(config.googleAnalyticsId)) return;
     window.dataLayer = window.dataLayer || [];
     window.gtag = window.gtag || function gtag() { window.dataLayer.push(arguments); };
     window.gtag("js", new Date());
