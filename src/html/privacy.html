@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أكاديمية المرح | سياسة الخصوصية</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="manifest" href="../manifest.json">
+</head>
+<body>
+    <header>
+        <div class="container nav">
+            <a href="../index.html" class="logo">✦ أكاديمية المرح</a>
+            <div class="nav-links">
+                <a href="../index.html">الرئيسية</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+
+            <h1 class="section-title text-center mt-4">سياسة الخصوصية</h1>
+            <div style="background: white; padding: 40px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); line-height: 2;">
+                <p>في <strong>أكاديمية المرح</strong>، نولي خصوصية الأطفال وأسرهم أهمية قصوى.</p>
+                <ul style="list-style-type: disc; margin-right: 20px;">
+                    <li>نحن لا نقوم بجمع أي بيانات شخصية حساسة عن الأطفال.</li>
+                    <li>يتم حفظ تقدم الطفل (مثل النجوم والشهادات) محلياً في متصفح الجهاز المستخدم (Local Storage) لضمان خصوصيته.</li>
+                    <li>الموقع يستخدم إعلانات خارجية (مثل Google AdSense)، والتي قد تستخدم ملفات تعريف الارتباط (Cookies) لتقديم إعلانات تناسب اهتماماتك.</li>
+                    <li>جميع الأنشطة والألعاب مصممة لتكون آمنة ولا تتطلب تسجيل حساب للاستمتاع بها.</li>
+                </ul>
+            </div>
+
+    </main>
+
+    <!-- Footer will be injected by the next script -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>✦ أكاديمية المرح</h3>
+                <p>منصة تعليمية تفاعلية ممتعة للأطفال، نهدف إلى تعزيز حب التعلم واكتشاف العالم من خلال أنشطة وألعاب محفزة.</p>
+            </div>
+            <div class="footer-section">
+                <h3>أقسام سريعة</h3>
+                <ul>
+                    <li><a href="../html/arabic.html">الحروف العربية</a></li>
+                    <li><a href="../html/english.html">English Time</a></li>
+                    <li><a href="../html/numbers.html">الأرقام والحساب</a></li>
+                    <li><a href="../html/games.html">مخيم الألعاب</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>عن الأكاديمية</h3>
+                <ul>
+                    <li><a href="../html/about.html">من نحن</a></li>
+                    <li><a href="../html/contact.html">اتصل بنا</a></li>
+                    <li><a href="../html/privacy.html">سياسة الخصوصية</a></li>
+                    <li><a href="../html/terms.html">شروط الاستخدام</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>أكاديمية المرح &copy; <span id="year"></span> | جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+    <script>
+        if(document.getElementById('year')) document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+    <script src="../js/navbar.js"></script>
+    <script src="../js/rewards.js"></script>
+</body>
+</html>

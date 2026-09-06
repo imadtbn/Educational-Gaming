@@ -139,10 +139,37 @@
     </main>
 
     <footer>
-        <div class="container">
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>✦ أكاديمية المرح</h3>
+                <p>منصة تعليمية تفاعلية ممتعة للأطفال، نهدف إلى تعزيز حب التعلم واكتشاف العالم من خلال أنشطة وألعاب محفزة.</p>
+            </div>
+            <div class="footer-section">
+                <h3>أقسام سريعة</h3>
+                <ul>
+                    <li><a href="html/arabic.html">الحروف العربية</a></li>
+                    <li><a href="html/english.html">English Time</a></li>
+                    <li><a href="html/numbers.html">الأرقام والحساب</a></li>
+                    <li><a href="html/games.html">مخيم الألعاب</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>عن الأكاديمية</h3>
+                <ul>
+                    <li><a href="html/about.html">من نحن</a></li>
+                    <li><a href="html/contact.html">اتصل بنا</a></li>
+                    <li><a href="html/privacy.html">سياسة الخصوصية</a></li>
+                    <li><a href="html/terms.html">شروط الاستخدام</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
             <p>أكاديمية المرح &copy; <span id="year"></span> | جميع الحقوق محفوظة.</p>
         </div>
     </footer>
+    <script>
+        if(document.getElementById('year')) document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
