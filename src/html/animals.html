@@ -68,8 +68,21 @@
     <header>
         <div class="container nav">
             <a href="../index.html" class="logo">✦ أكاديمية المرح</a>
-            <div class="nav-links">
+                        <div class="nav-links">
                 <a href="../index.html">الرئيسية</a>
+                <a href="arabic.html">الحروف العربية</a>
+                <a href="english.html">English</a>
+                <a href="numbers.html">الأرقام</a>
+                <a href="animals.html">الحيوانات</a>
+                <a href="shapes.html">الأشكال</a>
+                <a href="colors.html">الألوان</a>
+                <a href="body.html">أجزاء الجسم</a>
+                <a href="professions.html">المهن</a>
+                <a href="transport.html">المواصلات</a>
+                <a href="seasons.html">فصول السنة</a>
+                <a href="drawing.html">الرسم</a>
+                <a href="writing.html">الكتابة</a>
+                <a href="games.html">الألعاب</a>
             </div>
         </div>
     </header>
@@ -93,6 +106,39 @@
             <!-- Populated by JS -->
         </div>
     </main>
+
+
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>✦ أكاديمية المرح</h3>
+                <p>منصة تعليمية تفاعلية ممتعة للأطفال، نهدف إلى تعزيز حب التعلم واكتشاف العالم من خلال أنشطة وألعاب محفزة.</p>
+            </div>
+            <div class="footer-section">
+                <h3>أقسام سريعة</h3>
+                <ul>
+                    <li><a href="arabic.html">الحروف العربية</a></li>
+                    <li><a href="english.html">English Time</a></li>
+                    <li><a href="numbers.html">الأرقام والحساب</a></li>
+                    <li><a href="games.html">مخيم الألعاب</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>عن الأكاديمية</h3>
+                <ul>
+                    <li><a href="about.html">من نحن</a></li>
+                    <li><a href="contact.html">اتصل بنا</a></li>
+                    <li><a href="privacy.html">سياسة الخصوصية</a></li>
+                    <li><a href="terms.html">شروط الاستخدام</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>أكاديمية المرح &copy; <span id="year"></span> | جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
 
     <script src="../js/navbar.js"></script>
     <script src="../js/rewards.js"></script>
@@ -162,67 +208,7 @@
         renderAnimals('all');
     </script>
 
-    <script>
-        // Store original animals HTML
-        window.addEventListener('DOMContentLoaded', () => {
-            const grid = document.getElementById('animals-grid');
-            if(!grid) return;
 
-            // Map the cards to categories based on their titles
-            const cards = Array.from(grid.querySelectorAll('.card'));
-
-            cards.forEach(card => {
-                const title = card.querySelector('h3').textContent.trim();
-                let cat = '';
-                if(title.includes('أسد') || title.includes('نمر') || title.includes('دب')) cat = 'wild claws';
-                else if(title.includes('فيل')) cat = 'wild';
-                else if(title.includes('بقرة') || title.includes('حصان')) cat = 'farm';
-                else if(title.includes('دجاجة') || title.includes('بطة')) cat = 'farm birds';
-                else if(title.includes('سمك') || title.includes('دولفين')) cat = 'sea';
-                else if(title.includes('عقاب') || title.includes('صقر') || title.includes('بومة')) cat = 'predator birds';
-                else if(title.includes('عصفور')) cat = 'birds';
-                else if(title.includes('ضفدع')) cat = 'amphibian';
-                else if(title.includes('تمساح')) cat = 'amphibian claws';
-                else cat = 'wild'; // fallback
-
-                card.dataset.cat = cat;
-
-                // Add rewards to buttons
-                const btns = card.querySelectorAll('button.btn-icon');
-                btns.forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        if(window.rewards && Math.random() > 0.5) window.rewards.addStars(1);
-                    });
-                });
-            });
-
-            const filters = document.getElementById('filters');
-            if(filters) {
-                filters.addEventListener('click', e => {
-                    if (e.target.classList.contains('filter-btn')) {
-                        // Update active state
-                        document.querySelectorAll('.filter-btn').forEach(b => {
-                            b.style.background = 'white';
-                            b.style.color = 'var(--color-primary)';
-                            b.classList.remove('active');
-                        });
-                        e.target.style.background = 'var(--color-primary)';
-                        e.target.style.color = 'white';
-                        e.target.classList.add('active');
-
-                        const filter = e.target.dataset.filter;
-                        cards.forEach(card => {
-                            if (filter === 'all' || (card.dataset.cat && card.dataset.cat.includes(filter))) {
-                                card.style.display = 'block';
-                            } else {
-                                card.style.display = 'none';
-                            }
-                        });
-                    }
-                });
-            }
-        });
-    </script>
 
 </body>
 </html>
