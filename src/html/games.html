@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مخيم الألعاب | أكاديمية المرح</title>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/main.css">
+    <style>
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .game-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-top: 6px solid var(--color-primary);
+        }
+        .game-card.math { border-color: var(--color-accent); }
+        .game-card.match { border-color: var(--color-purple); }
+
+        .game-title {
+            font-family: var(--font-main);
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: var(--color-text);
+        }
+
+        /* Game Areas */
+        .game-area {
+            display: none;
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 40px 20px;
+            margin-top: 40px;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            border: 2px dashed var(--color-primary);
+        }
+        .game-area.active { display: block; }
+
+        .question {
+            font-size: 2.5rem;
+            font-family: var(--font-main);
+            margin-bottom: 30px;
+            color: var(--color-primary);
+        }
+        .options {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .option-btn {
+            background-color: var(--color-background);
+            border: 2px solid var(--color-border);
+            border-radius: var(--radius-md);
+            font-size: 2rem;
+            font-family: var(--font-main);
+            padding: 15px 30px;
+            cursor: pointer;
+            transition: all 0.2s;
+            min-width: 80px;
+        }
+        .option-btn:hover {
+            background-color: var(--color-primary-light);
+            color: white;
+            border-color: var(--color-primary-light);
+            transform: scale(1.05);
+        }
+
+        .score-board {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: var(--color-accent);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-family: var(--font-main);
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .feedback {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 20px;
+            min-height: 40px;
+        }
+        .feedback.success { color: #22c55e; }
+        .feedback.error { color: #ef4444; }
+    </style>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5656416032906373" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="score-board">
+        ⭐ نجومي: <span id="stars-count">0</span>
+    </div>
+
+    <header>
+        <div class="container nav">
+            <a href="../index.html" class="logo">
+                <span>✦</span>
+                أكاديمية المرح
+            </a>
+            <div class="nav-links">
+                <a href="../index.html">الرئيسية</a>
+                <a href="numbers.html">الأرقام</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" style="padding-top: 40px; padding-bottom: 60px;">
+        <h1 class="section-title text-center">مخيم الألعاب</h1>
+        <p class="text-center" style="font-size: 1.2rem; color: var(--color-text-light);">اختر تحدياً لتبدأ بجمع النجوم!</p>
+
+        <!-- Menu -->
+        <div class="games-grid" id="games-menu">
+            <div class="game-card math">
+                <div style="font-size: 4rem; margin-bottom: 10px;">🔢</div>
+                <h2 class="game-title">تحدي الحساب</h2>
+                <p style="margin-bottom: 20px;">أجب عن مسائل الجمع السهلة.</p>
+                <button class="btn" onclick="startMathGame()">ابدأ اللعب</button>
+            </div>
+
+            <div class="game-card match">
+                <div style="font-size: 4rem; margin-bottom: 10px;">🧩</div>
+                <h2 class="game-title">أين اللون؟</h2>
+                <p style="margin-bottom: 20px;">ابحث عن اللون المطلوب.</p>
+                <button class="btn" style="background-color: var(--color-purple);" onclick="startColorGame()">ابدأ اللعب</button>
+            </div>
+        </div>
+
+        <!-- Math Game Area -->
+        <div id="math-game" class="game-area">
+            <h2 style="margin-bottom: 10px;">تحدي الحساب</h2>
+            <div class="question" id="math-q"></div>
+            <div class="options" id="math-options"></div>
+            <div class="feedback" id="math-feedback"></div>
+            <button class="btn btn-secondary mt-4" onclick="backToMenu()">العودة للمخيم</button>
+        </div>
+
+        <!-- Color Game Area -->
+        <div id="color-game" class="game-area" style="border-color: var(--color-purple);">
+            <h2 style="margin-bottom: 10px;">أين اللون؟</h2>
+            <div class="question" id="color-q" style="color: var(--color-purple);"></div>
+            <div class="options" id="color-options"></div>
+            <div class="feedback" id="color-feedback"></div>
+            <button class="btn btn-secondary mt-4" onclick="backToMenu()">العودة للمخيم</button>
+        </div>
+
+        <!-- AdSense الإعلانات المتعددة 10 -->
+        <div class="ad-container mt-4">
+            <ins class="adsbygoogle" style="display:block" data-ad-format="auto" data-ad-client="ca-pub-5656416032906373" data-ad-slot="4862117468"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+    </main>
+
+    <script type="module">
+        import { playTone, speakText, saveProgress, getProgress } from '../js/utils.js';
+
+        // Global variables for inline handlers
+        window.stars = getProgress('fun_academy_stars') || 0;
+        document.getElementById('stars-count').innerText = window.stars;
+
+        function addStar() {
+            window.stars++;
+            document.getElementById('stars-count').innerText = window.stars;
+            saveProgress('fun_academy_stars', window.stars);
+        }
+
+        window.backToMenu = () => {
+            document.getElementById('games-menu').style.display = 'grid';
+            document.getElementById('math-game').classList.remove('active');
+            document.getElementById('color-game').classList.remove('active');
+        };
+
+        // --- Math Game ---
+        let mathAnswer = 0;
+
+        window.startMathGame = () => {
+            document.getElementById('games-menu').style.display = 'none';
+            document.getElementById('math-game').classList.add('active');
+            generateMathQuestion();
+        };
+
+        window.generateMathQuestion = () => {
+            const a = Math.floor(Math.random() * 5) + 1; // 1 to 5
+            const b = Math.floor(Math.random() * 5) + 1;
+            mathAnswer = a + b;
+
+            document.getElementById('math-q').innerText = `${a} + ${b} = ؟`;
+            document.getElementById('math-feedback').innerText = '';
+
+            const optionsDiv = document.getElementById('math-options');
+            optionsDiv.innerHTML = '';
+
+            // Generate 3 unique options
+            let opts = [mathAnswer];
+            while(opts.length < 3) {
+                let r = Math.floor(Math.random() * 10) + 1;
+                if(!opts.includes(r)) opts.push(r);
+            }
+            opts.sort(() => Math.random() - 0.5); // shuffle
+
+            opts.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerText = opt;
+                btn.onclick = () => checkMathAnswer(opt);
+                optionsDiv.appendChild(btn);
+            });
+
+            speakText(`كم يساوي ${a} زائد ${b}`);
+        };
+
+        window.checkMathAnswer = (selected) => {
+            const feedback = document.getElementById('math-feedback');
+            if (selected === mathAnswer) {
+                playTone('success');
+                feedback.innerText = "أحسنت! إجابة صحيحة ⭐";
+                feedback.className = "feedback success";
+                addStar();
+                setTimeout(generateMathQuestion, 2000);
+            } else {
+                playTone('error');
+                feedback.innerText = "حاول مرة أخرى!";
+                feedback.className = "feedback error";
+            }
+        };
+
+        // --- Color Game ---
+        const colorList = [
+            { name: 'أحمر', hex: '#ef4444' },
+            { name: 'أزرق', hex: '#3b82f6' },
+            { name: 'أصفر', hex: '#eab308' },
+            { name: 'أخضر', hex: '#22c55e' }
+        ];
+        let targetColor = null;
+
+        window.startColorGame = () => {
+            document.getElementById('games-menu').style.display = 'none';
+            document.getElementById('color-game').classList.add('active');
+            generateColorQuestion();
+        };
+
+        window.generateColorQuestion = () => {
+            // Pick a random target
+            targetColor = colorList[Math.floor(Math.random() * colorList.length)];
+
+            document.getElementById('color-q').innerText = `أين هو اللون ال${targetColor.name}؟`;
+            document.getElementById('color-feedback').innerText = '';
+
+            const optionsDiv = document.getElementById('color-options');
+            optionsDiv.innerHTML = '';
+
+            // Shuffle colors
+            let shuffled = [...colorList].sort(() => Math.random() - 0.5);
+
+            shuffled.forEach(color => {
+                const btn = document.createElement('div');
+                btn.className = 'option-btn';
+                btn.style.width = '100px';
+                btn.style.height = '100px';
+                btn.style.borderRadius = '50%';
+                btn.style.backgroundColor = color.hex;
+                btn.onclick = () => checkColorAnswer(color.name);
+                optionsDiv.appendChild(btn);
+            });
+
+            speakText(`أين هو اللون ال${targetColor.name}`);
+        };
+
+        window.checkColorAnswer = (selectedName) => {
+            const feedback = document.getElementById('color-feedback');
+            if (selectedName === targetColor.name) {
+                playTone('success');
+                feedback.innerText = "أحسنت! إجابة صحيحة ⭐";
+                feedback.className = "feedback success";
+                addStar();
+                setTimeout(generateColorQuestion, 2000);
+            } else {
+                playTone('error');
+                feedback.innerText = "حاول مرة أخرى!";
+                feedback.className = "feedback error";
+            }
+        };
+    </script>
+</body>
+</html>
