@@ -1,0 +1,21 @@
+{
+  "name": "أكاديمية المرح",
+  "short_name": "المرح",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#fffdf5",
+  "theme_color": "#117F86",
+  "description": "منصة تعليمية تفاعلية ممتعة للأطفال",
+  "icons": [
+    {
+      "src": "assets/icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "assets/icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}

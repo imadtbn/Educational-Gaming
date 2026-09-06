@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أكاديمية المرح | وسائل النقل</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="manifest" href="../manifest.json">
+    <style>
+        .transport-card { text-align: center; cursor: pointer; }
+        .transport-emoji { font-size: 5rem; margin-bottom: 15px; }
+        .sound-btn { background: var(--color-primary); color: white; border: none; border-radius: 50%; width: 40px; height: 40px; font-size: 1.2rem; cursor: pointer; margin: 5px; }
+        .sound-btn.eng { background: var(--color-secondary); }
+    </style>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5656416032906373" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="container nav">
+            <a href="../index.html" class="logo">✦ أكاديمية المرح</a>
+            <div class="nav-links">
+                <a href="../index.html">الرئيسية</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1 class="section-title text-center mt-4">وسائل النقل</h1>
+        <p class="text-center mb-4">اكتشف كيف نسافر ونتنقل!</p>
+
+        <div class="grid-cards" id="transport-grid">
+            <!-- Populated by JS -->
+        </div>
+    </main>
+
+    <script src="../js/navbar.js"></script>
+    <script src="../js/rewards.js"></script>
+    <script>
+        const transports = [
+            { ar: "سيارة", en: "Car", emoji: "🚗" },
+            { ar: "حافلة", en: "Bus", emoji: "🚌" },
+            { ar: "قطار", en: "Train", emoji: "🚂" },
+            { ar: "طائرة", en: "Airplane", emoji: "✈️" },
+            { ar: "سفينة", en: "Ship", emoji: "🚢" },
+            { ar: "دراجة", en: "Bicycle", emoji: "🚲" },
+            { ar: "شاحنة", en: "Truck", emoji: "🚛" },
+            { ar: "صاروخ", en: "Rocket", emoji: "🚀" }
+        ];
+
+        function speak(text, lang) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = lang;
+            window.speechSynthesis.speak(utterance);
+        }
+
+        const grid = document.getElementById('transport-grid');
+        transports.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'card coral transport-card';
+            card.innerHTML = `
+                <div class="transport-emoji">${item.emoji}</div>
+                <h3>${item.ar}</h3>
+                <p style="color:var(--color-text-light); font-family: sans-serif; font-weight: bold; margin-bottom:10px;">${item.en}</p>
+                <div>
+                    <button class="sound-btn" onclick="speak('${item.ar}', 'ar-SA')">🔊</button>
+                    <button class="sound-btn eng" onclick="speak('${item.en}', 'en-US')">🗣️</button>
+                </div>
+            `;
+            const btns = card.querySelectorAll('button');
+            btns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                   if(Math.random() > 0.5) window.rewards.addStars(1);
+                });
+            });
+            grid.appendChild(card);
+        });
+    </script>
+</body>
+</html>

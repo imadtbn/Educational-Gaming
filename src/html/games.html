@@ -3,298 +3,310 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مخيم الألعاب | أكاديمية المرح</title>
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>أكاديمية المرح | مخيم الألعاب</title>
     <link rel="stylesheet" href="../css/main.css">
+    <link rel="manifest" href="../manifest.json">
     <style>
-        .games-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        .game-card {
-            background: white;
-            border-radius: var(--radius-lg);
-            padding: 40px 30px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border-top: 6px solid var(--color-primary);
-        }
-        .game-card.math { border-color: var(--color-accent); }
-        .game-card.match { border-color: var(--color-purple); }
+        .game-section { background: white; padding: 30px; border-radius: 16px; margin-bottom: 40px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .game-title { color: var(--color-primary); margin-bottom: 20px; border-bottom: 2px dashed var(--color-border); padding-bottom: 10px;}
 
-        .game-title {
-            font-family: var(--font-main);
-            font-size: 2.2rem;
-            margin-bottom: 15px;
-            color: var(--color-text);
-        }
+        /* Memory Game */
+        .memory-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-width: 400px; margin: 0 auto; }
+        .memory-card { background: var(--color-secondary); height: 80px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: transparent; cursor: pointer; transition: 0.3s; user-select: none; }
+        .memory-card.flipped { background: white; border: 2px solid var(--color-secondary); color: initial; }
+        .memory-card.matched { background: var(--color-primary); color: white; border: none; cursor: default; }
 
-        /* Game Areas */
-        .game-area {
-            display: none;
-            background: white;
-            border-radius: var(--radius-lg);
-            padding: 40px 20px;
-            margin-top: 40px;
-            text-align: center;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-            border: 2px dashed var(--color-primary);
-        }
-        .game-area.active { display: block; }
+        /* Match Word to Image Game */
+        .match-container { display: flex; gap: 40px; justify-content: center; align-items: center; margin-bottom: 20px;}
+        .match-emoji { font-size: 6rem; background: #f8f9fa; padding: 20px; border-radius: 16px; }
+        .match-options { display: flex; flex-direction: column; gap: 15px; }
+        .match-btn { padding: 15px 30px; font-size: 1.2rem; background: white; border: 2px solid var(--color-primary); border-radius: 12px; cursor: pointer; transition: 0.2s; font-family: inherit; font-weight: bold;}
+        .match-btn:hover { background: var(--color-primary); color: white; }
 
-        .question {
-            font-size: 2.5rem;
-            font-family: var(--font-main);
-            margin-bottom: 30px;
-            color: var(--color-primary);
-        }
-        .options {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        .option-btn {
-            background-color: var(--color-background);
-            border: 2px solid var(--color-border);
-            border-radius: var(--radius-md);
-            font-size: 2rem;
-            font-family: var(--font-main);
-            padding: 15px 30px;
-            cursor: pointer;
-            transition: all 0.2s;
-            min-width: 80px;
-        }
-        .option-btn:hover {
-            background-color: var(--color-primary-light);
-            color: white;
-            border-color: var(--color-primary-light);
-            transform: scale(1.05);
-        }
+        /* Missing Letter Game */
+        .missing-container { text-align: center; }
+        .missing-word { font-size: 3rem; letter-spacing: 5px; margin-bottom: 20px; font-weight: bold; color: var(--color-text); }
+        .missing-letters { display: flex; gap: 10px; justify-content: center; }
+        .letter-opt { width: 50px; height: 50px; font-size: 1.5rem; background: white; border: 2px solid var(--color-accent); border-radius: 8px; cursor: pointer; font-weight: bold; }
+        .letter-opt:hover { background: var(--color-accent); color: white; }
 
-        .score-board {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background: var(--color-accent);
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 30px;
-            font-weight: bold;
-            font-family: var(--font-main);
-            font-size: 1.2rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .feedback {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-top: 20px;
-            min-height: 40px;
-        }
-        .feedback.success { color: #22c55e; }
-        .feedback.error { color: #ef4444; }
+        .success-msg { color: #10b981; font-weight: bold; font-size: 1.2rem; display: none; margin-top: 10px; }
     </style>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5656416032906373" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="score-board">
-        ⭐ نجومي: <span id="stars-count">0</span>
-    </div>
-
     <header>
         <div class="container nav">
-            <a href="../index.html" class="logo">
-                <span>✦</span>
-                أكاديمية المرح
-            </a>
+            <a href="../index.html" class="logo">✦ أكاديمية المرح</a>
             <div class="nav-links">
                 <a href="../index.html">الرئيسية</a>
-                <a href="numbers.html">الأرقام</a>
             </div>
         </div>
     </header>
 
-    <main class="container" style="padding-top: 40px; padding-bottom: 60px;">
-        <h1 class="section-title text-center">مخيم الألعاب</h1>
-        <p class="text-center" style="font-size: 1.2rem; color: var(--color-text-light);">اختر تحدياً لتبدأ بجمع النجوم!</p>
+    <main class="container">
+        <h1 class="section-title text-center mt-4">مخيم الألعاب والتحديات</h1>
+        <p class="text-center mb-4">العب، تعلم، واجمع النجوم!</p>
 
-        <!-- Menu -->
-        <div class="games-grid" id="games-menu">
-            <div class="game-card math">
-                <div style="font-size: 4rem; margin-bottom: 10px;">🔢</div>
-                <h2 class="game-title">تحدي الحساب</h2>
-                <p style="margin-bottom: 20px;">أجب عن مسائل الجمع السهلة.</p>
-                <button class="btn" onclick="startMathGame()">ابدأ اللعب</button>
+        <!-- Game 1: Memory -->
+        <section class="game-section">
+            <h2 class="game-title">١. مطابقة الذاكرة</h2>
+            <p class="text-center mb-4">ابحث عن البطاقتين المتشابهتين.</p>
+            <div class="memory-grid" id="memory-board"></div>
+            <p class="text-center success-msg" id="memory-msg">عمل رائع! كسبت 3 نجوم ⭐️⭐️⭐️</p>
+            <div class="text-center mt-4">
+                <button class="btn" onclick="initMemoryGame()">إعادة اللعب</button>
             </div>
+        </section>
 
-            <div class="game-card match">
-                <div style="font-size: 4rem; margin-bottom: 10px;">🧩</div>
-                <h2 class="game-title">أين اللون؟</h2>
-                <p style="margin-bottom: 20px;">ابحث عن اللون المطلوب.</p>
-                <button class="btn" style="background-color: var(--color-purple);" onclick="startColorGame()">ابدأ اللعب</button>
+        <!-- Game 2: Match Word -->
+        <section class="game-section">
+            <h2 class="game-title">٢. الكلمة والصورة</h2>
+            <p class="text-center mb-4">اختر الكلمة الصحيحة التي تدل على الصورة.</p>
+            <div class="match-container">
+                <div class="match-emoji" id="match-img">🍎</div>
+                <div class="match-options" id="match-opts">
+                    <!-- Populated by JS -->
+                </div>
             </div>
-        </div>
+            <p class="text-center success-msg" id="match-msg">أحسنت! كسبت نجمة ⭐️</p>
+            <div class="text-center">
+                <button class="btn" onclick="initMatchGame()">سؤال جديد</button>
+            </div>
+        </section>
 
-        <!-- Math Game Area -->
-        <div id="math-game" class="game-area">
-            <h2 style="margin-bottom: 10px;">تحدي الحساب</h2>
-            <div class="question" id="math-q"></div>
-            <div class="options" id="math-options"></div>
-            <div class="feedback" id="math-feedback"></div>
-            <button class="btn btn-secondary mt-4" onclick="backToMenu()">العودة للمخيم</button>
-        </div>
+        <!-- Game 3: Missing Letter -->
+        <section class="game-section">
+            <h2 class="game-title">٣. الحرف الناقص</h2>
+            <p class="text-center mb-4">أكمل الكلمة بالحرف الصحيح.</p>
+            <div class="missing-container">
+                <div class="missing-word" id="missing-word">شـ _ ـرة</div>
+                <div class="missing-letters" id="missing-opts">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+            <p class="text-center success-msg" id="missing-msg">إجابة صحيحة! كسبت نجمة ⭐️</p>
+            <div class="text-center mt-4">
+                <button class="btn" onclick="initMissingGame()">كلمة جديدة</button>
+            </div>
+        </section>
 
-        <!-- Color Game Area -->
-        <div id="color-game" class="game-area" style="border-color: var(--color-purple);">
-            <h2 style="margin-bottom: 10px;">أين اللون؟</h2>
-            <div class="question" id="color-q" style="color: var(--color-purple);"></div>
-            <div class="options" id="color-options"></div>
-            <div class="feedback" id="color-feedback"></div>
-            <button class="btn btn-secondary mt-4" onclick="backToMenu()">العودة للمخيم</button>
-        </div>
 
-        <!-- AdSense الإعلانات المتعددة 10 -->
-        <div class="ad-container mt-4">
-            <ins class="adsbygoogle" style="display:block" data-ad-format="auto" data-ad-client="ca-pub-5656416032906373" data-ad-slot="4862117468"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-        </div>
+        <!-- Game 3: Memory -->
+        <section class="game-section" style="background: white; padding: 30px; border-radius: 16px; margin-bottom: 40px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+            <h2 class="game-title" style="color: var(--color-primary); margin-bottom: 20px; border-bottom: 2px dashed var(--color-border); padding-bottom: 10px;">٣. مطابقة الذاكرة</h2>
+            <p class="text-center mb-4">ابحث عن البطاقتين المتشابهتين.</p>
+            <div class="memory-grid" id="memory-board" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-width: 400px; margin: 0 auto;"></div>
+            <p class="text-center success-msg" id="memory-msg" style="color: #10b981; font-weight: bold; font-size: 1.2rem; display: none; margin-top: 10px;">عمل رائع! كسبت 3 نجوم ⭐️⭐️⭐️</p>
+            <div class="text-center mt-4">
+                <button class="btn" onclick="initMemoryGame()">إعادة اللعب</button>
+            </div>
+        </section>
+
+        <!-- Game 4: Match Word -->
+        <section class="game-section" style="background: white; padding: 30px; border-radius: 16px; margin-bottom: 40px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+            <h2 class="game-title" style="color: var(--color-primary); margin-bottom: 20px; border-bottom: 2px dashed var(--color-border); padding-bottom: 10px;">٤. الكلمة والصورة</h2>
+            <p class="text-center mb-4">اختر الكلمة الصحيحة التي تدل على الصورة.</p>
+            <div class="match-container" style="display: flex; gap: 40px; justify-content: center; align-items: center; margin-bottom: 20px;">
+                <div class="match-emoji" id="match-img" style="font-size: 6rem; background: #f8f9fa; padding: 20px; border-radius: 16px;">🍎</div>
+                <div class="match-options" id="match-opts" style="display: flex; flex-direction: column; gap: 15px;">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+            <p class="text-center success-msg" id="match-msg" style="color: #10b981; font-weight: bold; font-size: 1.2rem; display: none; margin-top: 10px;">أحسنت! كسبت نجمة ⭐️</p>
+            <div class="text-center">
+                <button class="btn" onclick="initMatchGame()">سؤال جديد</button>
+            </div>
+        </section>
+
+        <!-- Game 5: Missing Letter -->
+        <section class="game-section" style="background: white; padding: 30px; border-radius: 16px; margin-bottom: 40px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+            <h2 class="game-title" style="color: var(--color-primary); margin-bottom: 20px; border-bottom: 2px dashed var(--color-border); padding-bottom: 10px;">٥. الحرف الناقص</h2>
+            <p class="text-center mb-4">أكمل الكلمة بالحرف الصحيح.</p>
+            <div class="missing-container" style="text-align: center;">
+                <div class="missing-word" id="missing-word" style="font-size: 3rem; letter-spacing: 5px; margin-bottom: 20px; font-weight: bold; color: var(--color-text);">شـ _ ـرة</div>
+                <div class="missing-letters" id="missing-opts" style="display: flex; gap: 10px; justify-content: center;">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+            <p class="text-center success-msg" id="missing-msg" style="color: #10b981; font-weight: bold; font-size: 1.2rem; display: none; margin-top: 10px;">إجابة صحيحة! كسبت نجمة ⭐️</p>
+            <div class="text-center mt-4">
+                <button class="btn" onclick="initMissingGame()">كلمة جديدة</button>
+            </div>
+        </section>
+
     </main>
 
-    <script type="module">
-        import { playTone, speakText, saveProgress, getProgress } from '../js/utils.js';
+    <script src="../js/navbar.js"></script>
+    <script src="../js/rewards.js"></script>
+    <script>
+        /* --- Memory Game --- */
+        const memoryEmojis = ['🍎', '🚗', '🦁', '☀️', '🍎', '🚗', '🦁', '☀️'];
+        let hasFlippedCard = false;
+        let lockBoard = false;
+        let firstCard, secondCard;
+        let matchedPairs = 0;
 
-        // Global variables for inline handlers
-        window.stars = getProgress('fun_academy_stars') || 0;
-        document.getElementById('stars-count').innerText = window.stars;
+        function initMemoryGame() {
+            const board = document.getElementById('memory-board');
+            board.innerHTML = '';
+            matchedPairs = 0;
+            document.getElementById('memory-msg').style.display = 'none';
+            hasFlippedCard = false;
+            lockBoard = false;
+            firstCard = null;
+            secondCard = null;
 
-        function addStar() {
-            window.stars++;
-            document.getElementById('stars-count').innerText = window.stars;
-            saveProgress('fun_academy_stars', window.stars);
+            // Shuffle
+            memoryEmojis.sort(() => 0.5 - Math.random());
+
+            memoryEmojis.forEach((emoji, index) => {
+                const card = document.createElement('div');
+                card.classList.add('memory-card');
+                card.dataset.emoji = emoji;
+                card.textContent = emoji;
+                card.addEventListener('click', flipCard);
+                board.appendChild(card);
+            });
         }
 
-        window.backToMenu = () => {
-            document.getElementById('games-menu').style.display = 'grid';
-            document.getElementById('math-game').classList.remove('active');
-            document.getElementById('color-game').classList.remove('active');
-        };
+        function flipCard() {
+            if (lockBoard) return;
+            if (this === firstCard) return;
 
-        // --- Math Game ---
-        let mathAnswer = 0;
+            this.classList.add('flipped');
 
-        window.startMathGame = () => {
-            document.getElementById('games-menu').style.display = 'none';
-            document.getElementById('math-game').classList.add('active');
-            generateMathQuestion();
-        };
-
-        window.generateMathQuestion = () => {
-            const a = Math.floor(Math.random() * 5) + 1; // 1 to 5
-            const b = Math.floor(Math.random() * 5) + 1;
-            mathAnswer = a + b;
-
-            document.getElementById('math-q').innerText = `${a} + ${b} = ؟`;
-            document.getElementById('math-feedback').innerText = '';
-
-            const optionsDiv = document.getElementById('math-options');
-            optionsDiv.innerHTML = '';
-
-            // Generate 3 unique options
-            let opts = [mathAnswer];
-            while(opts.length < 3) {
-                let r = Math.floor(Math.random() * 10) + 1;
-                if(!opts.includes(r)) opts.push(r);
+            if (!hasFlippedCard) {
+                hasFlippedCard = true;
+                firstCard = this;
+                return;
             }
-            opts.sort(() => Math.random() - 0.5); // shuffle
 
-            opts.forEach(opt => {
-                const btn = document.createElement('button');
-                btn.className = 'option-btn';
-                btn.innerText = opt;
-                btn.onclick = () => checkMathAnswer(opt);
-                optionsDiv.appendChild(btn);
-            });
+            secondCard = this;
+            checkForMatch();
+        }
 
-            speakText(`كم يساوي ${a} زائد ${b}`);
-        };
+        function checkForMatch() {
+            let isMatch = firstCard.dataset.emoji === secondCard.dataset.emoji;
+            isMatch ? disableCards() : unflipCards();
+        }
 
-        window.checkMathAnswer = (selected) => {
-            const feedback = document.getElementById('math-feedback');
-            if (selected === mathAnswer) {
-                playTone('success');
-                feedback.innerText = "أحسنت! إجابة صحيحة ⭐";
-                feedback.className = "feedback success";
-                addStar();
-                setTimeout(generateMathQuestion, 2000);
-            } else {
-                playTone('error');
-                feedback.innerText = "حاول مرة أخرى!";
-                feedback.className = "feedback error";
+        function disableCards() {
+            firstCard.classList.add('matched');
+            secondCard.classList.add('matched');
+            firstCard.removeEventListener('click', flipCard);
+            secondCard.removeEventListener('click', flipCard);
+            resetBoard();
+
+            matchedPairs++;
+            if(matchedPairs === 4) {
+                document.getElementById('memory-msg').style.display = 'block';
+                window.rewards.addStars(3);
             }
-        };
+        }
 
-        // --- Color Game ---
-        const colorList = [
-            { name: 'أحمر', hex: '#ef4444' },
-            { name: 'أزرق', hex: '#3b82f6' },
-            { name: 'أصفر', hex: '#eab308' },
-            { name: 'أخضر', hex: '#22c55e' }
+        function unflipCards() {
+            lockBoard = true;
+            setTimeout(() => {
+                firstCard.classList.remove('flipped');
+                secondCard.classList.remove('flipped');
+                resetBoard();
+            }, 1000);
+        }
+
+        function resetBoard() {
+            [hasFlippedCard, lockBoard] = [false, false];
+            [firstCard, secondCard] = [null, null];
+        }
+
+        /* --- Match Word Game --- */
+        const matchQuestions = [
+            { img: '🐈', correct: 'قطة', wrong: ['كلب', 'فأر'] },
+            { img: '🍌', correct: 'موز', wrong: ['تفاح', 'برتقال'] },
+            { img: '✈️', correct: 'طائرة', wrong: ['سيارة', 'قطار'] },
+            { img: '🌲', correct: 'شجرة', wrong: ['زهرة', 'عشب'] }
         ];
-        let targetColor = null;
 
-        window.startColorGame = () => {
-            document.getElementById('games-menu').style.display = 'none';
-            document.getElementById('color-game').classList.add('active');
-            generateColorQuestion();
-        };
+        function initMatchGame() {
+            document.getElementById('match-msg').style.display = 'none';
+            const q = matchQuestions[Math.floor(Math.random() * matchQuestions.length)];
+            document.getElementById('match-img').textContent = q.img;
 
-        window.generateColorQuestion = () => {
-            // Pick a random target
-            targetColor = colorList[Math.floor(Math.random() * colorList.length)];
+            let options = [q.correct, ...q.wrong];
+            options.sort(() => 0.5 - Math.random());
 
-            document.getElementById('color-q').innerText = `أين هو اللون ال${targetColor.name}؟`;
-            document.getElementById('color-feedback').innerText = '';
+            const optsContainer = document.getElementById('match-opts');
+            optsContainer.innerHTML = '';
 
-            const optionsDiv = document.getElementById('color-options');
-            optionsDiv.innerHTML = '';
-
-            // Shuffle colors
-            let shuffled = [...colorList].sort(() => Math.random() - 0.5);
-
-            shuffled.forEach(color => {
-                const btn = document.createElement('div');
-                btn.className = 'option-btn';
-                btn.style.width = '100px';
-                btn.style.height = '100px';
-                btn.style.borderRadius = '50%';
-                btn.style.backgroundColor = color.hex;
-                btn.onclick = () => checkColorAnswer(color.name);
-                optionsDiv.appendChild(btn);
+            options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'match-btn';
+                btn.textContent = opt;
+                btn.onclick = () => {
+                    if(opt === q.correct) {
+                        btn.style.background = '#10b981';
+                        btn.style.color = 'white';
+                        document.getElementById('match-msg').style.display = 'block';
+                        window.rewards.addStars(1);
+                        // disable others
+                        Array.from(optsContainer.children).forEach(b => b.disabled = true);
+                    } else {
+                        btn.style.background = '#ef4444';
+                        btn.style.color = 'white';
+                        setTimeout(() => { btn.style.background = ''; btn.style.color = ''; }, 500);
+                    }
+                };
+                optsContainer.appendChild(btn);
             });
+        }
 
-            speakText(`أين هو اللون ال${targetColor.name}`);
-        };
+        /* --- Missing Letter Game --- */
+        const missingQuestions = [
+            { word: 'شـ _ ـرة', correct: 'ج', wrong: ['ح', 'خ'] },
+            { word: 'طـ _ ـر', correct: 'ي', wrong: ['و', 'ا'] },
+            { word: 'سـ _ ـك', correct: 'م', wrong: ['ن', 'ل'] },
+            { word: 'قـ _ ـر', correct: 'م', wrong: ['ب', 'ف'] }
+        ];
 
-        window.checkColorAnswer = (selectedName) => {
-            const feedback = document.getElementById('color-feedback');
-            if (selectedName === targetColor.name) {
-                playTone('success');
-                feedback.innerText = "أحسنت! إجابة صحيحة ⭐";
-                feedback.className = "feedback success";
-                addStar();
-                setTimeout(generateColorQuestion, 2000);
-            } else {
-                playTone('error');
-                feedback.innerText = "حاول مرة أخرى!";
-                feedback.className = "feedback error";
-            }
-        };
+        function initMissingGame() {
+            document.getElementById('missing-msg').style.display = 'none';
+            const q = missingQuestions[Math.floor(Math.random() * missingQuestions.length)];
+            document.getElementById('missing-word').textContent = q.word;
+
+            let options = [q.correct, ...q.wrong];
+            options.sort(() => 0.5 - Math.random());
+
+            const optsContainer = document.getElementById('missing-opts');
+            optsContainer.innerHTML = '';
+
+            options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'letter-opt';
+                btn.textContent = opt;
+                btn.onclick = () => {
+                    if(opt === q.correct) {
+                        btn.style.background = '#10b981';
+                        btn.style.color = 'white';
+                        document.getElementById('missing-word').textContent = q.word.replace('_', opt);
+                        document.getElementById('missing-msg').style.display = 'block';
+                        window.rewards.addStars(1);
+                        Array.from(optsContainer.children).forEach(b => b.disabled = true);
+                    } else {
+                        btn.style.background = '#ef4444';
+                        btn.style.color = 'white';
+                        setTimeout(() => { btn.style.background = ''; btn.style.color = ''; }, 500);
+                    }
+                };
+                optsContainer.appendChild(btn);
+            });
+        }
+
+        // Initialize all games on load
+        window.addEventListener('DOMContentLoaded', () => {
+            initMemoryGame();
+            initMatchGame();
+            initMissingGame();
+        });
     </script>
 </body>
 </html>

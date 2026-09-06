@@ -3,131 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عالم الحيوانات | أكاديمية المرح</title>
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>أكاديمية المرح | عالم الحيوانات</title>
     <link rel="stylesheet" href="../css/main.css">
+    <link rel="manifest" href="../manifest.json">
     <style>
-        .animal-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
-        .animal-card {
-            background: white;
-            border-radius: var(--radius-lg);
-            padding: 30px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: all 0.3s;
-            border: 2px solid transparent;
-        }
-        .animal-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--color-purple);
-            box-shadow: 0 10px 25px rgba(139,92,246,0.15);
-        }
-        .animal-emoji {
-            font-size: 5rem;
-            margin-bottom: 20px;
-        }
-        .animal-name {
-            font-family: var(--font-main);
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--color-purple);
-            margin-bottom: 15px;
-        }
-        .sound-btn {
-            background-color: var(--color-background);
-            border: 1px solid var(--color-border);
-            border-radius: 30px;
-            padding: 8px 20px;
-            font-family: var(--font-body);
-            font-weight: 600;
-            color: var(--color-text);
-            cursor: pointer;
-            transition: all 0.2s;
-            margin: 5px;
-        }
-        .sound-btn:hover {
-            background-color: var(--color-purple);
-            color: white;
-            border-color: var(--color-purple);
-        }
+        .animal-card { text-align: center; cursor: pointer; padding: 20px;}
+        .animal-emoji { font-size: 5rem; margin-bottom: 15px; }
+        .sound-btn { background: var(--color-primary); color: white; border: none; border-radius: 50%; width: 40px; height: 40px; font-size: 1.2rem; cursor: pointer; margin: 5px; }
+        .sound-btn.eng { background: var(--color-secondary); }
+        .filter-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 30px; }
+        .filter-btn { padding: 10px 20px; background: white; border: 2px solid var(--color-primary); border-radius: 20px; cursor: pointer; font-family: inherit; font-weight: bold; color: var(--color-primary); transition: 0.3s; }
+        .filter-btn.active, .filter-btn:hover { background: var(--color-primary); color: white; }
     </style>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5656416032906373" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
         <div class="container nav">
-            <a href="../index.html" class="logo">
-                <span>✦</span>
-                أكاديمية المرح
-            </a>
+            <a href="../index.html" class="logo">✦ أكاديمية المرح</a>
             <div class="nav-links">
                 <a href="../index.html">الرئيسية</a>
-                <a href="body.html">أجزاء الجسم</a>
-                <a href="colors.html">الألوان</a>
             </div>
         </div>
     </header>
 
-    <main class="container" style="padding-top: 40px; padding-bottom: 60px;">
-        <h1 class="section-title text-center" style="color: var(--color-purple);">عالم الحيوانات</h1>
-        <p class="text-center" style="font-size: 1.2rem; color: var(--color-text-light);">تعرف على أصدقائنا الحيوانات واستمع لأسمائهم بالعربية والإنجليزية.</p>
+    <main class="container">
+        <h1 class="section-title text-center mt-4">عالم الحيوانات</h1>
+        <p class="text-center mb-4">اكتشف الحيوانات في بيئاتها المختلفة!</p>
 
-        <div class="animal-grid" id="animal-board"></div>
+        <div class="filter-container" id="filters">
+            <button class="filter-btn active" data-filter="all">الكل</button>
+            <button class="filter-btn" data-filter="wild">البرية</button>
+            <button class="filter-btn" data-filter="farm">المزرعة</button>
+            <button class="filter-btn" data-filter="sea">البحر</button>
+            <button class="filter-btn" data-filter="predator">الجوارح</button>
+            <button class="filter-btn" data-filter="claws">المخالب</button>
+            <button class="filter-btn" data-filter="birds">الطيور</button>
+            <button class="filter-btn" data-filter="amphibian">البرمائية</button>
+        </div>
 
-        <!-- AdSense الإعلانات الصورية 09 -->
-        <div class="ad-container">
-            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5656416032906373" data-ad-slot="7803975574" data-ad-format="auto" data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        <div class="grid-cards" id="animals-grid">
+            <!-- Populated by JS -->
         </div>
     </main>
 
-    <script type="module">
-        import { playTone, speakText } from '../js/utils.js';
-
+    <script src="../js/navbar.js"></script>
+    <script src="../js/rewards.js"></script>
+    <script>
         const animals = [
-            { ar: "أسد", en: "Lion", emoji: "🦁" },
-            { ar: "فيل", en: "Elephant", emoji: "🐘" },
-            { ar: "قرد", en: "Monkey", emoji: "🐒" },
-            { ar: "قطة", en: "Cat", emoji: "🐱" },
-            { ar: "كلب", en: "Dog", emoji: "🐶" },
-            { ar: "حصان", en: "Horse", emoji: "🐴" },
-            { ar: "بقرة", en: "Cow", emoji: "🐮" },
-            { ar: "خروف", en: "Sheep", emoji: "🐑" },
-            { ar: "دجاجة", en: "Chicken", emoji: "🐔" },
-            { ar: "بطة", en: "Duck", emoji: "🦆" },
-            { ar: "أرنب", en: "Rabbit", emoji: "🐰" },
-            { ar: "زرافة", en: "Giraffe", emoji: "🦒" },
-            { ar: "دب", en: "Bear", emoji: "🐻" },
-            { ar: "باندا", en: "Panda", emoji: "🐼" },
-            { ar: "نمر", en: "Tiger", emoji: "🐯" }
+            { ar: "أسد", en: "Lion", emoji: "🦁", cat: "wild claws" },
+            { ar: "فيل", en: "Elephant", emoji: "🐘", cat: "wild" },
+            { ar: "بقرة", en: "Cow", emoji: "🐄", cat: "farm" },
+            { ar: "حصان", en: "Horse", emoji: "🐎", cat: "farm" },
+            { ar: "سمكة", en: "Fish", emoji: "🐟", cat: "sea" },
+            { ar: "دولفين", en: "Dolphin", emoji: "🐬", cat: "sea" },
+            { ar: "عقاب", en: "Eagle", emoji: "🦅", cat: "predator birds" },
+            { ar: "صقر", en: "Falcon", emoji: "🦅", cat: "predator birds" },
+            { ar: "نمر", en: "Tiger", emoji: "🐅", cat: "wild claws" },
+            { ar: "دب", en: "Bear", emoji: "🐻", cat: "wild claws" },
+            { ar: "عصفور", en: "Sparrow", emoji: "🐦", cat: "birds" },
+            { ar: "بطة", en: "Duck", emoji: "🦆", cat: "farm birds" },
+            { ar: "ضفدع", en: "Frog", emoji: "🐸", cat: "amphibian" },
+            { ar: "تمساح", en: "Crocodile", emoji: "🐊", cat: "amphibian claws" },
+            { ar: "بومة", en: "Owl", emoji: "🦉", cat: "predator birds" },
+            { ar: "دجاجة", en: "Chicken", emoji: "🐔", cat: "farm birds" }
         ];
 
-        const board = document.getElementById('animal-board');
+        function speak(text, lang) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = lang;
+            window.speechSynthesis.speak(utterance);
+        }
 
-        // Make functions globally available for inline onclick attributes
-        window.playAnimalSound = (text, lang) => {
-            playTone('tap');
-            speakText(text, lang);
-        };
+        function renderAnimals(filter) {
+            const grid = document.getElementById('animals-grid');
+            grid.innerHTML = '';
 
-        animals.forEach(animal => {
-            const card = document.createElement('div');
-            card.className = 'animal-card';
-            card.innerHTML = `
-                <div class="animal-emoji">${animal.emoji}</div>
-                <div class="animal-name">${animal.ar}</div>
-                <div>
-                    <button class="sound-btn" onclick="playAnimalSound('${animal.ar}', 'ar-SA')">عربي 🔊</button>
-                    <button class="sound-btn" onclick="playAnimalSound('${animal.en}', 'en-US')">English 🔊</button>
-                </div>
-            `;
-            board.appendChild(card);
+            animals.forEach(item => {
+                if (filter === 'all' || item.cat.includes(filter)) {
+                    const card = document.createElement('div');
+                    card.className = 'card purple animal-card';
+                    card.innerHTML = `
+                        <div class="animal-emoji">${item.emoji}</div>
+                        <h3>${item.ar}</h3>
+                        <p style="color:var(--color-text-light); font-family: sans-serif; font-weight: bold; margin-bottom:10px;">${item.en}</p>
+                        <div>
+                            <button class="sound-btn" onclick="speak('${item.ar}', 'ar-SA')">🔊</button>
+                            <button class="sound-btn eng" onclick="speak('${item.en}', 'en-US')">🗣️</button>
+                        </div>
+                    `;
+                    const btns = card.querySelectorAll('button');
+                    btns.forEach(btn => {
+                        btn.addEventListener('click', () => {
+                           if(Math.random() > 0.5) window.rewards.addStars(1);
+                        });
+                    });
+                    grid.appendChild(card);
+                }
+            });
+        }
+
+        document.getElementById('filters').addEventListener('click', e => {
+            if (e.target.classList.contains('filter-btn')) {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                renderAnimals(e.target.dataset.filter);
+            }
+        });
+
+        // Initial render
+        renderAnimals('all');
+    </script>
+
+    <script>
+        // Store original animals HTML
+        window.addEventListener('DOMContentLoaded', () => {
+            const grid = document.getElementById('animals-grid');
+            if(!grid) return;
+
+            // Map the cards to categories based on their titles
+            const cards = Array.from(grid.querySelectorAll('.card'));
+
+            cards.forEach(card => {
+                const title = card.querySelector('h3').textContent.trim();
+                let cat = '';
+                if(title.includes('أسد') || title.includes('نمر') || title.includes('دب')) cat = 'wild claws';
+                else if(title.includes('فيل')) cat = 'wild';
+                else if(title.includes('بقرة') || title.includes('حصان')) cat = 'farm';
+                else if(title.includes('دجاجة') || title.includes('بطة')) cat = 'farm birds';
+                else if(title.includes('سمك') || title.includes('دولفين')) cat = 'sea';
+                else if(title.includes('عقاب') || title.includes('صقر') || title.includes('بومة')) cat = 'predator birds';
+                else if(title.includes('عصفور')) cat = 'birds';
+                else if(title.includes('ضفدع')) cat = 'amphibian';
+                else if(title.includes('تمساح')) cat = 'amphibian claws';
+                else cat = 'wild'; // fallback
+
+                card.dataset.cat = cat;
+
+                // Add rewards to buttons
+                const btns = card.querySelectorAll('button.btn-icon');
+                btns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        if(window.rewards && Math.random() > 0.5) window.rewards.addStars(1);
+                    });
+                });
+            });
+
+            const filters = document.getElementById('filters');
+            if(filters) {
+                filters.addEventListener('click', e => {
+                    if (e.target.classList.contains('filter-btn')) {
+                        // Update active state
+                        document.querySelectorAll('.filter-btn').forEach(b => {
+                            b.style.background = 'white';
+                            b.style.color = 'var(--color-primary)';
+                            b.classList.remove('active');
+                        });
+                        e.target.style.background = 'var(--color-primary)';
+                        e.target.style.color = 'white';
+                        e.target.classList.add('active');
+
+                        const filter = e.target.dataset.filter;
+                        cards.forEach(card => {
+                            if (filter === 'all' || (card.dataset.cat && card.dataset.cat.includes(filter))) {
+                                card.style.display = 'block';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        });
+                    }
+                });
+            }
         });
     </script>
+
 </body>
 </html>

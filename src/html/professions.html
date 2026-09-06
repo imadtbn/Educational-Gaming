@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أكاديمية المرح | المهن</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="manifest" href="../manifest.json">
+    <style>
+        .profession-card { text-align: center; cursor: pointer; }
+        .profession-emoji { font-size: 5rem; margin-bottom: 15px; }
+        .sound-btn { background: var(--color-primary); color: white; border: none; border-radius: 50%; width: 40px; height: 40px; font-size: 1.2rem; cursor: pointer; margin: 5px; }
+        .sound-btn.eng { background: var(--color-secondary); }
+    </style>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5656416032906373" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="container nav">
+            <a href="../index.html" class="logo">✦ أكاديمية المرح</a>
+            <div class="nav-links">
+                <a href="../index.html">الرئيسية</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1 class="section-title text-center mt-4">عالم المهن</h1>
+        <p class="text-center mb-4">اضغط على الأزرار لتسمع اسم المهنة بالعربية والإنجليزية.</p>
+
+        <div class="grid-cards" id="professions-grid">
+            <!-- Populated by JS -->
+        </div>
+    </main>
+
+    <script src="../js/navbar.js"></script>
+    <script src="../js/rewards.js"></script>
+    <script>
+        const professions = [
+            { ar: "طبيب", en: "Doctor", emoji: "👨‍⚕️" },
+            { ar: "معلم", en: "Teacher", emoji: "👨‍🏫" },
+            { ar: "مهندس", en: "Engineer", emoji: "👷‍♂️" },
+            { ar: "شرطي", en: "Police", emoji: "👮‍♂️" },
+            { ar: "إطفائي", en: "Firefighter", emoji: "👨‍🚒" },
+            { ar: "طباخ", en: "Chef", emoji: "👨‍🍳" },
+            { ar: "طيار", en: "Pilot", emoji: "👨‍✈️" },
+            { ar: "رائد فضاء", en: "Astronaut", emoji: "👨‍🚀" }
+        ];
+
+        function speak(text, lang) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = lang;
+            window.speechSynthesis.speak(utterance);
+        }
+
+        const grid = document.getElementById('professions-grid');
+        professions.forEach(prof => {
+            const card = document.createElement('div');
+            card.className = 'card teal profession-card';
+            card.innerHTML = `
+                <div class="profession-emoji">${prof.emoji}</div>
+                <h3>${prof.ar}</h3>
+                <p style="color:var(--color-text-light); font-family: sans-serif; font-weight: bold; margin-bottom:10px;">${prof.en}</p>
+                <div>
+                    <button class="sound-btn" onclick="speak('${prof.ar}', 'ar-SA')">🔊</button>
+                    <button class="sound-btn eng" onclick="speak('${prof.en}', 'en-US')">🗣️</button>
+                </div>
+            `;
+            // Add stars when they click to encourage interaction
+            const btns = card.querySelectorAll('button');
+            btns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                   if(Math.random() > 0.5) window.rewards.addStars(1);
+                });
+            });
+            grid.appendChild(card);
+        });
+    </script>
+</body>
+</html>
