@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الأشكال الهندسية | أكاديمية المرح</title>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/main.css">
+    <style>
+        .shape-board {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        .shape-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        .shape-card:hover {
+            transform: translateY(-5px);
+        }
+        .shape-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+        }
+        .shape-circle { border-radius: 50%; background-color: #f4806a; }
+        .shape-square { background-color: #f8c850; }
+        .shape-triangle {
+            width: 0; height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 100px solid #117F86;
+            background: none;
+        }
+        .shape-rectangle { width: 120px; height: 80px; background-color: #8b5cf6; }
+        .shape-star {
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            background-color: #eab308;
+        }
+        .shape-heart {
+            background-color: #ec4899;
+            clip-path: path('M 50,30 A 20,20,0,0,1,90,30 A 20,20,0,0,1,50,80 A 20,20,0,0,1,10,30 A 20,20,0,0,1,50,30 Z');
+            /* Fallback simple clip for heart if path not supported well */
+            position: relative;
+        }
+        .shape-heart::before, .shape-heart::after {
+            content: "";
+            position: absolute;
+            background-color: #ec4899;
+            border-radius: 50px 50px 0 0;
+            width: 50px;
+            height: 80px;
+            top: 10px;
+        }
+        .shape-heart::before { left: 50px; transform: rotate(-45deg); transform-origin: 0 100%; }
+        .shape-heart::after { left: 0; transform: rotate(45deg); transform-origin: 100% 100%; }
+
+        .shape-name {
+            font-family: var(--font-main);
+            font-size: 1.8rem;
+            color: var(--color-text);
+            font-weight: 700;
+        }
+    </style>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5656416032906373" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="container nav">
+            <a href="../index.html" class="logo">
+                <span>✦</span>
+                أكاديمية المرح
+            </a>
+            <div class="nav-links">
+                <a href="../index.html">الرئيسية</a>
+                <a href="colors.html">الألوان</a>
+                <a href="numbers.html">الأرقام</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" style="padding-top: 40px; padding-bottom: 60px;">
+        <h1 class="section-title text-center">الأشكال الهندسية</h1>
+        <p class="text-center" style="font-size: 1.2rem; color: var(--color-text-light);">اضغط على الشكل لتستمع إلى اسمه.</p>
+
+        <div class="shape-board" id="shape-board"></div>
+
+        <!-- AdSense الإعلانات الصورية 04 -->
+        <div class="ad-container">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5656416032906373" data-ad-slot="3972494044" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+    </main>
+
+    <script type="module">
+        import { playTone, speakText } from '../js/utils.js';
+
+        const shapes = [
+            { id: 'circle', name: 'دائرة', class: 'shape-circle', color: 'coral' },
+            { id: 'square', name: 'مربع', class: 'shape-square', color: 'yellow' },
+            { id: 'triangle', name: 'مثلث', class: 'shape-triangle', color: 'teal' },
+            { id: 'rectangle', name: 'مستطيل', class: 'shape-rectangle', color: 'purple' },
+            { id: 'star', name: 'نجمة', class: 'shape-star', color: 'yellow' },
+            { id: 'heart', name: 'قلب', class: 'shape-heart', color: 'coral' }
+        ];
+
+        const board = document.getElementById('shape-board');
+
+        shapes.forEach(shape => {
+            const card = document.createElement('div');
+            card.className = `shape-card ${shape.color}`;
+            // We use inline style for border color hover effect based on class in CSS
+            card.innerHTML = `
+                <div class="shape-icon ${shape.class}"></div>
+                <div class="shape-name">${shape.name}</div>
+            `;
+            card.onclick = () => {
+                playTone('tap');
+                speakText(shape.name, 'ar-SA');
+            };
+            board.appendChild(card);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عالم الحيوانات | أكاديمية المرح</title>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/main.css">
+    <style>
+        .animal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        .animal-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        .animal-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--color-purple);
+            box-shadow: 0 10px 25px rgba(139,92,246,0.15);
+        }
+        .animal-emoji {
+            font-size: 5rem;
+            margin-bottom: 20px;
+        }
+        .animal-name {
+            font-family: var(--font-main);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-purple);
+            margin-bottom: 15px;
+        }
+        .sound-btn {
+            background-color: var(--color-background);
+            border: 1px solid var(--color-border);
+            border-radius: 30px;
+            padding: 8px 20px;
+            font-family: var(--font-body);
+            font-weight: 600;
+            color: var(--color-text);
+            cursor: pointer;
+            transition: all 0.2s;
+            margin: 5px;
+        }
+        .sound-btn:hover {
+            background-color: var(--color-purple);
+            color: white;
+            border-color: var(--color-purple);
+        }
+    </style>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5656416032906373" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="container nav">
+            <a href="../index.html" class="logo">
+                <span>✦</span>
+                أكاديمية المرح
+            </a>
+            <div class="nav-links">
+                <a href="../index.html">الرئيسية</a>
+                <a href="body.html">أجزاء الجسم</a>
+                <a href="colors.html">الألوان</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" style="padding-top: 40px; padding-bottom: 60px;">
+        <h1 class="section-title text-center" style="color: var(--color-purple);">عالم الحيوانات</h1>
+        <p class="text-center" style="font-size: 1.2rem; color: var(--color-text-light);">تعرف على أصدقائنا الحيوانات واستمع لأسمائهم بالعربية والإنجليزية.</p>
+
+        <div class="animal-grid" id="animal-board"></div>
+
+        <!-- AdSense الإعلانات الصورية 09 -->
+        <div class="ad-container">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5656416032906373" data-ad-slot="7803975574" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+    </main>
+
+    <script type="module">
+        import { playTone, speakText } from '../js/utils.js';
+
+        const animals = [
+            { ar: "أسد", en: "Lion", emoji: "🦁" },
+            { ar: "فيل", en: "Elephant", emoji: "🐘" },
+            { ar: "قرد", en: "Monkey", emoji: "🐒" },
+            { ar: "قطة", en: "Cat", emoji: "🐱" },
+            { ar: "كلب", en: "Dog", emoji: "🐶" },
+            { ar: "حصان", en: "Horse", emoji: "🐴" },
+            { ar: "بقرة", en: "Cow", emoji: "🐮" },
+            { ar: "خروف", en: "Sheep", emoji: "🐑" },
+            { ar: "دجاجة", en: "Chicken", emoji: "🐔" },
+            { ar: "بطة", en: "Duck", emoji: "🦆" },
+            { ar: "أرنب", en: "Rabbit", emoji: "🐰" },
+            { ar: "زرافة", en: "Giraffe", emoji: "🦒" },
+            { ar: "دب", en: "Bear", emoji: "🐻" },
+            { ar: "باندا", en: "Panda", emoji: "🐼" },
+            { ar: "نمر", en: "Tiger", emoji: "🐯" }
+        ];
+
+        const board = document.getElementById('animal-board');
+
+        // Make functions globally available for inline onclick attributes
+        window.playAnimalSound = (text, lang) => {
+            playTone('tap');
+            speakText(text, lang);
+        };
+
+        animals.forEach(animal => {
+            const card = document.createElement('div');
+            card.className = 'animal-card';
+            card.innerHTML = `
+                <div class="animal-emoji">${animal.emoji}</div>
+                <div class="animal-name">${animal.ar}</div>
+                <div>
+                    <button class="sound-btn" onclick="playAnimalSound('${animal.ar}', 'ar-SA')">عربي 🔊</button>
+                    <button class="sound-btn" onclick="playAnimalSound('${animal.en}', 'en-US')">English 🔊</button>
+                </div>
+            `;
+            board.appendChild(card);
+        });
+    </script>
+</body>
+</html>
