@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,12 +36,34 @@
     <link rel="stylesheet" href="../css/main.css">
     <link rel="manifest" href="../manifest.json">
     <style>
-        .transport-card { text-align: center; cursor: pointer; }
-        .transport-emoji { font-size: 5rem; margin-bottom: 15px; }
-        .sound-btn { background: var(--color-primary); color: white; border: none; border-radius: 50%; width: 40px; height: 40px; font-size: 1.2rem; cursor: pointer; margin: 5px; }
-        .sound-btn.eng { background: var(--color-secondary); }
+        .transport-card {
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .transport-emoji {
+            font-size: 5rem;
+            margin-bottom: 15px;
+        }
+
+        .sound-btn {
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .sound-btn.eng {
+            background: var(--color-secondary);
+        }
     </style>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5656416032906373" crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5656416032906373"
+        crossorigin="anonymous"></script>
     <!-- Structured Data -->
     <script type="application/ld+json">
     {
@@ -61,11 +84,12 @@
     }
     </script>
 </head>
+
 <body>
     <header>
         <div class="container nav">
             <a href="../index.html" class="logo">✦ أكاديمية المرح</a>
-                        <div class="nav-links">
+            <div class="nav-links">
                 <a href="../index.html">الرئيسية</a>
                 <a href="arabic.html">الحروف العربية</a>
                 <a href="english.html">English</a>
@@ -78,7 +102,7 @@
                 <a href="transport.html">المواصلات</a>
                 <a href="seasons.html">فصول السنة</a>
                 <a href="drawing.html">الرسم</a>
-                                <a href="writing.html">الكتابة</a>
+                <a href="writing.html">الكتابة</a>
                 <a href="writing-En.html">writing</a>
                 <a href="games.html">الألعاب</a>
             </div>
@@ -89,6 +113,12 @@
         <h1 class="section-title text-center mt-4">وسائل النقل</h1>
         <p class="text-center mb-4">اكتشف كيف نسافر ونتنقل!</p>
 
+                <!-- AdSense 02 إعلان داخل الخلاصة-->
+        <div class="ad-container">
+            <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-h9-h+8-jr+r8"
+                data-ad-client="ca-pub-5656416032906373" data-ad-slot="8546947691"></ins>
+        </div>
+
         <div class="grid-cards" id="transport-grid">
             <!-- Populated by JS -->
         </div>
@@ -96,11 +126,22 @@
 
 
 
+
+    <!-- AdSense 01 الإعلانات المتعددة -->
+    <div class="container">
+        <div class="ad-container">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5656416032906373"
+                data-ad-slot="9770159361" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+    </div>
+
     <footer>
         <div class="container footer-content">
             <div class="footer-section">
                 <h3>✦ أكاديمية المرح</h3>
-                <p>منصة تعليمية تفاعلية ممتعة للأطفال، نهدف إلى تعزيز حب التعلم واكتشاف العالم من خلال أنشطة وألعاب محفزة.</p>
+                <p>منصة تعليمية تفاعلية ممتعة للأطفال، نهدف إلى تعزيز حب التعلم واكتشاف العالم من خلال أنشطة وألعاب
+                    محفزة.</p>
             </div>
             <div class="footer-section">
                 <h3>أقسام سريعة</h3>
@@ -163,11 +204,12 @@
             const btns = card.querySelectorAll('button');
             btns.forEach(btn => {
                 btn.addEventListener('click', () => {
-                   if(Math.random() > 0.5) window.rewards.addStars(1);
+                    if (Math.random() > 0.5) window.rewards.addStars(1);
                 });
             });
             grid.appendChild(card);
         });
     </script>
 </body>
+
 </html>
