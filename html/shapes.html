@@ -132,246 +132,200 @@
             font-weight: 700;
         }
 
-        /* Heart */
-.shape-heart {
-    width: 60px;
-    height: 60px;
-    background: coral;
-    position: relative;
-    transform: rotate(-45deg);
-    margin: 15px;
-}
-
-.shape-heart::before,
-.shape-heart::after {
-    content: "";
-    width: 60px;
-    height: 60px;
-    background: coral;
-    border-radius: 50%;
-    position: absolute;
-}
-
-.shape-heart::before {
-    top: -30px;
-    left: 0;
-}
-
-.shape-heart::after {
-    top: 0;
-    left: 30px;
-}
+        /* Additional shapes can be added here with their respective classes */
+        /* Oval */
+        .shape-oval {
+            width: 80px;
+            height: 50px;
+            background: teal;
+            border-radius: 50%;
+        }
 
 
-/* Oval */
-.shape-oval {
-    width: 80px;
-    height: 50px;
-    background: teal;
-    border-radius: 50%;
-}
+        /* Diamond */
+        .shape-diamond {
+            width: 55px;
+            height: 55px;
+            background: purple;
+            transform: rotate(45deg);
+        }
 
 
-/* Diamond */
-.shape-diamond {
-    width: 55px;
-    height: 55px;
-    background: purple;
-    transform: rotate(45deg);
-}
+        /* Parallelogram */
+        .shape-parallelogram {
+            width: 80px;
+            height: 50px;
+            background: yellow;
+            transform: skewX(-20deg);
+        }
 
 
-/* Parallelogram */
-.shape-parallelogram {
-    width: 80px;
-    height: 50px;
-    background: yellow;
-    transform: skewX(-20deg);
-}
+        /* Trapezoid */
+        .shape-trapezoid {
+            width: 80px;
+            height: 0;
+            border-bottom: 50px solid coral;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+        }
 
 
-/* Trapezoid */
-.shape-trapezoid {
-    width: 80px;
-    height: 0;
-    border-bottom: 50px solid coral;
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
-}
+        /* Pentagon */
+        .shape-pentagon {
+            width: 60px;
+            height: 60px;
+            background: teal;
+            clip-path: polygon(50% 0%,
+                    100% 38%,
+                    82% 100%,
+                    18% 100%,
+                    0% 38%);
+        }
 
 
-/* Pentagon */
-.shape-pentagon {
-    width: 60px;
-    height: 60px;
-    background: teal;
-    clip-path: polygon(
-        50% 0%,
-        100% 38%,
-        82% 100%,
-        18% 100%,
-        0% 38%
-    );
-}
+        /* Hexagon */
+        .shape-hexagon {
+            width: 70px;
+            height: 60px;
+            background: purple;
+            clip-path: polygon(25% 0%,
+                    75% 0%,
+                    100% 50%,
+                    75% 100%,
+                    25% 100%,
+                    0% 50%);
+        }
 
 
-/* Hexagon */
-.shape-hexagon {
-    width: 70px;
-    height: 60px;
-    background: purple;
-    clip-path: polygon(
-        25% 0%,
-        75% 0%,
-        100% 50%,
-        75% 100%,
-        25% 100%,
-        0% 50%
-    );
-}
+        /* Heptagon */
+        .shape-heptagon {
+            width: 65px;
+            height: 65px;
+            background: yellow;
+            clip-path: polygon(50% 0%,
+                    89% 20%,
+                    98% 65%,
+                    72% 100%,
+                    28% 100%,
+                    2% 65%,
+                    11% 20%);
+        }
 
 
-/* Heptagon */
-.shape-heptagon {
-    width: 65px;
-    height: 65px;
-    background: yellow;
-    clip-path: polygon(
-        50% 0%,
-        89% 20%,
-        98% 65%,
-        72% 100%,
-        28% 100%,
-        2% 65%,
-        11% 20%
-    );
-}
+        /* Octagon */
+        .shape-octagon {
+            width: 65px;
+            height: 65px;
+            background: coral;
+            clip-path: polygon(30% 0%,
+                    70% 0%,
+                    100% 30%,
+                    100% 70%,
+                    70% 100%,
+                    30% 100%,
+                    0% 70%,
+                    0% 30%);
+        }
 
 
-/* Octagon */
-.shape-octagon {
-    width: 65px;
-    height: 65px;
-    background: coral;
-    clip-path: polygon(
-        30% 0%,
-        70% 0%,
-        100% 30%,
-        100% 70%,
-        70% 100%,
-        30% 100%,
-        0% 70%,
-        0% 30%
-    );
-}
+        /* Nonagon */
+        .shape-nonagon {
+            width: 70px;
+            height: 70px;
+            background: teal;
+            clip-path: polygon(50% 0%,
+                    82% 12%,
+                    100% 41%,
+                    94% 76%,
+                    66% 100%,
+                    34% 100%,
+                    6% 76%,
+                    0% 41%,
+                    18% 12%);
+        }
 
 
-/* Nonagon */
-.shape-nonagon {
-    width: 70px;
-    height: 70px;
-    background: teal;
-    clip-path: polygon(
-        50% 0%,
-        82% 12%,
-        100% 41%,
-        94% 76%,
-        66% 100%,
-        34% 100%,
-        6% 76%,
-        0% 41%,
-        18% 12%
-    );
-}
+        /* Decagon */
+        .shape-decagon {
+            width: 70px;
+            height: 70px;
+            background: purple;
+            clip-path: polygon(50% 0%,
+                    79% 9%,
+                    97% 35%,
+                    97% 65%,
+                    79% 91%,
+                    50% 100%,
+                    21% 91%,
+                    3% 65%,
+                    3% 35%,
+                    21% 9%);
+        }
 
 
-/* Decagon */
-.shape-decagon {
-    width: 70px;
-    height: 70px;
-    background: purple;
-    clip-path: polygon(
-        50% 0%,
-        79% 9%,
-        97% 35%,
-        97% 65%,
-        79% 91%,
-        50% 100%,
-        21% 91%,
-        3% 65%,
-        3% 35%,
-        21% 9%
-    );
-}
+        /* Cross */
+        .shape-cross {
+            width: 60px;
+            height: 60px;
+            background: yellow;
+            clip-path: polygon(35% 0%,
+                    65% 0%,
+                    65% 35%,
+                    100% 35%,
+                    100% 65%,
+                    65% 65%,
+                    65% 100%,
+                    35% 100%,
+                    35% 65%,
+                    0% 65%,
+                    0% 35%,
+                    35% 35%);
+        }
 
 
-/* Cross */
-.shape-cross {
-    width: 60px;
-    height: 60px;
-    background: yellow;
-    clip-path: polygon(
-        35% 0%,
-        65% 0%,
-        65% 35%,
-        100% 35%,
-        100% 65%,
-        65% 65%,
-        65% 100%,
-        35% 100%,
-        35% 65%,
-        0% 65%,
-        0% 35%,
-        35% 35%
-    );
-}
+        /* Arrow */
+        .shape-arrow {
+            width: 80px;
+            height: 50px;
+            background: coral;
+            clip-path: polygon(0% 30%,
+                    60% 30%,
+                    60% 0%,
+                    100% 50%,
+                    60% 100%,
+                    60% 70%,
+                    0% 70%);
+        }
 
 
-/* Arrow */
-.shape-arrow {
-    width: 80px;
-    height: 50px;
-    background: coral;
-    clip-path: polygon(
-        0% 30%,
-        60% 30%,
-        60% 0%,
-        100% 50%,
-        60% 100%,
-        60% 70%,
-        0% 70%
-    );
-}
+        /* Crescent */
+        .shape-crescent {
+            width: 65px;
+            height: 65px;
+            background: teal;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .shape-crescent::after {
+            content: "";
+            position: absolute;
+            width: 65px;
+            height: 65px;
+            background: white;
+            border-radius: 50%;
+            top: -8px;
+            left: 18px;
+        }
 
 
-/* Crescent */
-.shape-crescent {
-    width: 65px;
-    height: 65px;
-    background: teal;
-    border-radius: 50%;
-    position: relative;
-}
-
-.shape-crescent::after {
-    content: "";
-    position: absolute;
-    width: 65px;
-    height: 65px;
-    background: white;
-    border-radius: 50%;
-    top: -8px;
-    left: 18px;
-}
-
-
-/* Semicircle */
-.shape-semicircle {
-    width: 80px;
-    height: 40px;
-    background: purple;
-    border-radius: 80px 80px 0 0;
-}
+        /* Semicircle */
+        .shape-semicircle {
+            width: 80px;
+            height: 40px;
+            background: purple;
+            border-radius: 80px 80px 0 0;
+        }
     </style>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5656416032906373"
         crossorigin="anonymous"></script>
@@ -490,7 +444,7 @@
             { id: 'octagon', name: 'ثماني الأضلاع', class: 'shape-octagon', color: 'coral' },
             { id: 'nonagon', name: 'تساعي الأضلاع', class: 'shape-nonagon', color: 'teal' },
             { id: 'decagon', name: 'عشاري الأضلاع', class: 'shape-decagon', color: 'purple' },
-            { id: 'cross', name: 'صليب', class: 'shape-cross', color: 'yellow' },
+            { id: 'cross', name: 'ضلعان متقطعان', class: 'shape-cross', color: 'yellow' },
             { id: 'arrow', name: 'سهم', class: 'shape-arrow', color: 'coral' },
             { id: 'crescent', name: 'هلال', class: 'shape-crescent', color: 'teal' },
             { id: 'semicircle', name: 'نصف دائرة', class: 'shape-semicircle', color: 'purple' }
