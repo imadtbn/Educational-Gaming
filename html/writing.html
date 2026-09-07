@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أكاديمية المرح | لوح أثر القلم</title>
+    <meta name="description" content="محطة الكتابة وتتبع الحروف لتعليم الأطفال الكتابة بشكل صحيح وممتع.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#117F86">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Security Header simulation (X-Content-Type-Options) -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://imadtbn.github.io/html/writing.html">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="apple-touch-icon" href="../assets/icon-192.svg">
+
+    <!-- Open Graph (Facebook/LinkedIn) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://imadtbn.github.io/html/writing.html">
+    <meta property="og:title" content="أكاديمية المرح | لوح أثر القلم">
+    <meta property="og:description" content="محطة الكتابة وتتبع الحروف لتعليم الأطفال الكتابة بشكل صحيح وممتع.">
+    <meta property="og:image" content="https://imadtbn.github.io/assets/icon-512.svg">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="أكاديمية المرح | لوح أثر القلم">
+    <meta name="twitter:description" content="محطة الكتابة وتتبع الحروف لتعليم الأطفال الكتابة بشكل صحيح وممتع.">
+    <meta name="twitter:image" content="https://imadtbn.github.io/assets/icon-512.svg">
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="manifest" href="../manifest.json">
+    <style>
+        .writing-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .toolbar {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .letter-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 8px;
+            border: 2px solid var(--color-primary);
+            background: white;
+            color: var(--color-primary);
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+
+        .letter-btn:hover {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .tool-btn {
+            padding: 8px 15px;
+            border-radius: 8px;
+            border: 1px solid var(--color-border);
+            background: #f8f9fa;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: bold;
+        }
+
+        .tool-btn:hover {
+            background: #e2e8f0;
+        }
+
+        .canvas-wrapper {
+            position: relative;
+            width: 800px;
+            max-width: 100%;
+            height: 500px;
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 4px solid var(--color-secondary);
+            border-radius: 16px;
+            cursor: crosshair;
+            touch-action: none;
+        }
+
+        #bg-canvas {
+            z-index: 1;
+            background: #fffdf5;
+        }
+
+        /* paper color */
+        #draw-canvas {
+            z-index: 2;
+            background: transparent;
+        }
+    </style>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5656416032906373"
+        crossorigin="anonymous"></script>
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "أكاديمية المرح | لوح أثر القلم",
+      "description": "محطة الكتابة وتتبع الحروف لتعليم الأطفال الكتابة بشكل صحيح وممتع.",
+      "url": "https://imadtbn.github.io/html/writing.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "أكاديمية المرح",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://imadtbn.github.io/assets/icon-512.svg"
+        }
+      },
+      "inLanguage": "ar"
+    }
+    </script>
+</head>
+
+<body>
+    <header>
+        <div class="container nav">
+            <a href="../index.html" class="logo">✦ أكاديمية المرح</a>
+            <div class="nav-links">
+                <a href="../index.html">الرئيسية</a>
+                <a href="arabic.html">الحروف العربية</a>
+                <a href="english.html">English</a>
+                <a href="numbers.html">الأرقام</a>
+                <a href="animals.html">الحيوانات</a>
+                <a href="shapes.html">الأشكال</a>
+                <a href="colors.html">الألوان</a>
+                <a href="body.html">أجزاء الجسم</a>
+                <a href="professions.html">المهن</a>
+                <a href="transport.html">المواصلات</a>
+                <a href="seasons.html">فصول السنة</a>
+                <a href="drawing.html">الرسم</a>
+                <a href="writing.html">الكتابة</a>
+                <a href="writing-En.html">writing</a>
+                <a href="games.html">الألعاب</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1 class="section-title text-center mt-4">لوح أثر القلم (محطة الكتابة)</h1>
+        <p class="text-center mb-4">اختر حرفاً وتتبّعه، أو ارسم بحرية على السطور!</p>
+
+        <div class="writing-container">
+            <div class="toolbar" id="letters-toolbar">
+                <div class="letter-btn" data-letter="أ">أ</div>
+                <div class="letter-btn" data-letter="ب">ب</div>
+                <div class="letter-btn" data-letter="ت">ت</div>
+                <div class="letter-btn" data-letter="ث">ث</div>
+                <div class="letter-btn" data-letter="ج">ج</div>
+                <div class="letter-btn" data-letter="ح">ح</div>
+                <div class="letter-btn" data-letter="خ">خ</div>
+                <div class="letter-btn" data-letter="د">د</div>
+                <div class="letter-btn" data-letter="ذ">ذ</div>
+                <div class="letter-btn" data-letter="ر">ر</div>
+                <div class="letter-btn" data-letter="ز">ز</div>
+                <div class="letter-btn" data-letter="س">س</div>
+                <div class="letter-btn" data-letter="ش">ش</div>
+                <div class="letter-btn" data-letter="ص">ص</div>
+                <div class="letter-btn" data-letter="ض">ض</div>
+                <div class="letter-btn" data-letter="ط">ط</div>
+                <div class="letter-btn" data-letter="ظ">ظ</div>
+                <div class="letter-btn" data-letter="ع">ع</div>
+                <div class="letter-btn" data-letter="غ">غ</div>
+                <div class="letter-btn" data-letter="ف">ف</div>
+                <div class="letter-btn" data-letter="ق">ق</div>
+                <div class="letter-btn" data-letter="ك">ك</div>
+                <div class="letter-btn" data-letter="ل">ل</div>
+                <div class="letter-btn" data-letter="م">م</div>
+                <div class="letter-btn" data-letter="ن">ن</div>
+                <div class="letter-btn" data-letter="هـ">هـ</div>
+                <div class="letter-btn" data-letter="و">و</div>
+                <div class="letter-btn" data-letter="ي">ي</div>
+
+                <div class="letter-btn" data-letter="0">0</div>
+                <div class="letter-btn" data-letter="1">1</div>
+                <div class="letter-btn" data-letter="2">2</div>
+                <div class="letter-btn" data-letter="3">3</div>
+                <div class="letter-btn" data-letter="4">4</div>
+                <div class="letter-btn" data-letter="5">5</div>
+                <div class="letter-btn" data-letter="6">6</div>
+                <div class="letter-btn" data-letter="7">7</div>
+                <div class="letter-btn" data-letter="8">8</div>
+                <div class="letter-btn" data-letter="9">9</div>
+                <div style="border-right: 2px solid #ddd; padding-right: 15px; display: flex; gap: 10px;">
+                    <button class="tool-btn" id="lines-mode">رسم حر (سطور)</button>
+                    <button class="tool-btn" id="clear">مسح اللوح</button>
+                </div>
+            </div>
+
+            <div class="canvas-wrapper">
+                <canvas id="bg-canvas" width="800" height="500"></canvas>
+                <canvas id="draw-canvas" width="800" height="500"></canvas>
+            </div>
+        </div>
+    </main>
+
+
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>✦ أكاديمية المرح</h3>
+                <p>منصة تعليمية تفاعلية ممتعة للأطفال، نهدف إلى تعزيز حب التعلم واكتشاف العالم من خلال أنشطة وألعاب
+                    محفزة.</p>
+            </div>
+            <div class="footer-section">
+                <h3>أقسام سريعة</h3>
+                <ul>
+                    <li><a href="arabic.html">الحروف العربية</a></li>
+                    <li><a href="english.html">English Time</a></li>
+                    <li><a href="numbers.html">الأرقام والحساب</a></li>
+                    <li><a href="games.html">مخيم الألعاب</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>عن الأكاديمية</h3>
+                <ul>
+                    <li><a href="about.html">من نحن</a></li>
+                    <li><a href="contact.html">اتصل بنا</a></li>
+                    <li><a href="privacy.html">سياسة الخصوصية</a></li>
+                    <li><a href="terms.html">شروط الاستخدام</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>أكاديمية المرح &copy; <span id="year"></span> | جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+
+    <script src="../js/navbar.js"></script>
+    <script src="../js/rewards.js"></script>
+    <script>
+        const bgCanvas = document.getElementById('bg-canvas');
+        const drawCanvas = document.getElementById('draw-canvas');
+        const bgCtx = bgCanvas.getContext('2d');
+        const drawCtx = drawCanvas.getContext('2d');
+
+        let isDrawing = false;
+
+        // Setup background lines
+        function drawLines() {
+            bgCtx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
+            bgCtx.fillStyle = '#fffdf5';
+            bgCtx.fillRect(0, 0, bgCanvas.width, bgCanvas.height);
+
+            bgCtx.strokeStyle = '#93c5fd'; // light blue lines
+            bgCtx.lineWidth = 2;
+
+            for (let y = 100; y < bgCanvas.height; y += 100) {
+                bgCtx.beginPath();
+                bgCtx.moveTo(0, y);
+                bgCtx.lineTo(bgCanvas.width, y);
+                bgCtx.stroke();
+            }
+        }
+
+        // Draw dotted letter
+        function drawDottedLetter(letter) {
+            bgCtx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
+            bgCtx.fillStyle = '#fffdf5';
+            bgCtx.fillRect(0, 0, bgCanvas.width, bgCanvas.height);
+
+            bgCtx.font = '300px "Cairo", sans-serif';
+            bgCtx.textAlign = 'center';
+            bgCtx.textBaseline = 'middle';
+
+            // Draw letter with dash for dotted effect
+            bgCtx.strokeStyle = '#e2e8f0';
+            bgCtx.lineWidth = 10;
+            bgCtx.setLineDash([15, 15]);
+            bgCtx.strokeText(letter, bgCanvas.width / 2, bgCanvas.height / 2);
+            bgCtx.setLineDash([]); // reset
+        }
+
+        drawLines(); // initial state
+
+        // Drawing functionality
+        function startPosition(e) {
+            isDrawing = true;
+            draw(e);
+        }
+
+        function endPosition() {
+            isDrawing = false;
+            drawCtx.beginPath();
+            if (Math.random() > 0.6) window.rewards.addStars(1);
+        }
+
+        function getMousePos(e) {
+            const rect = drawCanvas.getBoundingClientRect();
+            const scaleX = drawCanvas.width / rect.width;
+            const scaleY = drawCanvas.height / rect.height;
+
+            let clientX = e.clientX;
+            let clientY = e.clientY;
+
+            if (e.touches && e.touches.length > 0) {
+                clientX = e.touches[0].clientX;
+                clientY = e.touches[0].clientY;
+            }
+
+            return {
+                x: (clientX - rect.left) * scaleX,
+                y: (clientY - rect.top) * scaleY
+            };
+        }
+
+        function draw(e) {
+            if (!isDrawing) return;
+            e.preventDefault();
+            const pos = getMousePos(e);
+
+            drawCtx.lineWidth = 12;
+            drawCtx.lineCap = 'round';
+            drawCtx.strokeStyle = 'var(--color-primary)';
+
+            drawCtx.lineTo(pos.x, pos.y);
+            drawCtx.stroke();
+            drawCtx.beginPath();
+            drawCtx.moveTo(pos.x, pos.y);
+        }
+
+        drawCanvas.addEventListener('mousedown', startPosition);
+        drawCanvas.addEventListener('mouseup', endPosition);
+        drawCanvas.addEventListener('mousemove', draw);
+        drawCanvas.addEventListener('mouseout', endPosition);
+
+        drawCanvas.addEventListener('touchstart', startPosition, { passive: false });
+        drawCanvas.addEventListener('touchend', endPosition);
+        drawCanvas.addEventListener('touchmove', draw, { passive: false });
+
+        // Controls
+        document.querySelectorAll('.letter-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const letter = e.target.dataset.letter;
+                drawDottedLetter(letter);
+                drawCtx.clearRect(0, 0, drawCanvas.width, drawCanvas.height);
+            });
+        });
+
+        document.getElementById('lines-mode').addEventListener('click', () => {
+            drawLines();
+            drawCtx.clearRect(0, 0, drawCanvas.width, drawCanvas.height);
+        });
+
+        document.getElementById('clear').addEventListener('click', () => {
+            drawCtx.clearRect(0, 0, drawCanvas.width, drawCanvas.height);
+        });
+    </script>
+</body>
+
+</html>

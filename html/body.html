@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أجزاء الجسم | أكاديمية المرح</title>
+    <meta name="description" content="تعرف على أجزاء جسم الإنسان ووظائفها عبر رسومات تفاعلية للأطفال.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#117F86">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Security Header simulation (X-Content-Type-Options) -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://imadtbn.github.io/html/body.html">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="apple-touch-icon" href="../assets/icon-192.svg">
+
+    <!-- Open Graph (Facebook/LinkedIn) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://imadtbn.github.io/html/body.html">
+    <meta property="og:title" content="أجزاء الجسم | أكاديمية المرح">
+    <meta property="og:description" content="تعرف على أجزاء جسم الإنسان ووظائفها عبر رسومات تفاعلية للأطفال.">
+    <meta property="og:image" content="https://imadtbn.github.io/assets/icon-512.svg">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="أجزاء الجسم | أكاديمية المرح">
+    <meta name="twitter:description" content="تعرف على أجزاء جسم الإنسان ووظائفها عبر رسومات تفاعلية للأطفال.">
+    <meta name="twitter:image" content="https://imadtbn.github.io/assets/icon-512.svg">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/main.css">
+    <style>
+        .body-parts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .body-card {
+            background: white;
+            border-radius: var(--radius-md);
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+            transition: all 0.2s;
+            border-right: 5px solid var(--color-primary);
+        }
+
+        .body-card:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 6px 20px rgba(17, 127, 134, 0.15);
+        }
+
+        .body-icon {
+            font-size: 3rem;
+        }
+
+        .body-name {
+            font-family: var(--font-main);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--color-text);
+        }
+
+        .body-desc {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+        }
+    </style>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5656416032906373"
+        crossorigin="anonymous"></script>
+    <link rel="manifest" href="../manifest.json">
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "أجزاء الجسم | أكاديمية المرح",
+      "description": "تعرف على أجزاء جسم الإنسان ووظائفها عبر رسومات تفاعلية للأطفال.",
+      "url": "https://imadtbn.github.io/html/body.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "أكاديمية المرح",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://imadtbn.github.io/assets/icon-512.svg"
+        }
+      },
+      "inLanguage": "ar"
+    }
+    </script>
+</head>
+
+<body>
+    <header>
+        <div class="container nav">
+            <a href="../index.html" class="logo">
+                <span>✦</span>
+                أكاديمية المرح
+            </a>
+            <div class="nav-links">
+                <a href="../index.html">الرئيسية</a>
+                <a href="arabic.html">الحروف العربية</a>
+                <a href="english.html">English</a>
+                <a href="numbers.html">الأرقام</a>
+                <a href="animals.html">الحيوانات</a>
+                <a href="shapes.html">الأشكال</a>
+                <a href="colors.html">الألوان</a>
+                <a href="body.html">أجزاء الجسم</a>
+                <a href="professions.html">المهن</a>
+                <a href="transport.html">المواصلات</a>
+                <a href="seasons.html">فصول السنة</a>
+                <a href="drawing.html">الرسم</a>
+                <a href="writing.html">الكتابة</a>
+                <a href="writing-En.html">writing</a>
+                <a href="games.html">الألعاب</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" style="padding-top: 40px; padding-bottom: 60px;">
+        <h1 class="section-title text-center">أجزاء الجسم</h1>
+        <p class="text-center" style="font-size: 1.2rem; color: var(--color-text-light);">اضغط على الجزء لتستمع إلى
+            اسمه.</p>
+
+        <div class="body-parts-grid" id="body-board"></div>
+
+        <!-- AdSense الإعلانات الصورية 06 -->
+        <div class="ad-container">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5656416032906373"
+                data-ad-slot="6461453831" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+    </main>
+
+    <script type="module">
+        import { playTone, speakText } from '../js/utils.js';
+
+        const bodyParts = [
+            { id: 'head', name: 'رأس', emoji: '🧑', desc: 'نفكر به' },
+            { id: 'eye', name: 'عين', emoji: '👁️', desc: 'نرى بها الأشياء الجميلة' },
+            { id: 'ear', name: 'أذن', emoji: '👂', desc: 'نسمع بها الأصوات' },
+            { id: 'nose', name: 'أنف', emoji: '👃', desc: 'نشم به الروائح' },
+            { id: 'mouth', name: 'فم', emoji: '👄', desc: 'نتحدث ونأكل به' },
+            { id: 'tooth', name: 'أسنان', emoji: '🦷', desc: 'نمضغ بها الطعام' },
+            { id: 'hand', name: 'يد', emoji: '✋', desc: 'نمسك بها الأشياء' },
+            { id: 'leg', name: 'رجل', emoji: '🦵', desc: 'نمشي ونركض بها' },
+            { id: 'foot', name: 'قدم', emoji: '🦶', desc: 'نقف عليها' }
+        ];
+
+        const board = document.getElementById('body-board');
+
+        bodyParts.forEach((part, index) => {
+            const card = document.createElement('div');
+            card.className = `body-card`;
+
+            // Alternate border colors
+            const colors = ['var(--color-primary)', 'var(--color-secondary)', 'var(--color-accent)', 'var(--color-purple)'];
+            card.style.borderRightColor = colors[index % colors.length];
+
+            card.innerHTML = `
+                <div class="body-icon">${part.emoji}</div>
+                <div>
+                    <div class="body-name">${part.name}</div>
+                    <div class="body-desc">${part.desc}</div>
+                </div>
+            `;
+            card.onclick = () => {
+                playTone('tap');
+                speakText(part.name, 'ar-SA');
+            };
+            board.appendChild(card);
+        });
+    </script>
+
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>✦ أكاديمية المرح</h3>
+                <p>منصة تعليمية تفاعلية ممتعة للأطفال، نهدف إلى تعزيز حب التعلم واكتشاف العالم من خلال أنشطة وألعاب
+                    محفزة.</p>
+            </div>
+            <div class="footer-section">
+                <h3>أقسام سريعة</h3>
+                <ul>
+                    <li><a href="arabic.html">الحروف العربية</a></li>
+                    <li><a href="english.html">English Time</a></li>
+                    <li><a href="numbers.html">الأرقام والحساب</a></li>
+                    <li><a href="games.html">مخيم الألعاب</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>عن الأكاديمية</h3>
+                <ul>
+                    <li><a href="about.html">من نحن</a></li>
+                    <li><a href="contact.html">اتصل بنا</a></li>
+                    <li><a href="privacy.html">سياسة الخصوصية</a></li>
+                    <li><a href="terms.html">شروط الاستخدام</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>أكاديمية المرح &copy; <span id="year"></span> | جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+
+    <script src="../js/navbar.js"></script>
+    <script src="../js/rewards.js"></script>
+</body>
+
+</html>

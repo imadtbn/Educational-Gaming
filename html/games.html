@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أكاديمية المرح | مخيم الألعاب</title>
+    <meta name="description"
+        content="مخيم الألعاب التعليمية: تحديات ممتعة، ألعاب مطابقة الذاكرة، والحروف الناقصة لجمع النجوم.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#117F86">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Security Header simulation (X-Content-Type-Options) -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://imadtbn.github.io/html/games.html">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="apple-touch-icon" href="../assets/icon-192.svg">
+
+    <!-- Open Graph (Facebook/LinkedIn) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://imadtbn.github.io/html/games.html">
+    <meta property="og:title" content="أكاديمية المرح | مخيم الألعاب">
+    <meta property="og:description"
+        content="مخيم الألعاب التعليمية: تحديات ممتعة، ألعاب مطابقة الذاكرة، والحروف الناقصة لجمع النجوم.">
+    <meta property="og:image" content="https://imadtbn.github.io/assets/icon-512.svg">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="أكاديمية المرح | مخيم الألعاب">
+    <meta name="twitter:description"
+        content="مخيم الألعاب التعليمية: تحديات ممتعة، ألعاب مطابقة الذاكرة، والحروف الناقصة لجمع النجوم.">
+    <meta name="twitter:image" content="https://imadtbn.github.io/assets/icon-512.svg">
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="manifest" href="../manifest.json">
+    <style>
+        .game-section {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .game-title {
+            color: var(--color-primary);
+            margin-bottom: 20px;
+            border-bottom: 2px dashed var(--color-border);
+            padding-bottom: 10px;
+        }
+
+        /* Memory Game */
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .memory-card {
+            background: var(--color-secondary);
+            height: 80px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: transparent;
+            cursor: pointer;
+            transition: 0.3s;
+            user-select: none;
+        }
+
+        .memory-card.flipped {
+            background: white;
+            border: 2px solid var(--color-secondary);
+            color: initial;
+        }
+
+        .memory-card.matched {
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            cursor: default;
+        }
+
+        /* Match Word to Image Game */
+        .match-container {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .match-emoji {
+            font-size: 6rem;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 16px;
+        }
+
+        .match-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .match-btn {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            background: white;
+            border: 2px solid var(--color-primary);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: inherit;
+            font-weight: bold;
+        }
+
+        .match-btn:hover {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        /* Missing Letter Game */
+        .missing-container {
+            text-align: center;
+        }
+
+        .missing-word {
+            font-size: 3rem;
+            letter-spacing: 5px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: var(--color-text);
+        }
+
+        .missing-letters {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .letter-opt {
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            background: white;
+            border: 2px solid var(--color-accent);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .letter-opt:hover {
+            background: var(--color-accent);
+            color: white;
+        }
+
+        .success-msg {
+            color: #10b981;
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5656416032906373"
+        crossorigin="anonymous"></script>
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "أكاديمية المرح | مخيم الألعاب",
+      "description": "مخيم الألعاب التعليمية: تحديات ممتعة، ألعاب مطابقة الذاكرة، والحروف الناقصة لجمع النجوم.",
+      "url": "https://imadtbn.github.io/html/games.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "أكاديمية المرح",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://imadtbn.github.io/assets/icon-512.svg"
+        }
+      },
+      "inLanguage": "ar"
+    }
+    </script>
+</head>
+
+<body>
+    <header>
+        <div class="container nav">
+            <a href="../index.html" class="logo">✦ أكاديمية المرح</a>
+            <div class="nav-links">
+                <a href="../index.html">الرئيسية</a>
+                <a href="arabic.html">الحروف العربية</a>
+                <a href="english.html">English</a>
+                <a href="numbers.html">الأرقام</a>
+                <a href="animals.html">الحيوانات</a>
+                <a href="shapes.html">الأشكال</a>
+                <a href="colors.html">الألوان</a>
+                <a href="body.html">أجزاء الجسم</a>
+                <a href="professions.html">المهن</a>
+                <a href="transport.html">المواصلات</a>
+                <a href="seasons.html">فصول السنة</a>
+                <a href="drawing.html">الرسم</a>
+                <a href="writing.html">الكتابة</a>
+                <a href="writing-En.html">writing</a>
+                <a href="games.html">الألعاب</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1 class="section-title text-center mt-4">مخيم الألعاب والتحديات</h1>
+        <p class="text-center mb-4">العب، تعلم، واجمع النجوم!</p>
+
+        <!-- Game 1: Memory -->
+        <section class="game-section">
+            <h2 class="game-title">١. مطابقة الذاكرة</h2>
+            <p class="text-center mb-4">ابحث عن البطاقتين المتشابهتين.</p>
+            <div class="memory-grid" id="memory-board"></div>
+            <p class="text-center success-msg" id="memory-msg">عمل رائع! كسبت 3 نجوم ⭐️⭐️⭐️</p>
+            <div class="text-center mt-4">
+                <button class="btn" onclick="initMemoryGame()">إعادة اللعب</button>
+            </div>
+        </section>
+
+        <!-- Game 2: Match Word -->
+        <section class="game-section">
+            <h2 class="game-title">٢. الكلمة والصورة</h2>
+            <p class="text-center mb-4">اختر الكلمة الصحيحة التي تدل على الصورة.</p>
+            <div class="match-container">
+                <div class="match-emoji" id="match-img">🍎</div>
+                <div class="match-options" id="match-opts">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+            <p class="text-center success-msg" id="match-msg">أحسنت! كسبت نجمة ⭐️</p>
+            <div class="text-center">
+                <button class="btn" onclick="initMatchGame()">سؤال جديد</button>
+            </div>
+        </section>
+
+        <!-- Game 3: Missing Letter -->
+        <section class="game-section">
+            <h2 class="game-title">٣. الحرف الناقص</h2>
+            <p class="text-center mb-4">أكمل الكلمة بالحرف الصحيح.</p>
+            <div class="missing-container">
+                <div class="missing-word" id="missing-word">شـ _ ـرة</div>
+                <div class="missing-letters" id="missing-opts">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+            <p class="text-center success-msg" id="missing-msg">إجابة صحيحة! كسبت نجمة ⭐️</p>
+            <div class="text-center mt-4">
+                <button class="btn" onclick="initMissingGame()">كلمة جديدة</button>
+            </div>
+        </section>
+
+
+    </main>
+
+
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>✦ أكاديمية المرح</h3>
+                <p>منصة تعليمية تفاعلية ممتعة للأطفال، نهدف إلى تعزيز حب التعلم واكتشاف العالم من خلال أنشطة وألعاب
+                    محفزة.</p>
+            </div>
+            <div class="footer-section">
+                <h3>أقسام سريعة</h3>
+                <ul>
+                    <li><a href="arabic.html">الحروف العربية</a></li>
+                    <li><a href="english.html">English Time</a></li>
+                    <li><a href="numbers.html">الأرقام والحساب</a></li>
+                    <li><a href="games.html">مخيم الألعاب</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>عن الأكاديمية</h3>
+                <ul>
+                    <li><a href="about.html">من نحن</a></li>
+                    <li><a href="contact.html">اتصل بنا</a></li>
+                    <li><a href="privacy.html">سياسة الخصوصية</a></li>
+                    <li><a href="terms.html">شروط الاستخدام</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>أكاديمية المرح &copy; <span id="year"></span> | جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+
+    <script src="../js/navbar.js"></script>
+    <script src="../js/rewards.js"></script>
+    <script>
+        /* --- Memory Game --- */
+        const memoryEmojis = ['🍎', '🚗', '🦁', '☀️', '🍎', '🚗', '🦁', '☀️'];
+        let hasFlippedCard = false;
+        let lockBoard = false;
+        let firstCard, secondCard;
+        let matchedPairs = 0;
+
+        function initMemoryGame() {
+            const board = document.getElementById('memory-board');
+            board.innerHTML = '';
+            matchedPairs = 0;
+            document.getElementById('memory-msg').style.display = 'none';
+            hasFlippedCard = false;
+            lockBoard = false;
+            firstCard = null;
+            secondCard = null;
+
+            // Shuffle
+            memoryEmojis.sort(() => 0.5 - Math.random());
+
+            memoryEmojis.forEach((emoji, index) => {
+                const card = document.createElement('div');
+                card.classList.add('memory-card');
+                card.dataset.emoji = emoji;
+                card.textContent = emoji;
+                card.addEventListener('click', flipCard);
+                board.appendChild(card);
+            });
+        }
+
+        function flipCard() {
+            if (lockBoard) return;
+            if (this === firstCard) return;
+
+            this.classList.add('flipped');
+
+            if (!hasFlippedCard) {
+                hasFlippedCard = true;
+                firstCard = this;
+                return;
+            }
+
+            secondCard = this;
+            checkForMatch();
+        }
+
+        function checkForMatch() {
+            let isMatch = firstCard.dataset.emoji === secondCard.dataset.emoji;
+            isMatch ? disableCards() : unflipCards();
+        }
+
+        function disableCards() {
+            firstCard.classList.add('matched');
+            secondCard.classList.add('matched');
+            firstCard.removeEventListener('click', flipCard);
+            secondCard.removeEventListener('click', flipCard);
+            resetBoard();
+
+            matchedPairs++;
+            if (matchedPairs === 4) {
+                document.getElementById('memory-msg').style.display = 'block';
+                window.rewards.addStars(3);
+            }
+        }
+
+        function unflipCards() {
+            lockBoard = true;
+            setTimeout(() => {
+                firstCard.classList.remove('flipped');
+                secondCard.classList.remove('flipped');
+                resetBoard();
+            }, 1000);
+        }
+
+        function resetBoard() {
+            [hasFlippedCard, lockBoard] = [false, false];
+            [firstCard, secondCard] = [null, null];
+        }
+
+        /* --- Match Word Game --- */
+        const matchQuestions = [
+            { img: '🐈', correct: 'قطة', wrong: ['كلب', 'فأر'] },
+            { img: '🍌', correct: 'موز', wrong: ['تفاح', 'برتقال'] },
+            { img: '✈️', correct: 'طائرة', wrong: ['سيارة', 'قطار'] },
+            { img: '🌲', correct: 'شجرة', wrong: ['زهرة', 'عشب'] }
+        ];
+
+        function initMatchGame() {
+            document.getElementById('match-msg').style.display = 'none';
+            const q = matchQuestions[Math.floor(Math.random() * matchQuestions.length)];
+            document.getElementById('match-img').textContent = q.img;
+
+            let options = [q.correct, ...q.wrong];
+            options.sort(() => 0.5 - Math.random());
+
+            const optsContainer = document.getElementById('match-opts');
+            optsContainer.innerHTML = '';
+
+            options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'match-btn';
+                btn.textContent = opt;
+                btn.onclick = () => {
+                    if (opt === q.correct) {
+                        btn.style.background = '#10b981';
+                        btn.style.color = 'white';
+                        document.getElementById('match-msg').style.display = 'block';
+                        window.rewards.addStars(1);
+                        // disable others
+                        Array.from(optsContainer.children).forEach(b => b.disabled = true);
+                    } else {
+                        btn.style.background = '#ef4444';
+                        btn.style.color = 'white';
+                        setTimeout(() => { btn.style.background = ''; btn.style.color = ''; }, 500);
+                    }
+                };
+                optsContainer.appendChild(btn);
+            });
+        }
+
+        /* --- Missing Letter Game --- */
+        const missingQuestions = [
+            { word: 'شـ _ ـرة', correct: 'ج', wrong: ['ح', 'خ'] },
+            { word: 'طـ _ ـر', correct: 'ي', wrong: ['و', 'ا'] },
+            { word: 'سـ _ ـك', correct: 'م', wrong: ['ن', 'ل'] },
+            { word: 'قـ _ ـر', correct: 'م', wrong: ['ب', 'ف'] }
+        ];
+
+        function initMissingGame() {
+            document.getElementById('missing-msg').style.display = 'none';
+            const q = missingQuestions[Math.floor(Math.random() * missingQuestions.length)];
+            document.getElementById('missing-word').textContent = q.word;
+
+            let options = [q.correct, ...q.wrong];
+            options.sort(() => 0.5 - Math.random());
+
+            const optsContainer = document.getElementById('missing-opts');
+            optsContainer.innerHTML = '';
+
+            options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'letter-opt';
+                btn.textContent = opt;
+                btn.onclick = () => {
+                    if (opt === q.correct) {
+                        btn.style.background = '#10b981';
+                        btn.style.color = 'white';
+                        document.getElementById('missing-word').textContent = q.word.replace('_', opt);
+                        document.getElementById('missing-msg').style.display = 'block';
+                        window.rewards.addStars(1);
+                        Array.from(optsContainer.children).forEach(b => b.disabled = true);
+                    } else {
+                        btn.style.background = '#ef4444';
+                        btn.style.color = 'white';
+                        setTimeout(() => { btn.style.background = ''; btn.style.color = ''; }, 500);
+                    }
+                };
+                optsContainer.appendChild(btn);
+            });
+        }
+
+        // Initialize all games on load
+        window.addEventListener('DOMContentLoaded', () => {
+            initMemoryGame();
+            initMatchGame();
+            initMissingGame();
+        });
+    </script>
+</body>
+
+</html>
