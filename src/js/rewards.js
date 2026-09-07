@@ -1,3 +1,76 @@
+
+// Audio context setup for sound effects
+let audioCtx;
+
+function initAudio() {
+    if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    if(audioCtx.state === 'suspended') {
+        audioCtx.resume();
+    }
+}
+
+function playSuccessSound() {
+    initAudio();
+    const oscillator = audioCtx.createOscillator();
+    const gainNode = audioCtx.createGain();
+
+    oscillator.type = 'sine';
+    oscillator.frequency.setValueAtTime(440, audioCtx.currentTime);
+    oscillator.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.1);
+
+    gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+
+    oscillator.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+
+    oscillator.start();
+    oscillator.stop(audioCtx.currentTime + 0.3);
+}
+
+function playErrorSound() {
+    initAudio();
+    const oscillator = audioCtx.createOscillator();
+    const gainNode = audioCtx.createGain();
+
+    oscillator.type = 'sawtooth';
+    oscillator.frequency.setValueAtTime(300, audioCtx.currentTime);
+    oscillator.frequency.exponentialRampToValueAtTime(150, audioCtx.currentTime + 0.2);
+
+    gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.2);
+
+    oscillator.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+
+    oscillator.start();
+    oscillator.stop(audioCtx.currentTime + 0.2);
+}
+
+function fireConfetti() {
+    // Dynamically load confetti if not present
+    if (typeof confetti === 'undefined') {
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js';
+        script.onload = () => {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+        };
+        document.head.appendChild(script);
+    } else {
+        confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.6 }
+        });
+    }
+}
+
 class RewardsSystem {
     constructor() {
         this.stars = parseInt(localStorage.getItem('fun_academy_stars')) || 0;
@@ -13,6 +86,8 @@ class RewardsSystem {
         localStorage.setItem('fun_academy_stars', this.stars);
         this.updateBadge();
         this.showAnimation(amount);
+        playSuccessSound();
+        fireConfetti();
     }
 
     getStars() {
@@ -92,4 +167,6 @@ class RewardsSystem {
     }
 }
 
+
+window.playErrorSound = playErrorSound;
 window.rewards = new RewardsSystem();

@@ -301,6 +301,7 @@
                         // disable others
                         Array.from(optsContainer.children).forEach(b => b.disabled = true);
                     } else {
+                        if(window.playErrorSound) window.playErrorSound();
                         btn.style.background = '#ef4444';
                         btn.style.color = 'white';
                         setTimeout(() => { btn.style.background = ''; btn.style.color = ''; }, 500);
@@ -342,6 +343,7 @@
                         window.rewards.addStars(1);
                         Array.from(optsContainer.children).forEach(b => b.disabled = true);
                     } else {
+                        if(window.playErrorSound) window.playErrorSound();
                         btn.style.background = '#ef4444';
                         btn.style.color = 'white';
                         setTimeout(() => { btn.style.background = ''; btn.style.color = ''; }, 500);
