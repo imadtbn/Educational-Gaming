@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://imadtbn.github.io/sitemap.xml
+Sitemap: https://imadtbn.github.io/Educational-Gaming/sitemap.xml
