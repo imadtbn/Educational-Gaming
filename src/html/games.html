@@ -85,8 +85,21 @@
     <header>
         <div class="container nav">
             <a href="../index.html" class="logo">✦ أكاديمية المرح</a>
-            <div class="nav-links">
+                        <div class="nav-links">
                 <a href="../index.html">الرئيسية</a>
+                <a href="arabic.html">الحروف العربية</a>
+                <a href="english.html">English</a>
+                <a href="numbers.html">الأرقام</a>
+                <a href="animals.html">الحيوانات</a>
+                <a href="shapes.html">الأشكال</a>
+                <a href="colors.html">الألوان</a>
+                <a href="body.html">أجزاء الجسم</a>
+                <a href="professions.html">المهن</a>
+                <a href="transport.html">المواصلات</a>
+                <a href="seasons.html">فصول السنة</a>
+                <a href="drawing.html">الرسم</a>
+                <a href="writing.html">الكتابة</a>
+                <a href="games.html">الألعاب</a>
             </div>
         </div>
     </header>
@@ -139,50 +152,40 @@
         </section>
 
 
-        <!-- Game 3: Memory -->
-        <section class="game-section" style="background: white; padding: 30px; border-radius: 16px; margin-bottom: 40px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-            <h2 class="game-title" style="color: var(--color-primary); margin-bottom: 20px; border-bottom: 2px dashed var(--color-border); padding-bottom: 10px;">٣. مطابقة الذاكرة</h2>
-            <p class="text-center mb-4">ابحث عن البطاقتين المتشابهتين.</p>
-            <div class="memory-grid" id="memory-board" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-width: 400px; margin: 0 auto;"></div>
-            <p class="text-center success-msg" id="memory-msg" style="color: #10b981; font-weight: bold; font-size: 1.2rem; display: none; margin-top: 10px;">عمل رائع! كسبت 3 نجوم ⭐️⭐️⭐️</p>
-            <div class="text-center mt-4">
-                <button class="btn" onclick="initMemoryGame()">إعادة اللعب</button>
-            </div>
-        </section>
+        </main>
 
-        <!-- Game 4: Match Word -->
-        <section class="game-section" style="background: white; padding: 30px; border-radius: 16px; margin-bottom: 40px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-            <h2 class="game-title" style="color: var(--color-primary); margin-bottom: 20px; border-bottom: 2px dashed var(--color-border); padding-bottom: 10px;">٤. الكلمة والصورة</h2>
-            <p class="text-center mb-4">اختر الكلمة الصحيحة التي تدل على الصورة.</p>
-            <div class="match-container" style="display: flex; gap: 40px; justify-content: center; align-items: center; margin-bottom: 20px;">
-                <div class="match-emoji" id="match-img" style="font-size: 6rem; background: #f8f9fa; padding: 20px; border-radius: 16px;">🍎</div>
-                <div class="match-options" id="match-opts" style="display: flex; flex-direction: column; gap: 15px;">
-                    <!-- Populated by JS -->
-                </div>
-            </div>
-            <p class="text-center success-msg" id="match-msg" style="color: #10b981; font-weight: bold; font-size: 1.2rem; display: none; margin-top: 10px;">أحسنت! كسبت نجمة ⭐️</p>
-            <div class="text-center">
-                <button class="btn" onclick="initMatchGame()">سؤال جديد</button>
-            </div>
-        </section>
 
-        <!-- Game 5: Missing Letter -->
-        <section class="game-section" style="background: white; padding: 30px; border-radius: 16px; margin-bottom: 40px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-            <h2 class="game-title" style="color: var(--color-primary); margin-bottom: 20px; border-bottom: 2px dashed var(--color-border); padding-bottom: 10px;">٥. الحرف الناقص</h2>
-            <p class="text-center mb-4">أكمل الكلمة بالحرف الصحيح.</p>
-            <div class="missing-container" style="text-align: center;">
-                <div class="missing-word" id="missing-word" style="font-size: 3rem; letter-spacing: 5px; margin-bottom: 20px; font-weight: bold; color: var(--color-text);">شـ _ ـرة</div>
-                <div class="missing-letters" id="missing-opts" style="display: flex; gap: 10px; justify-content: center;">
-                    <!-- Populated by JS -->
-                </div>
-            </div>
-            <p class="text-center success-msg" id="missing-msg" style="color: #10b981; font-weight: bold; font-size: 1.2rem; display: none; margin-top: 10px;">إجابة صحيحة! كسبت نجمة ⭐️</p>
-            <div class="text-center mt-4">
-                <button class="btn" onclick="initMissingGame()">كلمة جديدة</button>
-            </div>
-        </section>
 
-    </main>
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>✦ أكاديمية المرح</h3>
+                <p>منصة تعليمية تفاعلية ممتعة للأطفال، نهدف إلى تعزيز حب التعلم واكتشاف العالم من خلال أنشطة وألعاب محفزة.</p>
+            </div>
+            <div class="footer-section">
+                <h3>أقسام سريعة</h3>
+                <ul>
+                    <li><a href="arabic.html">الحروف العربية</a></li>
+                    <li><a href="english.html">English Time</a></li>
+                    <li><a href="numbers.html">الأرقام والحساب</a></li>
+                    <li><a href="games.html">مخيم الألعاب</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>عن الأكاديمية</h3>
+                <ul>
+                    <li><a href="about.html">من نحن</a></li>
+                    <li><a href="contact.html">اتصل بنا</a></li>
+                    <li><a href="privacy.html">سياسة الخصوصية</a></li>
+                    <li><a href="terms.html">شروط الاستخدام</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>أكاديمية المرح &copy; <span id="year"></span> | جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
 
     <script src="../js/navbar.js"></script>
     <script src="../js/rewards.js"></script>

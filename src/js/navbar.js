@@ -1,29 +1,39 @@
 function setupNavbar() {
     const navLinks = document.querySelector('.nav-links');
+    const nav = document.querySelector('header .nav');
+
+    if(!nav || !navLinks) return;
+
+    // Create Hamburger
     const hamburger = document.createElement('div');
     hamburger.className = 'hamburger';
     hamburger.innerHTML = '☰';
-    hamburger.style.fontSize = '2rem';
-    hamburger.style.cursor = 'pointer';
-    hamburger.style.color = 'var(--color-primary)';
+    nav.insertBefore(hamburger, navLinks);
 
-    // Hide hamburger by default (desktop)
-    hamburger.style.display = 'none';
+    // Create Overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'nav-overlay';
+    document.body.appendChild(overlay);
 
-    // Insert hamburger into nav
-    const nav = document.querySelector('nav');
-    if(nav && navLinks) {
-        nav.insertBefore(hamburger, navLinks);
+    // Create Close Button inside navLinks
+    const closeBtn = document.createElement('div');
+    closeBtn.className = 'close-menu';
+    closeBtn.innerHTML = '✖';
+    navLinks.insertBefore(closeBtn, navLinks.firstChild);
 
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
+    function toggleMenu() {
+        navLinks.classList.toggle('active');
+        overlay.classList.toggle('active');
+        document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
     }
+
+    hamburger.addEventListener('click', toggleMenu);
+    closeBtn.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', toggleMenu);
 
     // PWA Service Worker Registration
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        // Adjust path based on current location (root vs html folder)
         const swPath = window.location.pathname.includes('/html/') ? '../sw.js' : 'sw.js';
         navigator.serviceWorker.register(swPath).catch(err => {
           console.log('SW registration failed: ', err);
