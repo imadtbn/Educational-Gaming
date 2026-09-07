@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://fun-academy.com/sitemap.xml
