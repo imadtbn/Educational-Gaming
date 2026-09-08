@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>أكاديمية المرح | تعلّم واكتشف</title>
     <meta name="description"
-        content="أكاديمية المرح: موقع تعليمي تفاعلي ممتع للأطفال لتعلّم الحروف العربية والإنجليزية والأرقام والحساب بطريقة سهلة ومحفزة.">
+        content="أكاديمية المرح: منصة تعليمية تفاعلية للأطفال تشمل الحروف العربية والإنجليزية، الأرقام، الحساب، الحيوانات، الألوان، الأشكال، وألعاب تعليمية ممتعة. تعلّم واستكشف معنا!">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#117F86">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -47,29 +47,101 @@
     <link rel="manifest" href="manifest.json">
     <!-- Structured Data -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
       "@type": "WebSite",
+      "@id": "https://imadtbn.github.io/Educational-Gaming/#website",
+      "url": "https://imadtbn.github.io/Educational-Gaming/",
       "name": "أكاديمية المرح | تعلّم واكتشف",
+      "alternateName": ["Educational-Gaming", "أكاديمية المرح"],
       "description": "أكاديمية المرح: موقع تعليمي تفاعلي ممتع للأطفال لتعلّم الحروف العربية والإنجليزية والأرقام والحساب بطريقة سهلة ومحفزة.",
-      "url": "https://imadtbn.github.io/Educational-Gaming/index.html",
+      "inLanguage": "ar-DZ",
       "publisher": {
-        "@type": "Organization",
-        "name": "أكاديمية المرح",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://imadtbn.github.io/Educational-Gaming/assets/icon-512.svg"
-        }
+        "@id": "https://imadtbn.github.io/Educational-Gaming/#organization"
       },
-      "inLanguage": "ar"
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://imadtbn.github.io/Educational-Gaming/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "audience": {
+        "@type": "EducationalAudience",
+        "educationalRole": "student",
+        "audienceType": "children"
+      },
+      "educationalUse": "instruction",
+      "learningResourceType": "Educational Game, Interactive Activity, Lesson"
+    },
+    {
+      "@type": "EducationalOrganization",
+      "@id": "https://imadtbn.github.io/Educational-Gaming/#organization",
+      "name": "أكاديمية المرح",
+      "url": "https://imadtbn.github.io/Educational-Gaming/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://imadtbn.github.io/Educational-Gaming/assets/icon-512.svg",
+        "width": 512,
+        "height": 512
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "tabaniimadeddine@gmail.com",
+        "contactType": "customer support",
+        "availableLanguage": ["Arabic", "English"]
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "الجزائر"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://imadtbn.github.io/Educational-Gaming/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "الرئيسية",
+          "item": "https://imadtbn.github.io/Educational-Gaming/index.html"
+        }
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://imadtbn.github.io/Educational-Gaming/#learning-paths",
+      "name": "مسارات التعلم في أكاديمية المرح",
+      "description": "قائمة بجميع الموضوعات التعليمية المتاحة للأطفال",
+      "url": "https://imadtbn.github.io/Educational-Gaming/",
+      "numberOfItems": 14,
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "الحروف العربية", "url": "https://imadtbn.github.io/Educational-Gaming/html/arabic.html"},
+        {"@type": "ListItem", "position": 2, "name": "English Time", "url": "https://imadtbn.github.io/Educational-Gaming/html/english.html"},
+        {"@type": "ListItem", "position": 3, "name": "الحيوانات", "url": "https://imadtbn.github.io/Educational-Gaming/html/animals.html"},
+        {"@type": "ListItem", "position": 4, "name": "الأرقام والحساب", "url": "https://imadtbn.github.io/Educational-Gaming/html/numbers.html"},
+        {"@type": "ListItem", "position": 5, "name": "الأشكال الهندسية", "url": "https://imadtbn.github.io/Educational-Gaming/html/shapes.html"},
+        {"@type": "ListItem", "position": 6, "name": "أيام الأسبوع وشهور السنة", "url": "https://imadtbn.github.io/Educational-Gaming/html/days-months.html"},
+        {"@type": "ListItem", "position": 7, "name": "عالم الألوان", "url": "https://imadtbn.github.io/Educational-Gaming/html/colors.html"},
+        {"@type": "ListItem", "position": 8, "name": "أجزاء الجسم", "url": "https://imadtbn.github.io/Educational-Gaming/html/body.html"},
+        {"@type": "ListItem", "position": 9, "name": "مخيم الألعاب", "url": "https://imadtbn.github.io/Educational-Gaming/html/games.html"},
+        {"@type": "ListItem", "position": 10, "name": "المهن", "url": "https://imadtbn.github.io/Educational-Gaming/html/professions.html"},
+        {"@type": "ListItem", "position": 11, "name": "وسائل النقل", "url": "https://imadtbn.github.io/Educational-Gaming/html/transport.html"},
+        {"@type": "ListItem", "position": 12, "name": "الفصول الأربعة", "url": "https://imadtbn.github.io/Educational-Gaming/html/seasons.html"},
+        {"@type": "ListItem", "position": 13, "name": "محطة التلوين", "url": "https://imadtbn.github.io/Educational-Gaming/html/drawing.html"},
+        {"@type": "ListItem", "position": 14, "name": "محطة الكتابة", "url": "https://imadtbn.github.io/Educational-Gaming/html/writing.html"},
+        {"@type": "ListItem", "position": 15, "name": "Writing English", "url": "https://imadtbn.github.io/Educational-Gaming/html/writing-En.html"}
+      ]
     }
-    </script>
+  ]
+}
+</script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-B1G7WFGDBR"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag() {dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
 
         gtag('config', 'G-B1G7WFGDBR');
@@ -124,6 +196,7 @@
 
     <main>
         <section class="hero">
+
             <div class="container">
                 <p style="color: var(--color-primary); font-weight: 700; margin-bottom: 10px;">✦ تعلّم، العب، واكتشف</p>
                 <h1>كل حرف هو بداية <em>مغامرة</em> جديدة.</h1>
@@ -136,6 +209,8 @@
             </div>
         </section>
 
+
+
         <!-- AdSense 01 الإعلانات الصورية -->
         <div class="container">
             <div class="ad-container">
@@ -144,6 +219,17 @@
                 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
             </div>
         </div>
+
+        <section class="how-it-works">
+            <div class="container">
+                <h2 class="section-title">كيف تبدأ رحلتك؟</h2>
+                <div class="steps">
+                    <div class="step"><span>1</span> اختر محطتك المفضلة من البطاقات أدناه.</div>
+                    <div class="step"><span>2</span> استمع، تفاعل، وأجب عن الأسئلة.</div>
+                    <div class="step"><span>3</span> اجمع النجوم واحصل على شارات التميز.</div>
+                </div>
+            </div>
+        </section>
 
         <section id="paths" class="container">
             <h2 class="section-title text-center">اختر محطتك التالية</h2>
@@ -172,6 +258,11 @@
                     <div class="card-icon">⭐</div>
                     <h3>الأشكال الهندسية</h3>
                     <p>تعرف على الأشكال من حولنا وتدرب على رسمها.</p>
+                </a>
+                <a href="html/days-months.html" class="card teal">
+                    <div class="card-icon">📅</div>
+                    <h3>أيام الأسبوع وشهور السنة</h3>
+                    <p>تعرف على أيام الأسبوع وشهور السنة.</p>
                 </a>
                 <a href="html/colors.html" class="card purple">
                     <div class="card-icon">🎨</div>
@@ -221,15 +312,19 @@
             </div>
         </section>
 
-        <!-- AdSense 02 إعلان داخل الخلاصة-->
-        <div class="container">
-            <div class="ad-container">
-                <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-h9-h+8-jr+r8"
-                    data-ad-client="ca-pub-5656416032906373" data-ad-slot="8546947691"></ins>
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            </div>
-        </div>
+
     </main>
+
+    <section class="about-platform">
+        <div class="container">
+            <h2 class="section-title">لماذا أكاديمية المرح؟</h2>
+            <p>نؤمن بأن التعلم الحقيقي يبدأ بالمتعة. لذلك صممنا منصتنا لتكون رحلة تفاعلية يمر فيها الطفل عبر محطات
+                متعددة: الحروف، الأرقام، الحيوانات، الألوان، والمزيد. كل محطة مزودة بأنشطة سمعية وبصرية وألعاب تعزز
+                الفهم وتنمي المهارات.</p>
+            <p>محتوى أكاديمية المرح موجه للأطفال من سن 3 إلى 10 سنوات، وهو متوافق مع المناهج التعليمية في العالم العربي،
+                مع إضافة لمسة إبداعية تشجع على الاستكشاف والفضول.</p>
+        </div>
+    </section>
 
     <!-- AdSense 01 الإعلانات المتعددة -->
     <div class="container">
