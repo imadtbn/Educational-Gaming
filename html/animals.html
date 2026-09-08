@@ -95,24 +95,54 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5656416032906373"
         crossorigin="anonymous"></script>
     <!-- Structured Data -->
-    <script type="application/ld+json">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "أكاديمية المرح | عالم الحيوانات",
-      "description": "اكتشف عالم الحيوانات وتعرف على أسمائها بالعربية والإنجليزية مع أصواتها وتصنيفاتها.",
+      "@type": "CollectionPage",
+      "@id": "https://imadtbn.github.io/Educational-Gaming/html/animals.html",
       "url": "https://imadtbn.github.io/Educational-Gaming/html/animals.html",
-      "publisher": {
-        "@type": "Organization",
-        "name": "أكاديمية المرح",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://imadtbn.github.io/Educational-Gaming/assets/icon-512.svg"
-        }
+      "name": "أكاديمية المرح | عالم الحيوانات",
+      "description": "اكتشف عالم الحيوانات وتعلم أسماءها بالعربية والإنجليزية مع أصواتها وتصنيفاتها.",
+      "isPartOf": {
+        "@id": "https://imadtbn.github.io/Educational-Gaming/#website"
       },
-      "inLanguage": "ar"
+      "breadcrumb": {
+        "@id": "https://imadtbn.github.io/Educational-Gaming/html/animals.html#breadcrumb"
+      },
+      "mainEntity": {
+        "@type": "ItemList",
+        "itemListElement": [
+          // --- ضع هنا مخرجات السكريبت الموجود في الخطوة التالية ---
+          // مثال للعنصر الأول:
+          { "@type": "ListItem", "position": 1, "name": "أسد (Lion)", "url": "#animal-1" },
+          { "@type": "ListItem", "position": 2, "name": "فيل (Elephant)", "url": "#animal-2" }
+          // ... باقي العناصر
+        ]
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://imadtbn.github.io/Educational-Gaming/html/animals.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "الرئيسية",
+          "item": "https://imadtbn.github.io/Educational-Gaming/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "عالم الحيوانات",
+          "item": "https://imadtbn.github.io/Educational-Gaming/html/animals.html"
+        }
+      ]
     }
-    </script>
+  ]
+}
+</script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-B1G7WFGDBR"></script>

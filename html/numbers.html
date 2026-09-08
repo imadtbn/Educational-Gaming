@@ -97,23 +97,98 @@
     <link rel="manifest" href="../manifest.json">
     <!-- Structured Data -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "الأرقام | أكاديمية المرح",
-      "description": "ألعاب تعليمية لتعلم الأرقام والحساب والعد للأطفال بطريقة مبسطة وتفاعلية.",
-      "url": "https://imadtbn.github.io/Educational-Gaming/html/numbers.html",
+      "@type": "WebSite",
+      "@id": "https://imadtbn.github.io/Educational-Gaming/#website",
+      "url": "https://imadtbn.github.io/Educational-Gaming/",
+      "name": "أكاديمية المرح | تعلّم واكتشف",
+      "description": "منصة تعليمية تفاعلية ممتعة للأطفال",
       "publisher": {
-        "@type": "Organization",
-        "name": "أكاديمية المرح",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://imadtbn.github.io/Educational-Gaming/assets/icon-512.svg"
+        "@id": "https://imadtbn.github.io/Educational-Gaming/#organization"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://imadtbn.github.io/Educational-Gaming/#organization",
+      "name": "أكاديمية المرح",
+      "url": "https://imadtbn.github.io/Educational-Gaming/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://imadtbn.github.io/Educational-Gaming/assets/icon-512.svg",
+        "width": 512,
+        "height": 512
+      },
+      "email": "tabaniimadeddine@gmail.com",
+      "areaServed": {
+        "@type": "Country",
+        "name": "الجزائر"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://imadtbn.github.io/Educational-Gaming/html/numbers.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "الرئيسية",
+          "item": "https://imadtbn.github.io/Educational-Gaming/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "الأرقام والحساب",
+          "item": "https://imadtbn.github.io/Educational-Gaming/html/numbers.html"
+        }
+      ]
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://imadtbn.github.io/Educational-Gaming/html/numbers.html",
+      "url": "https://imadtbn.github.io/Educational-Gaming/html/numbers.html",
+      "name": "الأرقام والحساب | أكاديمية المرح",
+      "description": "تعلم الأرقام من 1 إلى 10 مع النطق الصحيح والتمثيل البصري بالنقاط. ألعاب تعليمية لتعلم الأرقام والحساب والعد للأطفال بطريقة مبسطة وتفاعلية.",
+      "isPartOf": {
+        "@id": "https://imadtbn.github.io/Educational-Gaming/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://imadtbn.github.io/Educational-Gaming/html/numbers.html#breadcrumb"
+      },
+      "audience": {
+        "@type": "EducationalAudience",
+        "educationalRole": "student",
+        "audienceType": "children",
+        "suggestedAge": {
+          "@type": "QuantitativeValue",
+          "minValue": 3,
+          "maxValue": 8
         }
       },
-      "inLanguage": "ar"
+      "educationalUse": "instruction",
+      "learningResourceType": "Flashcard, Counting Activity, Interactive Learning",
+      "inLanguage": "ar",
+      "mainEntity": {
+        "@type": "ItemList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "1 - واحد", "url": "#number-1" },
+          { "@type": "ListItem", "position": 2, "name": "2 - اثنان", "url": "#number-2" },
+          { "@type": "ListItem", "position": 3, "name": "3 - ثلاثة", "url": "#number-3" },
+          { "@type": "ListItem", "position": 4, "name": "4 - أربعة", "url": "#number-4" },
+          { "@type": "ListItem", "position": 5, "name": "5 - خمسة", "url": "#number-5" },
+          { "@type": "ListItem", "position": 6, "name": "6 - ستة", "url": "#number-6" },
+          { "@type": "ListItem", "position": 7, "name": "7 - سبعة", "url": "#number-7" },
+          { "@type": "ListItem", "position": 8, "name": "8 - ثمانية", "url": "#number-8" },
+          { "@type": "ListItem", "position": 9, "name": "9 - تسعة", "url": "#number-9" },
+          { "@type": "ListItem", "position": 10, "name": "10 - عشرة", "url": "#number-10" }
+        ]
+      }
     }
-    </script>
+  ]
+}
+</script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-B1G7WFGDBR"></script>
@@ -159,7 +234,7 @@
                 <a href="numbers.html">الأرقام</a>
                 <a href="animals.html">الحيوانات</a>
                 <a href="shapes.html">الأشكال</a>
-                <a href="days-months.html">الأيام والأشهر</a>                <a href="colors.html">الألوان</a>
+                <a href="days-months.html">الأيام والأشهر</a> <a href="colors.html">الألوان</a>
                 <a href="body.html">أجزاء الجسم</a>
                 <a href="professions.html">المهن</a>
                 <a href="transport.html">المواصلات</a>
@@ -184,7 +259,7 @@
                 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
             </div>
         </div>
-
+        <h2 class="section-title" style="color: #d69e0b; font-size: 2rem;">تعلم الأرقام من 1 إلى 10</h2>
         <div class="numbers-grid" id="numbers-board"></div>
     </main>
 
@@ -197,6 +272,8 @@
         for (let i = 1; i <= 10; i++) {
             const card = document.createElement('div');
             card.className = 'number-card';
+            card.id = `number-${i}`;  // إضافة المعرف الفريد
+
 
             let dotsHtml = '';
             for (let j = 0; j < i; j++) {
@@ -221,11 +298,8 @@
     <!-- AdSense 01 الإعلانات المتعددة -->
     <div class="container">
         <div class="ad-container">
-            <ins class="adsbygoogle"
-     style="display:block"
-     data-ad-format="autorelaxed"
-     data-ad-client="ca-pub-5656416032906373"
-     data-ad-slot="6528123169"></ins>
+            <ins class="adsbygoogle" style="display:block" data-ad-format="autorelaxed"
+                data-ad-client="ca-pub-5656416032906373" data-ad-slot="6528123169"></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
     </div>

@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>الأشكال الهندسية | أكاديمية المرح</title>
-    <meta name="description" content="تعلّم الأشكال الهندسية الأساسية للأطفال بطريقة مرئية وتفاعلية.">
-    <meta name="robots" content="index, follow">
+<meta name="description" content="تعلّم الأشكال الهندسية للأطفال: الدائرة، المربع، المثلث، النجم، القلب، وأكثر من 20 شكلاً مع النطق والتمثيل البصري التفاعلي في أكاديمية المرح.">    <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#117F86">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
@@ -331,24 +330,109 @@
         crossorigin="anonymous"></script>
     <link rel="manifest" href="../manifest.json">
     <!-- Structured Data -->
-    <script type="application/ld+json">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "الأشكال الهندسية | أكاديمية المرح",
-      "description": "تعلّم الأشكال الهندسية الأساسية للأطفال بطريقة مرئية وتفاعلية.",
-      "url": "https://imadtbn.github.io/Educational-Gaming/html/shapes.html",
+      "@type": "WebSite",
+      "@id": "https://imadtbn.github.io/Educational-Gaming/#website",
+      "url": "https://imadtbn.github.io/Educational-Gaming/",
+      "name": "أكاديمية المرح | تعلّم واكتشف",
+      "description": "منصة تعليمية تفاعلية ممتعة للأطفال",
       "publisher": {
-        "@type": "Organization",
-        "name": "أكاديمية المرح",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://imadtbn.github.io/Educational-Gaming/assets/icon-512.svg"
+        "@id": "https://imadtbn.github.io/Educational-Gaming/#organization"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://imadtbn.github.io/Educational-Gaming/#organization",
+      "name": "أكاديمية المرح",
+      "url": "https://imadtbn.github.io/Educational-Gaming/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://imadtbn.github.io/Educational-Gaming/assets/icon-512.svg",
+        "width": 512,
+        "height": 512
+      },
+      "email": "tabaniimadeddine@gmail.com",
+      "areaServed": {
+        "@type": "Country",
+        "name": "الجزائر"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://imadtbn.github.io/Educational-Gaming/html/shapes.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "الرئيسية",
+          "item": "https://imadtbn.github.io/Educational-Gaming/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "الأشكال الهندسية",
+          "item": "https://imadtbn.github.io/Educational-Gaming/html/shapes.html"
+        }
+      ]
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://imadtbn.github.io/Educational-Gaming/html/shapes.html",
+      "url": "https://imadtbn.github.io/Educational-Gaming/html/shapes.html",
+      "name": "الأشكال الهندسية | أكاديمية المرح",
+      "description": "تعلّم الأشكال الهندسية الأساسية والمتقدمة للأطفال بطريقة مرئية وتفاعلية. اكتشف الدائرة، المربع، المثلث، النجم، القلب، وأكثر من 20 شكلاً هندسياً.",
+      "isPartOf": {
+        "@id": "https://imadtbn.github.io/Educational-Gaming/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://imadtbn.github.io/Educational-Gaming/html/shapes.html#breadcrumb"
+      },
+      "audience": {
+        "@type": "EducationalAudience",
+        "educationalRole": "student",
+        "audienceType": "children",
+        "suggestedAge": {
+          "@type": "QuantitativeValue",
+          "minValue": 3,
+          "maxValue": 12
         }
       },
-      "inLanguage": "ar"
+      "educationalUse": "instruction",
+      "learningResourceType": "Flashcard, Visual Learning, Interactive Activity",
+      "inLanguage": "ar",
+      "mainEntity": {
+        "@type": "ItemList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "دائرة", "url": "#shape-circle" },
+          { "@type": "ListItem", "position": 2, "name": "مربع", "url": "#shape-square" },
+          { "@type": "ListItem", "position": 3, "name": "مثلث", "url": "#shape-triangle" },
+          { "@type": "ListItem", "position": 4, "name": "مستطيل", "url": "#shape-rectangle" },
+          { "@type": "ListItem", "position": 5, "name": "نجمة", "url": "#shape-star" },
+          { "@type": "ListItem", "position": 6, "name": "قلب", "url": "#shape-heart" },
+          { "@type": "ListItem", "position": 7, "name": "بيضاوي", "url": "#shape-oval" },
+          { "@type": "ListItem", "position": 8, "name": "معين", "url": "#shape-diamond" },
+          { "@type": "ListItem", "position": 9, "name": "متوازي الأضلاع", "url": "#shape-parallelogram" },
+          { "@type": "ListItem", "position": 10, "name": "شبه منحرف", "url": "#shape-trapezoid" },
+          { "@type": "ListItem", "position": 11, "name": "خماسي الأضلاع", "url": "#shape-pentagon" },
+          { "@type": "ListItem", "position": 12, "name": "سداسي الأضلاع", "url": "#shape-hexagon" },
+          { "@type": "ListItem", "position": 13, "name": "سباعي الأضلاع", "url": "#shape-heptagon" },
+          { "@type": "ListItem", "position": 14, "name": "ثماني الأضلاع", "url": "#shape-octagon" },
+          { "@type": "ListItem", "position": 15, "name": "تساعي الأضلاع", "url": "#shape-nonagon" },
+          { "@type": "ListItem", "position": 16, "name": "عشاري الأضلاع", "url": "#shape-decagon" },
+          { "@type": "ListItem", "position": 17, "name": "ضلعان متقطعان", "url": "#shape-cross" },
+          { "@type": "ListItem", "position": 18, "name": "سهم", "url": "#shape-arrow" },
+          { "@type": "ListItem", "position": 19, "name": "هلال", "url": "#shape-crescent" },
+          { "@type": "ListItem", "position": 20, "name": "نصف دائرة", "url": "#shape-semicircle" }
+        ]
+      }
     }
-    </script>
+  ]
+}
+</script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-B1G7WFGDBR"></script>
@@ -394,7 +478,7 @@
                 <a href="numbers.html">الأرقام</a>
                 <a href="animals.html">الحيوانات</a>
                 <a href="shapes.html">الأشكال</a>
-                <a href="days-months.html">الأيام والأشهر</a>                <a href="colors.html">الألوان</a>
+                <a href="days-months.html">الأيام والأشهر</a> <a href="colors.html">الألوان</a>
                 <a href="body.html">أجزاء الجسم</a>
                 <a href="professions.html">المهن</a>
                 <a href="transport.html">المواصلات</a>
@@ -420,8 +504,8 @@
             </div>
         </div>
 
-        <div class="shape-board" id="shape-board"></div>
-
+<h2 class="section-title text-center">جميع الأشكال الهندسية</h2>
+<div class="shape-board" id="shape-board" role="list" aria-label="قائمة الأشكال الهندسية التفاعلية"></div>
     </main>
 
     <script type="module">
@@ -455,6 +539,8 @@
         shapes.forEach(shape => {
             const card = document.createElement('div');
             card.className = `shape-card ${shape.color}`;
+                card.id = `shape-${shape.id}`;  // إضافة المعرف الفريد
+
             // We use inline style for border color hover effect based on class in CSS
             card.innerHTML = `
                 <div class="shape-icon ${shape.class}"></div>
@@ -468,16 +554,11 @@
         });
     </script>
 
-
-
     <!-- AdSense 01 الإعلانات المتعددة -->
     <div class="container">
         <div class="ad-container">
-            <ins class="adsbygoogle"
-     style="display:block"
-     data-ad-format="autorelaxed"
-     data-ad-client="ca-pub-5656416032906373"
-     data-ad-slot="6528123169"></ins>
+            <ins class="adsbygoogle" style="display:block" data-ad-format="autorelaxed"
+                data-ad-client="ca-pub-5656416032906373" data-ad-slot="6528123169"></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
     </div>

@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>أكاديمية المرح | اتصل بنا</title>
-    <meta name="description" content="تواصل مع فريق أكاديمية المرح لإبداء الملاحظات أو الاستفسارات.">
+    <meta name="description"
+        content="تواصل مع فريق أكاديمية المرح عبر البريد الإلكتروني tabaniimadeddine@gmail.com. نرحب بملاحظاتكم واستفساراتكم لتطوير منصتنا التعليمية للأطفال.">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#117F86">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,23 +38,91 @@
     <link rel="manifest" href="../manifest.json">
     <!-- Structured Data -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "أكاديمية المرح | اتصل بنا",
-      "description": "تواصل مع فريق أكاديمية المرح لإبداء الملاحظات أو الاستفسارات.",
-      "url": "https://imadtbn.github.io/Educational-Gaming/html/contact.html",
+      "@type": "WebSite",
+      "@id": "https://imadtbn.github.io/Educational-Gaming/#website",
+      "url": "https://imadtbn.github.io/Educational-Gaming/",
+      "name": "أكاديمية المرح | تعلّم واكتشف",
+      "description": "منصة تعليمية تفاعلية ممتعة للأطفال",
       "publisher": {
-        "@type": "Organization",
-        "name": "أكاديمية المرح",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://imadtbn.github.io/Educational-Gaming/assets/icon-512.svg"
+        "@id": "https://imadtbn.github.io/Educational-Gaming/#organization"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://imadtbn.github.io/Educational-Gaming/#organization",
+      "name": "أكاديمية المرح",
+      "url": "https://imadtbn.github.io/Educational-Gaming/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://imadtbn.github.io/Educational-Gaming/assets/icon-512.svg",
+        "width": 512,
+        "height": 512
+      },
+      "email": "tabaniimadeddine@gmail.com",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "tabaniimadeddine@gmail.com",
+        "contactType": "customer support",
+        "availableLanguage": ["Arabic", "English"],
+        "areaServed": {
+          "@type": "Country",
+          "name": "الجزائر"
         }
       },
-      "inLanguage": "ar"
+      "areaServed": {
+        "@type": "Country",
+        "name": "الجزائر"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://imadtbn.github.io/Educational-Gaming/html/contact.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "الرئيسية",
+          "item": "https://imadtbn.github.io/Educational-Gaming/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "اتصل بنا",
+          "item": "https://imadtbn.github.io/Educational-Gaming/html/contact.html"
+        }
+      ]
+    },
+    {
+      "@type": "ContactPage",
+      "@id": "https://imadtbn.github.io/Educational-Gaming/html/contact.html",
+      "url": "https://imadtbn.github.io/Educational-Gaming/html/contact.html",
+      "name": "اتصل بنا | أكاديمية المرح",
+      "description": "تواصل مع فريق أكاديمية المرح لإبداء الملاحظات أو الاستفسارات. يمكنك مراسلتنا عبر البريد الإلكتروني tabaniimadeddine@gmail.com.",
+      "isPartOf": {
+        "@id": "https://imadtbn.github.io/Educational-Gaming/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://imadtbn.github.io/Educational-Gaming/html/contact.html#breadcrumb"
+      },
+      "publisher": {
+        "@id": "https://imadtbn.github.io/Educational-Gaming/#organization"
+      },
+      "inLanguage": "ar",
+      "mainEntity": {
+        "@type": "ContactPoint",
+        "email": "tabaniimadeddine@gmail.com",
+        "contactType": "customer support",
+        "availableLanguage": ["Arabic", "English"],
+        "areaServed": "DZ"
+      }
     }
-    </script>
+  ]
+}
+</script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-B1G7WFGDBR"></script>
@@ -96,7 +165,7 @@
                 <a href="numbers.html">الأرقام</a>
                 <a href="animals.html">الحيوانات</a>
                 <a href="shapes.html">الأشكال</a>
-                <a href="days-months.html">الأيام والأشهر</a>                <a href="colors.html">الألوان</a>
+                <a href="days-months.html">الأيام والأشهر</a> <a href="colors.html">الألوان</a>
                 <a href="body.html">أجزاء الجسم</a>
                 <a href="professions.html">المهن</a>
                 <a href="transport.html">المواصلات</a>
@@ -109,30 +178,37 @@
         </div>
     </header>
 
-    <main class="container">
+<main class="container">
+    <h1 class="section-title text-center mt-4">اتصل بنا</h1>
 
-        <h1 class="section-title text-center mt-4">اتصل بنا</h1>
-
-        <!-- AdSense 01 الإعلانات الصورية -->
-        <div class="container">
-            <div class="ad-container">
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5656416032906373"
-                    data-ad-slot="3143411927" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            </div>
+    <!-- AdSense 01 الإعلانات الصورية -->
+    <div class="container">
+        <div class="ad-container">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5656416032906373"
+                data-ad-slot="3143411927" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
+    </div>
 
-        <div
-            style="background: white; padding: 40px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); line-height: 2; text-align: center;">
-            <p>يسعدنا دائماً سماع آرائكم ومقترحاتكم لتطوير أكاديمية المرح!</p>
-            <p>يمكنكم التواصل معنا عبر البريد الإلكتروني:</p>
-            <p
-                style="font-size: 1.5rem; color: var(--color-primary); font-weight: bold; margin: 20px 0; direction: ltr;">
-                tabaniimadeddine@gmail.com</p>
-            <p>أو متابعتنا على صفحاتنا في مواقع التواصل الاجتماعي لمعرفة آخر التحديثات.</p>
+    <h2 class="section-title text-center">طرق التواصل معنا</h2>
+
+    <div style="background: white; padding: 40px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); line-height: 2; text-align: center;" aria-label="معلومات الاتصال بأكاديمية المرح">
+        <p>يسعدنا دائماً سماع آرائكم ومقترحاتكم لتطوير أكاديمية المرح!</p>
+        <p>يمكنكم التواصل معنا عبر البريد الإلكتروني:</p>
+        <p style="font-size: 1.5rem; color: var(--color-primary); font-weight: bold; margin: 20px 0; direction: ltr;" aria-label="البريد الإلكتروني لأكاديمية المرح">
+            tabaniimadeddine@gmail.com
+        </p>
+        <p>أو متابعتنا على صفحاتنا في مواقع التواصل الاجتماعي لمعرفة آخر التحديثات.</p>
+        
+        <!-- روابط وسائل التواصل الاجتماعي -->
+        <div style="margin-top: 20px;">
+            <a href="#" target="_blank" rel="noopener" style="margin: 0 10px; color: var(--color-primary);">فيسبوك</a>
+            <a href="#" target="_blank" rel="noopener" style="margin: 0 10px; color: var(--color-primary);">إنستغرام</a>
+            <a href="#" target="_blank" rel="noopener" style="margin: 0 10px; color: var(--color-primary);">يوتيوب</a>
         </div>
+    </div>
+</main>
 
-    </main>
 
     <!-- Footer will be injected by the next script -->
 
@@ -140,11 +216,8 @@
     <!-- AdSense 01 الإعلانات المتعددة -->
     <div class="container">
         <div class="ad-container">
-            <ins class="adsbygoogle"
-     style="display:block"
-     data-ad-format="autorelaxed"
-     data-ad-client="ca-pub-5656416032906373"
-     data-ad-slot="6528123169"></ins>
+            <ins class="adsbygoogle" style="display:block" data-ad-format="autorelaxed"
+                data-ad-client="ca-pub-5656416032906373" data-ad-slot="6528123169"></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
     </div>

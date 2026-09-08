@@ -83,23 +83,85 @@
     <link rel="manifest" href="../manifest.json">
     <!-- Structured Data -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
+      "@type": "WebSite",
+      "@id": "https://imadtbn.github.io/Educational-Gaming/#website",
+      "url": "https://imadtbn.github.io/Educational-Gaming/",
+      "name": "أكاديمية المرح | تعلّم واكتشف",
+      "description": "منصة تعليمية تفاعلية ممتعة للأطفال",
+      "publisher": {
+        "@id": "https://imadtbn.github.io/Educational-Gaming/#organization"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://imadtbn.github.io/Educational-Gaming/#organization",
+      "name": "أكاديمية المرح",
+      "url": "https://imadtbn.github.io/Educational-Gaming/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://imadtbn.github.io/Educational-Gaming/assets/icon-512.svg",
+        "width": 512,
+        "height": 512
+      },
+      "email": "tabaniimadeddine@gmail.com",
+      "areaServed": {
+        "@type": "Country",
+        "name": "الجزائر"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://imadtbn.github.io/Educational-Gaming/html/colors.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "الرئيسية",
+          "item": "https://imadtbn.github.io/Educational-Gaming/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "عالم الألوان",
+          "item": "https://imadtbn.github.io/Educational-Gaming/html/colors.html"
+        }
+      ]
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://imadtbn.github.io/Educational-Gaming/html/colors.html",
+      "url": "https://imadtbn.github.io/Educational-Gaming/html/colors.html",
       "name": "عالم الألوان | أكاديمية المرح",
       "description": "استكشف عالم الألوان وتعلم أسماء الألوان المختلفة بطريقة ممتعة.",
-      "url": "https://imadtbn.github.io/Educational-Gaming/html/colors.html",
-      "publisher": {
-        "@type": "Organization",
-        "name": "أكاديمية المرح",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://imadtbn.github.io/Educational-Gaming/assets/icon-512.svg"
-        }
+      "isPartOf": {
+        "@id": "https://imadtbn.github.io/Educational-Gaming/#website"
       },
-      "inLanguage": "ar"
+      "breadcrumb": {
+        "@id": "https://imadtbn.github.io/Educational-Gaming/html/colors.html#breadcrumb"
+      },
+      "mainEntity": {
+        "@type": "ItemList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "أحمر", "url": "#color-أحمر" },
+          { "@type": "ListItem", "position": 2, "name": "أزرق", "url": "#color-أزرق" },
+          { "@type": "ListItem", "position": 3, "name": "أصفر", "url": "#color-أصفر" },
+          { "@type": "ListItem", "position": 4, "name": "أخضر", "url": "#color-أخضر" },
+          { "@type": "ListItem", "position": 5, "name": "برتقالي", "url": "#color-برتقالي" },
+          { "@type": "ListItem", "position": 6, "name": "بنفسجي", "url": "#color-بنفسجي" },
+          { "@type": "ListItem", "position": 7, "name": "وردي", "url": "#color-وردي" },
+          { "@type": "ListItem", "position": 8, "name": "بني", "url": "#color-بني" },
+          { "@type": "ListItem", "position": 9, "name": "أسود", "url": "#color-أسود" },
+          { "@type": "ListItem", "position": 10, "name": "أبيض", "url": "#color-أبيض" }
+        ]
+      }
     }
-    </script>
+  ]
+}
+</script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-B1G7WFGDBR"></script>
@@ -145,7 +207,7 @@
                 <a href="numbers.html">الأرقام</a>
                 <a href="animals.html">الحيوانات</a>
                 <a href="shapes.html">الأشكال</a>
-                <a href="days-months.html">الأيام والأشهر</a>                <a href="colors.html">الألوان</a>
+                <a href="days-months.html">الأيام والأشهر</a> <a href="colors.html">الألوان</a>
                 <a href="body.html">أجزاء الجسم</a>
                 <a href="professions.html">المهن</a>
                 <a href="transport.html">المواصلات</a>
@@ -172,6 +234,7 @@
             </div>
         </div>
 
+    <h2 class="section-title text-center">جميع الألوان الأساسية</h2>
         <div class="color-board" id="color-board"></div>
 
 
@@ -198,6 +261,7 @@
         colors.forEach(color => {
             const card = document.createElement('div');
             card.className = `color-card`;
+            card.id = `color-${color.name}`;  // إضافة المعرف الفريد
 
             const borderStyle = color.border ? `border: 2px solid ${color.border};` : '';
 
@@ -218,11 +282,8 @@
     <!-- AdSense 01 الإعلانات المتعددة -->
     <div class="container">
         <div class="ad-container">
-            <ins class="adsbygoogle"
-     style="display:block"
-     data-ad-format="autorelaxed"
-     data-ad-client="ca-pub-5656416032906373"
-     data-ad-slot="6528123169"></ins>
+            <ins class="adsbygoogle" style="display:block" data-ad-format="autorelaxed"
+                data-ad-client="ca-pub-5656416032906373" data-ad-slot="6528123169"></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
     </div>

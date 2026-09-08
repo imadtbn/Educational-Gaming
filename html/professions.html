@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>أكاديمية المرح | المهن</title>
-    <meta name="description" content="تعرف على المهن والأعمال المختلفة وأهميتها في المجتمع بطريقة تفاعلية.">
+    <meta name="description"
+        content="تعرف على أسماء المهن بالعربية والإنجليزية مع أيقونات ونطق صحيح. قائمة شاملة لأكثر من 50 مهنة للأطفال في أكاديمية المرح.">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#117F86">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -66,23 +67,209 @@
         crossorigin="anonymous"></script>
     <!-- Structured Data -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "أكاديمية المرح | المهن",
-      "description": "تعرف على المهن والأعمال المختلفة وأهميتها في المجتمع بطريقة تفاعلية.",
-      "url": "https://imadtbn.github.io/Educational-Gaming/html/professions.html",
+      "@type": "WebSite",
+      "@id": "https://imadtbn.github.io/Educational-Gaming/#website",
+      "url": "https://imadtbn.github.io/Educational-Gaming/",
+      "name": "أكاديمية المرح | تعلّم واكتشف",
+      "description": "منصة تعليمية تفاعلية ممتعة للأطفال",
       "publisher": {
-        "@type": "Organization",
-        "name": "أكاديمية المرح",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://imadtbn.github.io/Educational-Gaming/assets/icon-512.svg"
+        "@id": "https://imadtbn.github.io/Educational-Gaming/#organization"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://imadtbn.github.io/Educational-Gaming/#organization",
+      "name": "أكاديمية المرح",
+      "url": "https://imadtbn.github.io/Educational-Gaming/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://imadtbn.github.io/Educational-Gaming/assets/icon-512.svg",
+        "width": 512,
+        "height": 512
+      },
+      "email": "tabaniimadeddine@gmail.com",
+      "areaServed": {
+        "@type": "Country",
+        "name": "الجزائر"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://imadtbn.github.io/Educational-Gaming/html/professions.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "الرئيسية",
+          "item": "https://imadtbn.github.io/Educational-Gaming/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "عالم المهن",
+          "item": "https://imadtbn.github.io/Educational-Gaming/html/professions.html"
+        }
+      ]
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://imadtbn.github.io/Educational-Gaming/html/professions.html",
+      "url": "https://imadtbn.github.io/Educational-Gaming/html/professions.html",
+      "name": "عالم المهن | أكاديمية المرح",
+      "description": "تعرف على المهن والأعمال المختلفة وأهميتها في المجتمع بطريقة تفاعلية. قائمة شاملة بأسماء المهن بالعربية والإنجليزية مع أيقونات ونطق.",
+      "isPartOf": {
+        "@id": "https://imadtbn.github.io/Educational-Gaming/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://imadtbn.github.io/Educational-Gaming/html/professions.html#breadcrumb"
+      },
+      "audience": {
+        "@type": "EducationalAudience",
+        "educationalRole": "student",
+        "audienceType": "children",
+        "suggestedAge": {
+          "@type": "QuantitativeValue",
+          "minValue": 3,
+          "maxValue": 12
         }
       },
-      "inLanguage": "ar"
+      "educationalUse": "instruction",
+      "learningResourceType": "Flashcard, Vocabulary Builder, Interactive Activity",
+      "inLanguage": "ar",
+      "mainEntity": {
+        "@type": "ItemList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@type": "Occupation",
+              "name": "طبيب",
+              "alternateName": "Doctor",
+              "description": "المهنة التي تعالج المرضى وتعتني بصحتهم.",
+              "url": "#prof-طبيب",
+              "image": "👨‍⚕️"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@type": "Occupation",
+              "name": "معلم",
+              "alternateName": "Teacher",
+              "description": "المهنة التي تعلم الأطفال وتنقل المعرفة.",
+              "url": "#prof-معلم",
+              "image": "👨‍🏫"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+              "@type": "Occupation",
+              "name": "مهندس",
+              "alternateName": "Engineer",
+              "description": "المهنة التي تصمم وتبني المباني والمنشآت.",
+              "url": "#prof-مهندس",
+              "image": "👷‍♂️"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "item": {
+              "@type": "Occupation",
+              "name": "طيار",
+              "alternateName": "Pilot",
+              "description": "المهنة التي تقود الطائرات وتنقل الركاب.",
+              "url": "#prof-طيار",
+              "image": "👨‍✈️"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "item": {
+              "@type": "Occupation",
+              "name": "شرطي",
+              "alternateName": "Police Officer",
+              "description": "المهنة التي تحافظ على الأمن والنظام.",
+              "url": "#prof-شرطي",
+              "image": "👮‍♂️"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 6,
+            "item": {
+              "@type": "Occupation",
+              "name": "طباخ",
+              "alternateName": "Chef",
+              "description": "المهنة التي تطبخ الطعام اللذيذ.",
+              "url": "#prof-طباخ",
+              "image": "👨‍🍳"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 7,
+            "item": {
+              "@type": "Occupation",
+              "name": "رسام",
+              "alternateName": "Painter",
+              "description": "المهنة التي ترسم اللوحات الفنية الجميلة.",
+              "url": "#prof-رسام",
+              "image": "👨‍🎨"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 8,
+            "item": {
+              "@type": "Occupation",
+              "name": "رائد فضاء",
+              "alternateName": "Astronaut",
+              "description": "المهنة التي تسافر إلى الفضاء وتستكشف الكون.",
+              "url": "#prof-رائد-فضاء",
+              "image": "👨‍🚀"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 9,
+            "item": {
+              "@type": "Occupation",
+              "name": "فلاح",
+              "alternateName": "Farmer",
+              "description": "المهنة التي تزرع المحاصيل وتنتج الغذاء.",
+              "url": "#prof-فلاح",
+              "image": "👨‍🌾"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 10,
+            "item": {
+              "@type": "Occupation",
+              "name": "عالم",
+              "alternateName": "Scientist",
+              "description": "المهنة التي تبحث وتكتشف وتخترع أشياء جديدة.",
+              "url": "#prof-عالم",
+              "image": "🧑‍🔬"
+            }
+          }
+          // ... أضف باقي المهن بنفس النمط حتى position 58
+        ]
+      }
     }
-    </script>
+  ]
+}
+</script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-B1G7WFGDBR"></script>
@@ -125,7 +312,7 @@
                 <a href="numbers.html">الأرقام</a>
                 <a href="animals.html">الحيوانات</a>
                 <a href="shapes.html">الأشكال</a>
-                <a href="days-months.html">الأيام والأشهر</a>                <a href="colors.html">الألوان</a>
+                <a href="days-months.html">الأيام والأشهر</a> <a href="colors.html">الألوان</a>
                 <a href="body.html">أجزاء الجسم</a>
                 <a href="professions.html">المهن</a>
                 <a href="transport.html">المواصلات</a>
@@ -151,8 +338,9 @@
             </div>
         </div>
 
-        <div class="grid-cards" id="professions-grid">
-            <!-- Populated by JS -->
+        <h2 class="section-title text-center">جميع المهن</h2>
+        <div class="grid-cards" id="professions-grid" role="list" aria-label="قائمة المهن التفاعلية"></div>
+        <!-- Populated by JS -->
         </div>
     </main>
 
@@ -162,11 +350,8 @@
     <!-- AdSense 01 الإعلانات المتعددة -->
     <div class="container">
         <div class="ad-container">
-            <ins class="adsbygoogle"
-     style="display:block"
-     data-ad-format="autorelaxed"
-     data-ad-client="ca-pub-5656416032906373"
-     data-ad-slot="6528123169"></ins>
+            <ins class="adsbygoogle" style="display:block" data-ad-format="autorelaxed"
+                data-ad-client="ca-pub-5656416032906373" data-ad-slot="6528123169"></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
     </div>
@@ -206,67 +391,67 @@
     <script src="../js/navbar.js"></script>
     <script src="../js/rewards.js"></script>
     <script>
-const professions = [
-    { ar: "طبيب", en: "Doctor", emoji: "👨‍⚕️" },
-    { ar: "ممرض", en: "Nurse", emoji: "👨‍⚕️" },
-    { ar: "معلم", en: "Teacher", emoji: "👨‍🏫" },
-    { ar: "أستاذ جامعي", en: "Professor", emoji: "👨‍🏫" },
-    { ar: "مهندس", en: "Engineer", emoji: "👷‍♂️" },
-    { ar: "مهندس معماري", en: "Architect", emoji: "👷‍♂️" },
-    { ar: "مبرمج", en: "Programmer", emoji: "👨‍💻" },
-    { ar: "مصمم", en: "Designer", emoji: "👨‍🎨" },
-    { ar: "محامي", en: "Lawyer", emoji: "👨‍⚖️" },
-    { ar: "قاضي", en: "Judge", emoji: "👨‍⚖️" },
-    { ar: "شرطي", en: "Police Officer", emoji: "👮‍♂️" },
-    { ar: "جندي", en: "Soldier", emoji: "🪖" },
-    { ar: "إطفائي", en: "Firefighter", emoji: "👨‍🚒" },
-    { ar: "طباخ", en: "Chef", emoji: "👨‍🍳" },
-    { ar: "خباز", en: "Baker", emoji: "👨‍🍳" },
-    { ar: "نادل", en: "Waiter", emoji: "🧑‍🍳" },
-    { ar: "طيار", en: "Pilot", emoji: "👨‍✈️" },
-    { ar: "سائق", en: "Driver", emoji: "🧑‍✈️" },
-    { ar: "رائد فضاء", en: "Astronaut", emoji: "👨‍🚀" },
-    { ar: "صحفي", en: "Journalist", emoji: "🧑‍💼" },
-    { ar: "مصور", en: "Photographer", emoji: "📸" },
-    { ar: "كاتب", en: "Writer", emoji: "✍️" },
-    { ar: "رسام", en: "Painter", emoji: "👨‍🎨" },
-    { ar: "موسيقي", en: "Musician", emoji: "🎵" },
-    { ar: "مغني", en: "Singer", emoji: "🎤" },
-    { ar: "ممثل", en: "Actor", emoji: "🎭" },
-    { ar: "مخرج", en: "Director", emoji: "🎬" },
-    { ar: "رياضي", en: "Athlete", emoji: "🏃‍♂️" },
-    { ar: "مدرب رياضي", en: "Coach", emoji: "🏋️‍♂️" },
-    { ar: "حلاق", en: "Barber", emoji: "💈" },
-    { ar: "خياط", en: "Tailor", emoji: "🧵" },
-    { ar: "نجار", en: "Carpenter", emoji: "🪚" },
-    { ar: "حداد", en: "Blacksmith", emoji: "🔨" },
-    { ar: "كهربائي", en: "Electrician", emoji: "🔧" },
-    { ar: "سباك", en: "Plumber", emoji: "🔧" },
-    { ar: "ميكانيكي", en: "Mechanic", emoji: "🔧" },
-    { ar: "فلاح", en: "Farmer", emoji: "👨‍🌾" },
-    { ar: "بستاني", en: "Gardener", emoji: "👨‍🌾" },
-    { ar: "صياد", en: "Fisherman", emoji: "🎣" },
-    { ar: "بائع", en: "Seller", emoji: "🧑‍💼" },
-    { ar: "تاجر", en: "Merchant", emoji: "🧑‍💼" },
-    { ar: "محاسب", en: "Accountant", emoji: "🧑‍💼" },
-    { ar: "مدير", en: "Manager", emoji: "👨‍💼" },
-    { ar: "سكرتير", en: "Secretary", emoji: "🧑‍💼" },
-    { ar: "عالم", en: "Scientist", emoji: "🧑‍🔬" },
-    { ar: "صيدلي", en: "Pharmacist", emoji: "💊" },
-    { ar: "طبيب أسنان", en: "Dentist", emoji: "🦷" },
-    { ar: "طبيب بيطري", en: "Veterinarian", emoji: "🐾" },
-    { ar: "صحفي", en: "Reporter", emoji: "📰" },
-    { ar: "مترجم", en: "Translator", emoji: "🌐" },
-    { ar: "أمين مكتبة", en: "Librarian", emoji: "📚" },
-    { ar: "بائع زهور", en: "Florist", emoji: "💐" },
-    { ar: "عامل بناء", en: "Construction Worker", emoji: "👷" },
-    { ar: "عامل نظافة", en: "Cleaner", emoji: "🧹" },
-    { ar: "حارس أمن", en: "Security Guard", emoji: "🛡️" },
-    { ar: "ساعي بريد", en: "Mail Carrier", emoji: "📬" },
-    { ar: "بحار", en: "Sailor", emoji: "⚓" },
-    { ar: "صياد سمك", en: "Fisherman", emoji: "🎣" },
-    { ar: "مراقب طيران", en: "Air Traffic Controller", emoji: "🛫" }
-];
+        const professions = [
+            { ar: "طبيب", en: "Doctor", emoji: "👨‍⚕️" },
+            { ar: "ممرض", en: "Nurse", emoji: "👨‍⚕️" },
+            { ar: "معلم", en: "Teacher", emoji: "👨‍🏫" },
+            { ar: "أستاذ جامعي", en: "Professor", emoji: "👨‍🏫" },
+            { ar: "مهندس", en: "Engineer", emoji: "👷‍♂️" },
+            { ar: "مهندس معماري", en: "Architect", emoji: "👷‍♂️" },
+            { ar: "مبرمج", en: "Programmer", emoji: "👨‍💻" },
+            { ar: "مصمم", en: "Designer", emoji: "👨‍🎨" },
+            { ar: "محامي", en: "Lawyer", emoji: "👨‍⚖️" },
+            { ar: "قاضي", en: "Judge", emoji: "👨‍⚖️" },
+            { ar: "شرطي", en: "Police Officer", emoji: "👮‍♂️" },
+            { ar: "جندي", en: "Soldier", emoji: "🪖" },
+            { ar: "إطفائي", en: "Firefighter", emoji: "👨‍🚒" },
+            { ar: "طباخ", en: "Chef", emoji: "👨‍🍳" },
+            { ar: "خباز", en: "Baker", emoji: "👨‍🍳" },
+            { ar: "نادل", en: "Waiter", emoji: "🧑‍🍳" },
+            { ar: "طيار", en: "Pilot", emoji: "👨‍✈️" },
+            { ar: "سائق", en: "Driver", emoji: "🧑‍✈️" },
+            { ar: "رائد فضاء", en: "Astronaut", emoji: "👨‍🚀" },
+            { ar: "صحفي", en: "Journalist", emoji: "🧑‍💼" },
+            { ar: "مصور", en: "Photographer", emoji: "📸" },
+            { ar: "كاتب", en: "Writer", emoji: "✍️" },
+            { ar: "رسام", en: "Painter", emoji: "👨‍🎨" },
+            { ar: "موسيقي", en: "Musician", emoji: "🎵" },
+            { ar: "مغني", en: "Singer", emoji: "🎤" },
+            { ar: "ممثل", en: "Actor", emoji: "🎭" },
+            { ar: "مخرج", en: "Director", emoji: "🎬" },
+            { ar: "رياضي", en: "Athlete", emoji: "🏃‍♂️" },
+            { ar: "مدرب رياضي", en: "Coach", emoji: "🏋️‍♂️" },
+            { ar: "حلاق", en: "Barber", emoji: "💈" },
+            { ar: "خياط", en: "Tailor", emoji: "🧵" },
+            { ar: "نجار", en: "Carpenter", emoji: "🪚" },
+            { ar: "حداد", en: "Blacksmith", emoji: "🔨" },
+            { ar: "كهربائي", en: "Electrician", emoji: "🔧" },
+            { ar: "سباك", en: "Plumber", emoji: "🔧" },
+            { ar: "ميكانيكي", en: "Mechanic", emoji: "🔧" },
+            { ar: "فلاح", en: "Farmer", emoji: "👨‍🌾" },
+            { ar: "بستاني", en: "Gardener", emoji: "👨‍🌾" },
+            { ar: "صياد", en: "Fisherman", emoji: "🎣" },
+            { ar: "بائع", en: "Seller", emoji: "🧑‍💼" },
+            { ar: "تاجر", en: "Merchant", emoji: "🧑‍💼" },
+            { ar: "محاسب", en: "Accountant", emoji: "🧑‍💼" },
+            { ar: "مدير", en: "Manager", emoji: "👨‍💼" },
+            { ar: "سكرتير", en: "Secretary", emoji: "🧑‍💼" },
+            { ar: "عالم", en: "Scientist", emoji: "🧑‍🔬" },
+            { ar: "صيدلي", en: "Pharmacist", emoji: "💊" },
+            { ar: "طبيب أسنان", en: "Dentist", emoji: "🦷" },
+            { ar: "طبيب بيطري", en: "Veterinarian", emoji: "🐾" },
+            { ar: "صحفي", en: "Reporter", emoji: "📰" },
+            { ar: "مترجم", en: "Translator", emoji: "🌐" },
+            { ar: "أمين مكتبة", en: "Librarian", emoji: "📚" },
+            { ar: "بائع زهور", en: "Florist", emoji: "💐" },
+            { ar: "عامل بناء", en: "Construction Worker", emoji: "👷" },
+            { ar: "عامل نظافة", en: "Cleaner", emoji: "🧹" },
+            { ar: "حارس أمن", en: "Security Guard", emoji: "🛡️" },
+            { ar: "ساعي بريد", en: "Mail Carrier", emoji: "📬" },
+            { ar: "بحار", en: "Sailor", emoji: "⚓" },
+            { ar: "صياد سمك", en: "Fisherman", emoji: "🎣" },
+            { ar: "مراقب طيران", en: "Air Traffic Controller", emoji: "🛫" }
+        ];
 
         function speak(text, lang) {
             const utterance = new SpeechSynthesisUtterance(text);

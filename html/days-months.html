@@ -96,23 +96,106 @@
         crossorigin="anonymous"></script>
     <!-- Structured Data -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "أكاديمية المرح | الأيام والأشهر",
-      "description": "اكتشف الأيام والأشهر الهجرية والميلاية وتعرف على أسمائها بالعربية والإنجليزية مع أصواتها وتصنيفاتها.",
-      "url": "https://imadtbn.github.io/Educational-Gaming/html/days-months.html",
+      "@type": "WebSite",
+      "@id": "https://imadtbn.github.io/Educational-Gaming/#website",
+      "url": "https://imadtbn.github.io/Educational-Gaming/",
+      "name": "أكاديمية المرح | تعلّم واكتشف",
+      "description": "منصة تعليمية تفاعلية ممتعة للأطفال",
       "publisher": {
-        "@type": "Organization",
-        "name": "أكاديمية المرح",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://imadtbn.github.io/Educational-Gaming/assets/icon-512.svg"
-        }
+        "@id": "https://imadtbn.github.io/Educational-Gaming/#organization"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://imadtbn.github.io/Educational-Gaming/#organization",
+      "name": "أكاديمية المرح",
+      "url": "https://imadtbn.github.io/Educational-Gaming/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://imadtbn.github.io/Educational-Gaming/assets/icon-512.svg",
+        "width": 512,
+        "height": 512
       },
-      "inLanguage": "ar"
+      "email": "tabaniimadeddine@gmail.com",
+      "areaServed": {
+        "@type": "Country",
+        "name": "الجزائر"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://imadtbn.github.io/Educational-Gaming/html/days-months.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "الرئيسية",
+          "item": "https://imadtbn.github.io/Educational-Gaming/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "الأيام والأشهر",
+          "item": "https://imadtbn.github.io/Educational-Gaming/html/days-months.html"
+        }
+      ]
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://imadtbn.github.io/Educational-Gaming/html/days-months.html",
+      "url": "https://imadtbn.github.io/Educational-Gaming/html/days-months.html",
+      "name": "الأيام والأشهر | أكاديمية المرح",
+      "description": "اكتشف الأيام والأشهر الهجرية والميلادية وتعرف على أسمائها بالعربية والإنجليزية مع أصواتها وتصنيفاتها.",
+      "isPartOf": {
+        "@id": "https://imadtbn.github.io/Educational-Gaming/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://imadtbn.github.io/Educational-Gaming/html/days-months.html#breadcrumb"
+      },
+      "mainEntity": {
+        "@type": "ItemList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "الجمعة (Friday)", "description": "يوم من أيام الأسبوع", "url": "#day-الجمعة" },
+          { "@type": "ListItem", "position": 2, "name": "السبت (Saturday)", "description": "يوم من أيام الأسبوع", "url": "#day-السبت" },
+          { "@type": "ListItem", "position": 3, "name": "الأحد (Sunday)", "description": "يوم من أيام الأسبوع", "url": "#day-الأحد" },
+          { "@type": "ListItem", "position": 4, "name": "الاثنين (Monday)", "description": "يوم من أيام الأسبوع", "url": "#day-الاثنين" },
+          { "@type": "ListItem", "position": 5, "name": "الثلاثاء (Tuesday)", "description": "يوم من أيام الأسبوع", "url": "#day-الثلاثاء" },
+          { "@type": "ListItem", "position": 6, "name": "الأربعاء (Wednesday)", "description": "يوم من أيام الأسبوع", "url": "#day-الأربعاء" },
+          { "@type": "ListItem", "position": 7, "name": "الخميس (Thursday)", "description": "يوم من أيام الأسبوع", "url": "#day-الخميس" },
+          { "@type": "ListItem", "position": 8, "name": "مُحرَّم (Muharram)", "description": "شهر هجري", "url": "#month-مُحرَّم" },
+          { "@type": "ListItem", "position": 9, "name": "صَفَر (Safar)", "description": "شهر هجري", "url": "#month-صَفَر" },
+          { "@type": "ListItem", "position": 10, "name": "ربيع الأول (Rabi' al-Awwal)", "description": "شهر هجري", "url": "#month-ربيع-الأول" },
+          { "@type": "ListItem", "position": 11, "name": "ربيع الآخر (Rabi' al-Thani)", "description": "شهر هجري", "url": "#month-ربيع-الآخر" },
+          { "@type": "ListItem", "position": 12, "name": "جمادى الأولى (Jumada al-Awwal)", "description": "شهر هجري", "url": "#month-جمادى-الأولى" },
+          { "@type": "ListItem", "position": 13, "name": "جمادى الآخرة (Jumada al-Thani)", "description": "شهر هجري", "url": "#month-جمادى-الآخرة" },
+          { "@type": "ListItem", "position": 14, "name": "رجب (Rajab)", "description": "شهر هجري", "url": "#month-رجب" },
+          { "@type": "ListItem", "position": 15, "name": "شعبان (Sha'ban)", "description": "شهر هجري", "url": "#month-شعبان" },
+          { "@type": "ListItem", "position": 16, "name": "رمضان (Ramadan)", "description": "شهر هجري", "url": "#month-رمضان" },
+          { "@type": "ListItem", "position": 17, "name": "شوّال (Shawwal)", "description": "شهر هجري", "url": "#month-شوّال" },
+          { "@type": "ListItem", "position": 18, "name": "ذو القعدة (Dhu al-Qi'dah)", "description": "شهر هجري", "url": "#month-ذو-القعدة" },
+          { "@type": "ListItem", "position": 19, "name": "ذو الحجة (Dhu al-Hijjah)", "description": "شهر هجري", "url": "#month-ذو-الحجة" },
+          { "@type": "ListItem", "position": 20, "name": "جانفي (January)", "description": "شهر ميلادي", "url": "#month-جانفي" },
+          { "@type": "ListItem", "position": 21, "name": "فيفري (February)", "description": "شهر ميلادي", "url": "#month-فيفري" },
+          { "@type": "ListItem", "position": 22, "name": "مارس (March)", "description": "شهر ميلادي", "url": "#month-مارس" },
+          { "@type": "ListItem", "position": 23, "name": "أفريل (April)", "description": "شهر ميلادي", "url": "#month-أفريل" },
+          { "@type": "ListItem", "position": 24, "name": "ماي (May)", "description": "شهر ميلادي", "url": "#month-ماي" },
+          { "@type": "ListItem", "position": 25, "name": "جوان (June)", "description": "شهر ميلادي", "url": "#month-جوان" },
+          { "@type": "ListItem", "position": 26, "name": "جويلية (July)", "description": "شهر ميلادي", "url": "#month-جويلية" },
+          { "@type": "ListItem", "position": 27, "name": "أوت (August)", "description": "شهر ميلادي", "url": "#month-أوت" },
+          { "@type": "ListItem", "position": 28, "name": "سبتمبر (September)", "description": "شهر ميلادي", "url": "#month-سبتمبر" },
+          { "@type": "ListItem", "position": 29, "name": "أكتوبر (October)", "description": "شهر ميلادي", "url": "#month-أكتوبر" },
+          { "@type": "ListItem", "position": 30, "name": "نوفمبر (November)", "description": "شهر ميلادي", "url": "#month-نوفمبر" },
+          { "@type": "ListItem", "position": 31, "name": "ديسمبر (December)", "description": "شهر ميلادي", "url": "#month-ديسمبر" }
+        ]
+      }
     }
-    </script>
+  ]
+}
+</script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-B1G7WFGDBR"></script>
@@ -188,7 +271,7 @@
             <button class="filter-btn" data-filter="month-AR-HI">الأشهر الهجرية </button>
             <button class="filter-btn" data-filter="month-AR">الأشهر الميلادية</button>
         </div>
-
+        <h2 class="section-title text-center">جميع الأيام والأشهر</h2>
         <div class="grid-cards" id="daysmonths-grid">
             <!-- Populated by JS -->
         </div>
