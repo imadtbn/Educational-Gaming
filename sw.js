@@ -1,4 +1,4 @@
-const CACHE_NAME = 'fun-academy-v1';
+const CACHE_NAME = 'Educational-Gaming-v1';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
