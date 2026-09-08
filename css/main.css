@@ -310,45 +310,118 @@ footer {
       display: block !important;
   }
 
-  /* Mobile Sidebar Styling */
-  .nav-links {
-      position: fixed;
-      top: 0;
-      right: -300px; /* Start hidden */
-      width: 280px;
-      height: 100vh;
-      background-color: var(--color-card);
-      flex-direction: column;
-      justify-content: flex-start;
-      padding: 10px 15px;
-      box-shadow: -4px 0 15px rgba(0,0,0,0.1);
-      transition: right 0.3s ease-in-out;
-      z-index: 10000;
-      position: fixed;
-      overflow-y: auto;
-  }
+/* =========================================================
+   Mobile Sidebar Styling
+   ========================================================= */
+@media (max-width: 768px) {
 
-  .nav-links.active {
-      right: 0;
-      display: flex;
-  }
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -300px;
 
-  .nav-links a {
-      padding: 7px 0;
-      border-bottom: 1px solid var(--color-border);
-      font-size: 1.1rem;
-      width: 100%;
-  }
+        width: min(280px, 85vw);
+        height: 100dvh;
+        max-height: 100dvh;
 
-  .close-menu {
-      display: block;
-      font-size: 1rem;
-      color: var(--color-text-light);
-      cursor: pointer;
-      align-self: flex-start;
-      margin-bottom: 15px;
-  }
-  .close-menu:hover {
-      color: var(--color-secondary);
-  }
+        background-color: var(--color-card);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+
+        padding: 8px 14px 20px;
+
+        box-shadow: -4px 0 15px rgba(0, 0, 0, 0.15);
+
+        transition: right 0.3s ease-in-out;
+
+        z-index: 10000;
+
+        /* مهم للقوائم الطويلة */
+        overflow-y: auto;
+        overflow-x: hidden;
+
+        /* تمرير أفضل على الهاتف */
+        -webkit-overflow-scrolling: touch;
+
+        /* منع تمدد المحتوى خارج القائمة */
+        box-sizing: border-box;
+
+        /* إخفاء شريط التمرير مع إبقاء التمرير فعالًا */
+        scrollbar-width: thin;
+    }
+
+    .nav-links.active {
+        right: 0;
+        display: flex;
+    }
+
+    /* زر إغلاق القائمة */
+    .close-menu {
+        display: block;
+
+        position: sticky;
+        top: 0;
+
+        flex-shrink: 0;
+
+        width: 100%;
+
+        padding: 8px 4px;
+        margin: 0 0 4px;
+
+        background-color: var(--color-card);
+
+        font-size: 0.95rem;
+        color: var(--color-text-light);
+
+        cursor: pointer;
+
+        text-align: left;
+
+        z-index: 2;
+    }
+
+    .close-menu:hover {
+        color: var(--color-secondary);
+    }
+
+    /* روابط القائمة */
+    .nav-links a {
+        flex-shrink: 0;
+
+        width: 100%;
+        box-sizing: border-box;
+
+        padding: 5px 4px;
+
+        border-bottom: 1px solid var(--color-border);
+
+        font-size: 0.98rem;
+        line-height: 1.35;
+
+        text-decoration: none;
+
+        white-space: normal;
+    }
+
+    /* آخر رابط بدون خط سفلي */
+    .nav-links a:last-child {
+        border-bottom: none;
+    }
+
+    /* تحسين التمرير في Chrome / Edge / Safari */
+    .nav-links::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    .nav-links::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background: var(--color-border);
+    }
+
+    .nav-links::-webkit-scrollbar-track {
+        background: transparent;
+    }
 }
