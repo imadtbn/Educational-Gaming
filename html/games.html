@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>أكاديمية المرح | مخيم الألعاب</title>
-<meta name="description" content="مخيم الألعاب التعليمية في أكاديمية المرح: العاب ذاكرة، مطابقة الكلمات مع الصور، وإكمال الكلمات الناقصة. تحديات ممتعة تجمع النجوم وتنمي المهارات اللغوية والإدراكية للأطفال.">    <meta name="robots" content="index, follow">
+    <meta name="description"
+        content="مخيم الألعاب التعليمية في أكاديمية المرح: العاب ذاكرة، مطابقة الكلمات مع الصور، وإكمال الكلمات الناقصة. تحديات ممتعة تجمع النجوم وتنمي المهارات اللغوية والإدراكية للأطفال.">
+    <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#117F86">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
@@ -173,7 +175,7 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5656416032906373"
         crossorigin="anonymous"></script>
     <!-- Structured Data -->
-<script type="application/ld+json">
+    <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
@@ -309,7 +311,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-B1G7WFGDBR"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
+        function gtag() {dataLayer.push(arguments);}
         gtag('js', new Date());
 
         gtag('config', 'G-B1G7WFGDBR');
@@ -345,7 +347,7 @@
                 <a href="numbers.html">الأرقام</a>
                 <a href="animals.html">الحيوانات</a>
                 <a href="shapes.html">الأشكال</a>
-                <a href="days-months.html">الأيام والأشهر</a>                <a href="colors.html">الألوان</a>
+                <a href="days-months.html">الأيام والأشهر</a> <a href="colors.html">الألوان</a>
                 <a href="body.html">أجزاء الجسم</a>
                 <a href="professions.html">المهن</a>
                 <a href="transport.html">المواصلات</a>
@@ -420,15 +422,14 @@
 
 
 
-    <!-- AdSense 01 الإعلانات المتعددة -->
+    <!-- AdSense 01 الإعلانات داخل الخلاصة -->
     <div class="container">
         <div class="ad-container">
-            <ins class="adsbygoogle"
-     style="display:block"
-     data-ad-format="autorelaxed"
-     data-ad-client="ca-pub-5656416032906373"
-     data-ad-slot="6528123169"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-fr+57+4a-dc+8g"
+                data-ad-client="ca-pub-5656416032906373" data-ad-slot="7867079394"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
         </div>
     </div>
 
@@ -548,10 +549,10 @@
 
         /* --- Match Word Game --- */
         const matchQuestions = [
-            { img: '🐈', correct: 'قطة', wrong: ['كلب', 'فأر'] },
-            { img: '🍌', correct: 'موز', wrong: ['تفاح', 'برتقال'] },
-            { img: '✈️', correct: 'طائرة', wrong: ['سيارة', 'قطار'] },
-            { img: '🌲', correct: 'شجرة', wrong: ['زهرة', 'عشب'] }
+            {img: '🐈', correct: 'قطة', wrong: ['كلب', 'فأر']},
+            {img: '🍌', correct: 'موز', wrong: ['تفاح', 'برتقال']},
+            {img: '✈️', correct: 'طائرة', wrong: ['سيارة', 'قطار']},
+            {img: '🌲', correct: 'شجرة', wrong: ['زهرة', 'عشب']}
         ];
 
         function initMatchGame() {
@@ -580,7 +581,7 @@
                     } else {
                         btn.style.background = '#ef4444';
                         btn.style.color = 'white';
-                        setTimeout(() => { btn.style.background = ''; btn.style.color = ''; }, 500);
+                        setTimeout(() => {btn.style.background = ''; btn.style.color = '';}, 500);
                     }
                 };
                 optsContainer.appendChild(btn);
@@ -589,10 +590,10 @@
 
         /* --- Missing Letter Game --- */
         const missingQuestions = [
-            { word: 'شـ _ ـرة', correct: 'ج', wrong: ['ح', 'خ'] },
-            { word: 'طـ _ ـر', correct: 'ي', wrong: ['و', 'ا'] },
-            { word: 'سـ _ ـك', correct: 'م', wrong: ['ن', 'ل'] },
-            { word: 'قـ _ ـر', correct: 'م', wrong: ['ب', 'ف'] }
+            {word: 'شـ _ ـرة', correct: 'ج', wrong: ['ح', 'خ']},
+            {word: 'طـ _ ـر', correct: 'ي', wrong: ['و', 'ا']},
+            {word: 'سـ _ ـك', correct: 'م', wrong: ['ن', 'ل']},
+            {word: 'قـ _ ـر', correct: 'م', wrong: ['ب', 'ف']}
         ];
 
         function initMissingGame() {
@@ -621,7 +622,7 @@
                     } else {
                         btn.style.background = '#ef4444';
                         btn.style.color = 'white';
-                        setTimeout(() => { btn.style.background = ''; btn.style.color = ''; }, 500);
+                        setTimeout(() => {btn.style.background = ''; btn.style.color = '';}, 500);
                     }
                 };
                 optsContainer.appendChild(btn);
