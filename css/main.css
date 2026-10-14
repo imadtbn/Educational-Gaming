@@ -261,59 +261,193 @@ nav {
   color: var(--color-text-light);
 }
 
+/* Shared academy footer: responsive navigation with decorative, self-hosted SVG pictograms. */
 footer {
-  background-color: white;
-  padding: 50px 20px 20px;
-  border-top: 1px solid var(--color-border);
+  background: linear-gradient(180deg, var(--color-card) 0%, #f7fbfa 100%);
+  padding: 46px 20px 22px;
+  border-top: 3px solid var(--color-accent);
   margin-top: 60px;
   color: var(--color-text-light);
 }
 
 .footer-content {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 40px;
+  grid-template-columns: minmax(0, 1.2fr) repeat(2, minmax(0, 1fr));
+  gap: clamp(20px, 4vw, 56px);
   max-width: 1200px;
   margin: 0 auto;
   text-align: right;
 }
 
+.footer-section { min-width: 0; }
+
 .footer-section h3 {
   color: var(--color-primary);
-  margin-bottom: 20px;
-  font-size: 1.5rem;
+  margin-bottom: 16px;
+  font-size: clamp(1.14rem, 1.8vw, 1.45rem);
+  line-height: 1.4;
+}
+
+.footer-section h3::after {
+  content: "";
+  display: block;
+  width: 38px;
+  height: 3px;
+  margin-top: 8px;
+  background: var(--color-accent);
+  border-radius: 999px;
 }
 
 .footer-section p {
-  line-height: 1.8;
+  line-height: 1.9;
   margin-bottom: 15px;
+  max-width: 40ch;
 }
 
 .footer-section ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
-.footer-section ul li {
-  margin-bottom: 10px;
-}
+.footer-section ul li { margin: 0 0 4px; }
 
 .footer-section ul li a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 46px;
+  padding: 5px 8px;
+  border-radius: 10px;
   color: var(--color-text-light);
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.5;
   text-decoration: none;
-  transition: color 0.2s;
+  overflow-wrap: anywhere;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Icon graphics are CSS-only, so link text stays readable without images or JS. */
+.footer-section ul li a::before {
+  content: "";
+  display: block;
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background-color: rgba(17, 127, 134, 0.09);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  transition: background-color 0.2s ease;
+}
+
+.footer-section ul li a[href$="arabic.html"]::before {
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23117F86%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%205.5C9%203.8%205.7%204%203%205v14c3.1-1%206.5-1%209%201.3%202.5-2.3%205.9-2.3%209-1.3V5c-2.7-1-6-1.2-9%20.5Z%22%2F%3E%3Cpath%20d%3D%22M12%205.5v14.8M6%209h3M15%209h3%22%2F%3E%3C%2Fsvg%3E");
+}
+
+.footer-section ul li a[href$="english.html"]::before {
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23117F86%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Crect%20x%3D%223%22%20y%3D%223%22%20width%3D%2218%22%20height%3D%2218%22%20rx%3D%224%22%2F%3E%3Cpath%20d%3D%22m6.5%2016%203-8%203%208m-5-2h4M15%209h3m-1.5-2v9%22%2F%3E%3C%2Fsvg%3E");
+}
+
+.footer-section ul li a[href$="numbers.html"]::before {
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23117F86%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Crect%20x%3D%225%22%20y%3D%223%22%20width%3D%2214%22%20height%3D%2218%22%20rx%3D%222%22%2F%3E%3Cpath%20d%3D%22M8%207h8M9%2011h.01M15%2011h.01M9%2015h.01M15%2015h.01M9%2019h.01M15%2019h.01%22%20stroke-width%3D%222.6%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E");
+}
+
+.footer-section ul li a[href$="games.html"]::before {
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23117F86%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M7%208h10a4%204%200%200%201%203.9%203.2l.8%204.7a2.5%202.5%200%200%201-4.2%202.2L15.6%2016H8.4l-1.9%202.1a2.5%202.5%200%200%201-4.2-2.2l.8-4.7A4%204%200%200%201%207%208Z%22%2F%3E%3Cpath%20d%3D%22M8%2011v4m-2-2h4m5.5-.5h.01m2%202h.01%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E");
+}
+
+.footer-section ul li a[href$="about.html"]::before {
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23117F86%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%229%22%20cy%3D%228%22%20r%3D%223%22%2F%3E%3Cpath%20d%3D%22M3.5%2020v-1.5a5.5%205.5%200%200%201%2011%200V20H3.5ZM16%205a3%203%200%200%201%200%206m1%203a4%204%200%200%201%203.5%204v2%22%2F%3E%3C%2Fsvg%3E");
+}
+
+.footer-section ul li a[href$="contact.html"]::before {
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23117F86%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Crect%20x%3D%223%22%20y%3D%225%22%20width%3D%2218%22%20height%3D%2214%22%20rx%3D%222.5%22%2F%3E%3Cpath%20d%3D%22m4%207%208%206%208-6%22%2F%3E%3C%2Fsvg%3E");
+}
+
+.footer-section ul li a[href$="privacy.html"]::before {
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23117F86%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%202%204.5%205v6c0%205%203.2%208.3%207.5%2011%204.3-2.7%207.5-6%207.5-11V5L12%202Z%22%2F%3E%3Crect%20x%3D%229%22%20y%3D%2211%22%20width%3D%226%22%20height%3D%225.5%22%20rx%3D%221%22%2F%3E%3Cpath%20d%3D%22M10.5%2011V9.5a1.5%201.5%200%200%201%203%200V11%22%2F%3E%3C%2Fsvg%3E");
+}
+
+.footer-section ul li a[href$="terms.html"]::before {
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23117F86%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M6%202.5h8l4%204V21H6a2%202%200%200%201-2-2V4.5a2%202%200%200%201%202-2Z%22%2F%3E%3Cpath%20d%3D%22M14%202.5V7h4M8%2011h7M8%2015h7M8%2019h4%22%2F%3E%3C%2Fsvg%3E");
 }
 
 .footer-section ul li a:hover {
   color: var(--color-primary);
+  background-color: rgba(17, 127, 134, 0.07);
+}
+
+.footer-section ul li a:hover::before,
+.footer-section ul li a:focus-visible::before {
+  background-color: rgba(248, 200, 80, 0.28);
+}
+
+.footer-section ul li a:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+  color: var(--color-primary);
+}
+
+.footer-section ul li a[aria-current="page"] {
+  color: var(--color-primary);
+  background-color: rgba(248, 200, 80, 0.16);
 }
 
 .footer-bottom {
   text-align: center;
-  margin-top: 40px;
-  padding-top: 20px;
+  margin-top: 32px;
+  padding-top: 19px;
   border-top: 1px dashed var(--color-border);
   font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 800px) {
+  .footer-content {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 16px;
+  }
+
+  .footer-section:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .footer-section:first-child p {
+    max-width: 62ch;
+  }
+}
+
+@media (max-width: 420px) {
+  footer {
+    padding: 32px 16px 18px;
+  }
+
+  .footer-content {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 22px;
+  }
+
+  .footer-section:first-child { grid-column: auto; }
+
+  .footer-section h3 { margin-bottom: 10px; }
+
+  .footer-section ul li a {
+    min-height: 44px;
+    padding: 4px 6px;
+  }
+
+  .footer-bottom { margin-top: 24px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-section ul li a,
+  .footer-section ul li a::before {
+    transition: none;
+  }
 }
 
 /* Utilities */
