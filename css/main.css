@@ -272,159 +272,208 @@ footer {
 
 
 
-/* Desktop defaults for hamburger/sidebar elements */
-.hamburger {
-    display: none;
-    font-size: 2rem;
-    cursor: pointer;
-    color: var(--color-primary);
+/* Shared responsive header, menu and rewards across all pages */
+#stars-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  flex: 0 0 auto;
+  min-height: 40px;
+  padding: 5px 13px;
+  background: var(--color-accent);
+  color: #65450a;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 0.95rem;
+  line-height: 1.25;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.close-menu {
-    display: none;
+#stars-badge .stars-icon { font-size: 1.15rem; line-height: 1; }
+#stars-badge:hover { box-shadow: 0 3px 12px rgba(0, 0, 0, 0.14); }
+#stars-badge:focus-visible,
+.hamburger:focus-visible,
+.close-menu:focus-visible,
+.nav-links a:focus-visible {
+  outline: 3px solid var(--color-secondary);
+  outline-offset: 3px;
 }
+
+.hamburger, .close-menu { display: none; }
 
 .nav-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0,0,0,0.5);
-    z-index: 999;
-    opacity: 0;
-    transition: opacity 0.3s;
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(24, 39, 48, 0.55);
+  z-index: 1999;
 }
 
-.nav-overlay.active {
-    display: block;
-    opacity: 1;
-}
+.nav-overlay.active { display: block; }
 
 @media (max-width: 900px) {
   .hero h1 { font-size: 2.5rem; }
   .grid-cards { grid-template-columns: 1fr; }
 
-  .hamburger {
-      display: block !important;
+  header { padding: 8px 0; }
+
+  /* Logo on the right, reward badge and menu on the left; never wrap. */
+  header .nav {
+    display: flex;
+    flex-flow: row nowrap;
+    direction: rtl;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 48px;
+    gap: 8px;
+    padding-inline: 12px;
   }
 
-/* =========================================================
-   Mobile Sidebar Styling
-   ========================================================= */
-@media (max-width: 768px) {
+  header .nav > .logo {
+    order: 0;
+    flex: 1 1 0;
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    gap: 5px;
+    font-size: clamp(1rem, 4.2vw, 1.35rem);
+    line-height: 1.3;
+  }
 
-    .nav-links {
-        position: fixed;
-        top: 0;
-        right: -300px;
+  header .nav > .logo > span {
+    flex: none;
+    font-size: 1.35rem !important; /* Normalizes the homepage inline icon size. */
+    line-height: 1;
+  }
 
-        width: min(280px, 85vw);
-        height: 100dvh;
-        max-height: 100dvh;
+  header .nav > #stars-badge {
+    order: 1;
+    min-height: 40px;
+    padding: 5px 10px;
+    gap: 5px;
+    font-size: 0.9rem;
+  }
 
-        background-color: var(--color-card);
+  header .nav > .hamburger {
+    order: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 44px;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    color: var(--color-primary);
+    background: rgba(17, 127, 134, 0.06);
+    font-size: 1.4rem;
+    line-height: 1;
+    font-family: inherit;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
 
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
+  header .nav > .hamburger:hover {
+    background: rgba(17, 127, 134, 0.12);
+  }
 
-        padding: 8px 14px 20px;
+  header .nav > .nav-links {
+    order: 3;
+    display: flex;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(310px, 86vw);
+    height: 100vh;
+    height: 100dvh;
+    max-height: 100dvh;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 2px;
+    padding: max(12px, env(safe-area-inset-top)) 14px 22px;
+    background: var(--color-card);
+    box-shadow: -4px 0 18px rgba(0, 0, 0, 0.14);
+    z-index: 2001;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    transform: translateX(105%);
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform 0.25s ease, visibility 0.25s;
+  }
 
-        box-shadow: -4px 0 15px rgba(0, 0, 0, 0.15);
+  header .nav > .nav-links.active {
+    transform: translateX(0);
+    visibility: visible;
+    pointer-events: auto;
+  }
 
-        transition: right 0.3s ease-in-out;
+  .nav-links .close-menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    flex: 0 0 auto;
+    min-height: 44px;
+    width: 100%;
+    padding: 8px 10px;
+    margin-bottom: 6px;
+    border: 0;
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-card);
+    color: var(--color-primary);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 700;
+    text-align: right;
+    cursor: pointer;
+    z-index: 1;
+  }
 
-        z-index: 10000;
+  .nav-links a {
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+    min-height: 44px;
+    width: 100%;
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--color-border);
+    border-radius: 8px;
+    font-size: 0.98rem;
+    line-height: 1.4;
+    white-space: normal;
+  }
 
-        /* مهم للقوائم الطويلة */
-        overflow-y: auto;
-        overflow-x: hidden;
+  .nav-links a:hover,
+  .nav-links a[aria-current="page"] {
+    color: var(--color-primary);
+    background: rgba(17, 127, 134, 0.07);
+  }
 
-        /* تمرير أفضل على الهاتف */
-        -webkit-overflow-scrolling: touch;
-
-        /* منع تمدد المحتوى خارج القائمة */
-        box-sizing: border-box;
-
-        /* إخفاء شريط التمرير مع إبقاء التمرير فعالًا */
-        scrollbar-width: thin;
-    }
-
-    .nav-links.active {
-        right: 0;
-        display: flex;
-    }
-
-    /* زر إغلاق القائمة */
-    .close-menu {
-        display: block;
-
-        position: sticky;
-        top: 0;
-
-        flex-shrink: 0;
-
-        width: 100%;
-
-        padding: 8px 4px;
-        margin: 0 0 4px;
-
-        background-color: var(--color-card);
-
-        font-size: 0.95rem;
-        color: var(--color-text-light);
-
-        cursor: pointer;
-
-        text-align: left;
-
-        z-index: 2;
-    }
-
-    .close-menu:hover {
-        color: var(--color-secondary);
-    }
-
-    /* روابط القائمة */
-    .nav-links a {
-        flex-shrink: 0;
-
-        width: 100%;
-        box-sizing: border-box;
-
-        padding: 5px 4px;
-
-        border-bottom: 1px solid var(--color-border);
-
-        font-size: 0.98rem;
-        line-height: 1.35;
-
-        text-decoration: none;
-
-        white-space: normal;
-    }
-
-    /* آخر رابط بدون خط سفلي */
-    .nav-links a:last-child {
-        border-bottom: none;
-    }
-
-    /* تحسين التمرير في Chrome / Edge / Safari */
-    .nav-links::-webkit-scrollbar {
-        width: 5px;
-    }
-
-    .nav-links::-webkit-scrollbar-thumb {
-        border-radius: 10px;
-        background: var(--color-border);
-    }
-
-    .nav-links::-webkit-scrollbar-track {
-        background: transparent;
-    }
+  .nav-links a:last-child { border-bottom: 0; }
 }
+
+@media (max-width: 360px) {
+  header .nav { gap: 5px; padding-inline: 10px; }
+  header .nav > .logo { font-size: 1rem; gap: 3px; }
+  header .nav > .logo > span { font-size: 1.1rem !important; }
+  header .nav > #stars-badge { padding-inline: 8px; gap: 3px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  header .nav > .nav-links, #stars-badge { transition: none; }
 }
 
 /* Homepage hero: compact share action aligned with the academy's visual identity */
