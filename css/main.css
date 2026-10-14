@@ -87,6 +87,58 @@ nav {
   color: var(--color-primary);
 }
 
+
+/* Lightweight shared pictograms for the academy navigation (RTL + touch). */
+.nav-links a.nav-link-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 7px;
+  min-height: 40px;
+  padding: 6px 9px;
+  border-radius: 11px;
+  font-size: 0.93rem;
+  line-height: 1.35;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-link-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 28px;
+  width: 28px;
+  height: 28px;
+  color: var(--color-primary);
+  background: rgba(17, 127, 134, 0.09);
+  border-radius: 9px;
+}
+
+.nav-link-icon svg { display: block; width: 18px; height: 18px; }
+
+.nav-links a.nav-link-item:hover,
+.nav-links a.nav-link-item[aria-current="page"] {
+  color: var(--color-primary);
+  background: rgba(17, 127, 134, 0.075);
+}
+
+.nav-links a.nav-link-item[aria-current="page"] {
+  font-weight: 800;
+  background: rgba(248, 200, 80, 0.2);
+}
+
+.nav-links a.nav-link-item[aria-current="page"] .nav-link-icon {
+  color: #73500a;
+  background: rgba(248, 200, 80, 0.45);
+}
+
+@media (hover: none) {
+  .nav-links a.nav-link-item:active {
+    background: rgba(17, 127, 134, 0.12);
+  }
+}
+
 .hero {
   text-align: center;
   padding: 60px 20px;
@@ -480,6 +532,23 @@ footer {
   .nav-links a[aria-current="page"] {
     color: var(--color-primary);
     background: rgba(17, 127, 134, 0.07);
+  }
+
+
+  /* Full-width, comfortable tap targets, without overflowing the drawer. */
+  header .nav > .nav-links a.nav-link-item {
+    width: 100%;
+    flex: 0 0 auto;
+    min-height: 48px;
+    padding: 8px 10px;
+    border-radius: 10px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  header .nav > .nav-links a.nav-link-item .nav-link-icon {
+    flex: 0 0 32px;
+    width: 32px;
+    height: 32px;
   }
 
   .nav-links a:last-child { border-bottom: 0; }
