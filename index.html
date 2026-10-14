@@ -198,11 +198,26 @@
         <section class="hero">
 
             <div class="container">
-                <p style="color: var(--color-primary); font-weight: 700; margin-bottom: 10px;">✦ تعلّم، العب، واكتشف</p>
+                <div class="hero-topbar">
+                    <p class="hero-eyebrow">✦ تعلّم، العب، واكتشف</p>
+                    <div class="hero-share-area">
+                        <button type="button" id="shareSiteButton" class="hero-share-button" title="شارك أكاديمية المرح مع العائلة والأصدقاء">
+                            <svg class="hero-share-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                                <circle cx="18" cy="5" r="3"></circle>
+                                <circle cx="6" cy="12" r="3"></circle>
+                                <circle cx="18" cy="19" r="3"></circle>
+                                <path d="m8.7 13.5 6.6 4"></path>
+                                <path d="m15.3 6.5-6.6 4"></path>
+                            </svg>
+                            <span>شارك الموقع</span>
+                        </button>
+                        <span id="shareStatus" class="hero-share-status" role="status" aria-live="polite"></span>
+                    </div>
+                </div>
                 <h1>كل حرف هو بداية <em>مغامرة</em> جديدة.</h1>
                 <p>من أول «أ» إلى أول مسألة حسابية، نصنع مساحة آمنة ومشرقة يتعلّم فيها الأطفال بالاستماع والاختيار
                     والتجربة.</p>
-                <div style="display: flex; justify-content: center; gap: 15px; margin-top: 20px;">
+                <div class="hero-main-actions">
                     <a href="html/arabic.html" class="btn">ابدأ رحلة اليوم</a>
                     <a href="#paths" class="btn btn-secondary">شاهد المسارات</a>
                 </div>
@@ -385,6 +400,7 @@
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
     <script src="js/navbar.js"></script>
+    <script src="js/share.js" defer></script>
     <script src="js/rewards.js"></script>
 </body>
 

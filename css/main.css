@@ -425,3 +425,150 @@ footer {
         background: transparent;
     }
 }
+}
+
+/* Homepage hero: compact share action aligned with the academy's visual identity */
+.hero .hero-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 880px;
+  gap: 12px;
+  margin: 0 auto 25px;
+}
+
+.hero .hero-eyebrow {
+  margin: 0;
+  max-width: none;
+  color: var(--color-primary);
+  font-size: 1.06rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.hero-share-area {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.hero-share-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 44px;
+  padding: 8px 18px;
+  border: 2px solid var(--color-accent);
+  border-radius: 999px;
+  background: var(--color-card);
+  color: var(--color-primary);
+  box-shadow: 0 3px 12px rgba(17, 127, 134, 0.12);
+  font-family: var(--font-main);
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.25;
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.hero-share-button:hover {
+  background: #fff7df;
+  box-shadow: 0 5px 16px rgba(17, 127, 134, 0.2);
+  transform: translateY(-2px);
+}
+
+.hero-share-button:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.hero-share-icon {
+  display: block;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.hero-share-status {
+  position: absolute;
+  top: calc(100% + 8px);
+  inset-inline-end: 0;
+  z-index: 2;
+  width: max-content;
+  max-width: min(265px, 75vw);
+  padding: 8px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-card);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.09);
+  color: var(--color-primary);
+  font-size: 0.84rem;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.hero-share-status:empty {
+  display: none;
+}
+
+.hero-main-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 38px 10px;
+  }
+
+  .hero .hero-topbar {
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .hero .hero-eyebrow {
+    font-size: 0.88rem;
+  }
+
+  .hero-share-button {
+    padding: 8px 11px;
+    gap: 6px;
+    font-size: 0.9rem;
+  }
+
+  .hero-share-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .hero-main-actions {
+    gap: 10px;
+  }
+
+  .hero-main-actions .btn {
+    padding: 10px 18px;
+    font-size: 1.04rem;
+  }
+}
+
+@media (max-width: 340px) {
+  .hero .hero-topbar {
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-share-button {
+    transition: none;
+  }
+
+  .hero-share-button:hover {
+    transform: none;
+  }
+}
