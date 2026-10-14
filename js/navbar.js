@@ -63,9 +63,15 @@ function setupNavbar() {
 
     // Keep the desktop navigation visible after a viewport/orientation change.
     const mobileViewport = window.matchMedia('(max-width: 900px)');
-    mobileViewport.addEventListener('change', (event) => {
+    const onViewportChange = (event) => {
         if (!event.matches) setMenuOpen(false);
-    });
+    };
+    if (typeof mobileViewport.addEventListener === 'function') {
+        mobileViewport.addEventListener('change', onViewportChange);
+    } else if (typeof mobileViewport.addListener === 'function') {
+        // Older iOS Safari browsers use the legacy MediaQueryList listener.
+        mobileViewport.addListener(onViewportChange);
+    }
 
 
     // Self-contained line icons: no icon font, remote requests, or text replacements.
