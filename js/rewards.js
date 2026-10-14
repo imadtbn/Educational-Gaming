@@ -21,31 +21,16 @@ class RewardsSystem {
 
     renderStarsBadge() {
         const headerContainer = document.querySelector('header .container.nav');
-        if (!headerContainer) return;
+        if (!headerContainer || document.getElementById('stars-badge')) return;
 
-        const badge = document.createElement('div');
+        const badge = document.createElement('a');
         badge.id = 'stars-badge';
-        badge.style.display = 'flex';
-        badge.style.alignItems = 'center';
-        badge.style.gap = '8px';
-        badge.style.backgroundColor = 'var(--color-accent)';
-        badge.style.color = '#fff';
-        badge.style.padding = '5px 15px';
-        badge.style.borderRadius = '20px';
-        badge.style.fontWeight = 'bold';
-        badge.style.cursor = 'pointer';
-        badge.style.boxShadow = '0 2px 5px rgba(0,0,0,0.1)';
-        badge.style.width = 'fit-content';
-
-        // Link to certificates if stars >= 50
-        badge.onclick = () => {
-            const isRoot = !window.location.pathname.includes('/html/');
-            window.location.href = isRoot ? 'html/certificate.html' : 'certificate.html';
-        };
-
-        badge.innerHTML = `<span style="font-size: 1.2rem;">⭐</span> <span id="stars-count">${this.stars}</span>`;
-
-        // Insert after nav-links or before hamburger
+        badge.href = window.location.pathname.includes('/html/')
+            ? 'certificate.html'
+            : 'html/certificate.html';
+        badge.title = 'رصيد النجوم وشهادة الإنجاز';
+        badge.setAttribute('aria-label', `رصيدك ${this.stars} نجمة، عرض شهادة الإنجاز`);
+        badge.innerHTML = `<span class="stars-icon" aria-hidden="true">⭐</span><span id="stars-count">${this.stars}</span>`;
         headerContainer.appendChild(badge);
     }
 
@@ -54,6 +39,7 @@ class RewardsSystem {
         if (countSpan) {
             countSpan.textContent = this.stars;
             const badge = document.getElementById('stars-badge');
+            badge.setAttribute('aria-label', `رصيدك ${this.stars} نجمة، عرض شهادة الإنجاز`);
             badge.style.transform = 'scale(1.1)';
             setTimeout(() => badge.style.transform = 'scale(1)', 200);
         }
