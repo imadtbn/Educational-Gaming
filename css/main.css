@@ -272,6 +272,26 @@ footer {
 
 
 
+/* On larger screens show the brand and reward balance above readable navigation links. */
+@media (min-width: 901px) {
+  header .nav {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 8px 18px;
+  }
+
+  header .nav > .logo { grid-column: 1; grid-row: 1; justify-self: start; }
+  header .nav > #stars-badge { grid-column: 2; grid-row: 1; }
+  header .nav > .nav-links {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 18px;
+  }
+}
+
 /* Shared responsive header, menu and rewards across all pages */
 #stars-badge {
   display: inline-flex;
